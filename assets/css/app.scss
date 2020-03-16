@@ -1,6 +1,341 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@font-face {
+    font-family: "Noticia Text";
+    @import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
+    font-family: "Dancing Script";
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+}
+/*******HEADER******************/
+body{
+    background-color: #edf7f1;
+        margin: 0;
+        padding: 0;
+        width: auto;
+    }
 
-body {
-    background-color: lightgray;
+.navbar-logo{
+    margin-left: 15px;
+}
+.navbar-logo h1{
+font-size: 30px;
+font-family: 'Dancing Script', cursive;
+}
+
+.navbar-logo img{
+    width: 20%; 
+}
+
+.icone-entete i{
+    color: black;
+    padding: 5px;
+}
+.icone-entete{
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+.col-lg-1{
+    margin-top: 15px;
+    padding: 10px;  
+}
+
+.nav-list{
+    list-style: none;
+    line-height: 40px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.nav-list li{
+    display: inline-block;
+    font-size: 25px;
+    font-family: 'Noticia Text', serif;
+    text-decoration:none;
+}
+.nav-link, .mention a{
+    color: black;
+}
+
+
+
+/* page accueil */
+body{
+    background: #edf7f1;
+    
+}
+.carousel-inner{
+    position: relative;
+  
+
+}
+
+.btn_diagnostic{
+    padding: 40px 0px 0px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    border-radius: 10px;
+    background-color:#ff8a84;
+    width: 320px;
+    height: 90px;
+   
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    margin: 70px;
+    font-size: 50px;
+}
+.concept{
+    display: flex;
+    margin: 50px;
+
+
+}
+.para-concept{
+    width: 60%;
+    padding: 10px 150px 50px 50px;
+    text-align: justify;
+    font-size: 16px;
+  
+   
+}
+.image{
+    width: 40%;
+    padding: 0px 150px 0px 50px;
+
+
+}
+img{
+    width: 320px;
+    height: 330px;
+}
+.buddha{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+
+
+}
+.buddha img{
+    width: 90px;
+    height: 90px;
+    background-color: #edf7f1;
+}
+
+/*--------------------------------------------------------------------------------------------------------- */
+
+/* page feng shui */
+
+
+
+.fondText { 
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -50;
+
+  
+ 
+}
+.container {
+    width: 1200px;
+    height: 500px;
+    background-color: white;
+    border: rgba(0, 128, 0, 0.507);
+    border-radius: 15px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+h2{
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    padding: 10px;
+    color : rgba(0, 128, 0, 0.507);
+    
+}
+
+.para1 {
+    width: 400px;
+    height: 450px;
+    padding: 10px;
+    text-align: justify;
+    font-size: 16px;
+
+  
+
+   
+}
+.para2 {
+    width: 400px;
+    height: 450x;
+    padding: 10px;
+    text-align: justify;
+    font-size: 16px;
+
+}
+
+.para3 {
+    width: 400px;
+    height: 450px;
+    padding: 10px;
+    text-align: justify;
+    font-size: 16px;
+
+  
+
+}
+
+/********************************************* ESTIMATION */
+/* Title */
+h6{
+font-weight: bold;
+color:#4d4d4d;
+}
+/* CSS talk bubble */
+.talk-bubble {
+margin: 40px;
+display: inline-block;
+position: relative;
+width: 150px;
+height: auto;
+background-color: rgba(237,241,241,0.3);
+
+}
+.border{
+border: 8px solid #666;
+}
+.round{
+border-radius: 30px;
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+content: ' ';
+position: absolute;
+width: 0;
+height: 0;
+left: 30px;
+right: auto;
+top: auto;
+bottom: -40px;
+border: 20px solid;
+border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after{
+content: ' ';
+position: absolute;
+width: 0;
+height: 0;
+left: 38px;
+right: auto;
+top: auto;
+bottom: -20px;
+border: 12px solid;
+border-color: lightyellow transparent transparent lightyellow;
+}
+
+/* talk bubble contents */
+.talktext{
+padding: 1em;
+text-align: justify;
+line-height: 1.5em;
+font-size: 12px;
+color:#4d4d4d;
+}
+.talktext p{
+/* remove webkit p margins */
+-webkit-margin-before: 0em;
+-webkit-margin-after: 0em;
+}
+
+/* INPUT m carre */
+.inputMcarre{
+    width: 40px;;
+}
+
+/* Button */
+
+.button{
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 8px;
+  border-radius: 10px;
+  background:rgb(172,215,189);
+  color:#4d4d4d;
+}
+
+/* Montant */
+#montant{
+  font-weight: bold;
+  color:#ff8a84;
+}
+
+/********************************************* CONNEXION */
+.connexion{
+    width:300px;
+    height:300px;
+    position:absolute;
+    left:500px;
+    top:200px;
+}
+
+/* bouton se connecter */
+.btn-secondary{
+    margin: 10px 0;
+}
+
+/********************************************* CONTACT */
+
+#contenuContact{
+    margin:100px 100px;
+}
+/******************FOOTER************/
+.page-footer{
+    padding-top: 20px;
+    
+    background:#acd7bd;
+    width: 100%;
+    
+}
+.container-fluid a, h5{
+    font-size: 22px;
+}
+.memtion{
+text-align: center;
+}
+.register-newsletter{
+    float: left;
+}
+
+.reseaux-sociaux i{
+    padding: 15px 10px;
+}
+
+.fa-facebook{
+    color: blue;
+}
+.fa-instagram{
+    color:purple;
 }
