@@ -58,7 +58,7 @@ class Criteres
     private $diagnostic;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="criteres")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="criteres")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

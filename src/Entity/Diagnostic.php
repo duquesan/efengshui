@@ -45,7 +45,7 @@ class Diagnostic
 
    
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="diagnostics")
+     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="diagnostics")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
