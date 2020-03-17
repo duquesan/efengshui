@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div id="contenuContact">
+     <h1>Formulaire de contact</h1>   
+        <form method="POST">
+            <div>
+                <label >Nom et Prenom</label>
+                <input class="form-control" type="text" name="nom" value="{{ contact is defined ? contact.nomPrenom : "" }}">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="emailContact" name="email" value="{{ contact is defined ? contact.email }}">
+            </div>
+               <div>
+                <label for="prenomContact">Objet</label>
+                <input class="form-control" type="text" name="objet" value="{{ contact is defined ? contact.objet }}">
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-control" id="msgContact" rows="5" name="msg">{{ contact is defined ? contact.msg|raw }}</textarea >
+            </div>
+            <div>
+                <input type="submit" value="Envoyer" name="envoyer">
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Efengshui{% endblock %}
+
+{% block body %}
+
+<h1>Liste des utilisateurs</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>id</th><th>Nom</th><th>Prenom</th><th>E-mail</th><th>Rôles</th><th>Mot de Passe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for user in liste %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|join(" , ") }}</td>
+                <td>{{ user.password}}</td>
+                
+            </tr>
+        {% endfor %}
+        <tfoot>
+                <td><a href=""> <i class="fas fa-edit"></i></a>  </td>
+                <td><a href=""><i class="fa fa-trash"></i></a>    
+                </td>
+        </tfoot>
+    </table>
+{% endblock %}
+

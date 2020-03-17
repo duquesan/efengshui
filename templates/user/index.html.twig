@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Formuaire d'inscription{% endblock %}
+
+{% block body %}
+    <h1>S'inscrire</h1>
+
+    {{ form_start(UserSubsForm) }}
+        {{ form_row(UserSubsForm.nom) }}
+        {{ form_row(UserSubsForm.prenom) }}
+        {{ form_row(UserSubsForm.email) }}
+        {{ form_row(UserSubsForm.plainPassword) }}
+        {{ form_row(UserSubsForm.agreeTerms) }}
+
+        <button class="btn">M'enregistrer</button>
+    {{ form_end(UserSubsForm) }}
+{% endblock %}
+
+
