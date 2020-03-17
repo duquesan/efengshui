@@ -56,7 +56,16 @@ font-family: 'Dancing Script', cursive;
 .nav-link, .mention a{
     color: black;
 }
+
 /***************CARROUSEL***********/
+
+
+/* page accueil */
+body{
+    background: #edf7f1;
+    
+}
+
 .carousel-inner{
     position: relative;
   
@@ -91,8 +100,45 @@ h1{
     margin: 50px;
 
     
+    
 }
 /********************************************* INSCRIPTION */
+
+.para-concept{
+    width: 60%;
+    padding: 10px 150px 50px 50px;
+    text-align: justify;
+    font-size: 16px;
+  
+   
+}
+.image{
+    width: 40%;
+    padding: 0px 150px 0px 50px;
+
+
+}
+img{
+    width: 320px;
+    height: 330px;
+}
+.buddha{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+
+
+}
+.buddha img{
+    width: 90px;
+    height: 90px;
+    background-color: #edf7f1;
+}
+
+/*--------------------------------------------------------------------------------------------------------- */
+
+/* page feng shui */
+
 
 .fondText { 
     background-size: contain;
@@ -115,6 +161,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
 
+
   
 
 }
@@ -136,6 +183,7 @@ h2{
     text-align: justify;
     font-size: 16px;
 }
+
 /********************************************* ESTIMATION */
 /* Title */
 h6{
