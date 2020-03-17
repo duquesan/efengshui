@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Efengshui{% endblock %}
+
+ 
+{% block body %}
+
+        <nav class="main-navigation">
+
+        
+      <div class="row">
+       <nav class="col-lg-10">
+        <div class="navbar-logo">
+            <a ref="#" class="nav-link"><img src="./img/logo.png" atl="logo efeng shui"></a>
+        <h1>Plateforme de diagnostic Feng Shui en ligne</h1>
+        </div>
+       </nav>
+
+        {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+       <div class="col-lg-2">
+       <div class="icone-entete">
+       <a href="#"><i class="fas fa-globe fa-2x"></i></a>
+        <a href="{{ path("app_login") }}"><i class="fas fa-user-circle fa-2x"></i></a>
+        </div>
+        </div>
+        </div>
+        {% endif %}
+
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Accueil</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Diagnostic</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Le feng shui</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Blog</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">FAQ</a>
+            </li>
+        </ul>
+
+    </nav>
+    
+     <!-- Footer -->
+    <footer class="page-footer">
+        <!-- Footer Links -->
+        <div class="container-fluid">
+
+            <!-- Grid row -->
+            <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-6">
+
+                <!-- Content -->
+                <div class="mention">
+                <a href="#" title="mentions legales" >Mentions légales</a><br>
+                <a href="#" title="contactez-nous">Contactez-nous</a>
+                </div>
+            </div>
+            <!-- Grid column -->
+            <div class="col-lg-5">           
+<!-- Newsletter -->
+
+<h5 class="newsletter">Newsletter</h5>
+<form class="register-newsletter">
+<input type="text" required="" placeholder="Enter your email">
+<button type="submit" class="btn-search">Envoyer</button>
+
+        <div class="reseaux-sociaux">
+        <a href="#"><i class="fab fa-facebook fa-1x"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-1x"></i></a>
+        <a href="#"><i class="fab fa-instagram fa-1x"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in fa-1x"></i></a>
+        <a href="#"><i class="fab fa-google-plus-g fa-1x"></i></a>
+        <a href="#"><i class="fab fa-youtube fa-1x"></i></a>
+        </div>
+        </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            
+        </div>
+    </footer>
+    <!-- fin Footer -->
+    
+    {{ encore_entry_script_tags("app") }}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
+         
+{% endblock %}
