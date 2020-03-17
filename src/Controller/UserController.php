@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,6 +56,7 @@ class UserController extends AbstractController
           
         ]);
     }
+
   
      /**
      * @Route("/user", name="compte_user")    
@@ -156,4 +158,5 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
     }
     return $this->render('user/formulaire.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
 } 
+
 }
