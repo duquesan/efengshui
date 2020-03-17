@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Votre diagnostic{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h4>Votre diagnostic</h4>
+            </div>            
+        </div>
+    {{ form_start(formDemande) }}
+        {{ form_row(formDemande.titre_diagnostic)}}
+        {{ form_row(formDemande.nb_m_carre)}}
+        {{ form_row(formDemande.lieu)}}
+        {{ form_row(formDemande.annee_constr)}}
+        {{ form_row(formDemande.plan_lieu)}}
+        {{ form_row(formDemande.photo_lieu)}}
+        {{ form_row(formDemande.orientation)}}
+    {{ form_end(formDemande) }}
+   
+
+    </div>
+
+{% endblock %}
