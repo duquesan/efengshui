@@ -6,6 +6,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use App\Entity\Diagnostic;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface as EMI;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,8 @@ use App\Security\LoginFormAuthenticator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use App\Repository\DiagnosticRepository;
+
 
 class UserController extends AbstractController
 {
@@ -65,6 +68,46 @@ class UserController extends AbstractController
     {
         return $this->render('user/compte_user.html.twig');
     }
+
+         /**
+     * @Route("/user/informations", name="infos_user")    
+     */
+    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
+    {
+            $user = $ur->findAll();
+            $diagnostic = $dr->findAll();
+            return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+        }
+   
+
+
+   /**
+ * @Route("/user/modifier/{id}", name="user_modifier")
+
+ */
+public function modifier(UserRepository $ur, Request $request, EMI $em, int $id )
+{
+    $bouton = "update";
+    $userAmodifier = $ur->find($id);
+  
+
+    if($request->isMethod("POST")){ 
+        $nom = $request->request->get('nom');
+        $prenom = $request->request->get('prenom');
+
+        $userAmodifier->setNom($nom);
+        $userAmodifier->setPrenom($prenom);
+        
+
+        $em->persist($userAmodifier);
+        $em->flush();
+
+        return $this->redirectToRoute("infos_user");
+
+    }
+    return $this->render('user/informations.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
+} 
+
 
         /**
         * @Route("/admin/user", name="gestion")    
