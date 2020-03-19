@@ -1,11 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 @font-face {
     font-family: "Noticia Text";
     @import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
     font-family: "Dancing Script";
     @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 }
+
+/*******RESET CSS ******************/
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -55,6 +58,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -293,7 +297,6 @@ img{
 .buddha img{
     width: 90px;
     height: 90px;
-    background-color: #edf7f1;
 }
 
 /*--------------------------------------------------------------------------------------------------------- */
@@ -530,3 +533,14 @@ border-radius: 30px;
 #contenuContact{
     margin: 100px 100px;
 }
+
+/************** FAQ */
+
+.card{
+    background-color:white;
+}
+
+.abc{
+    color:red;
+}
+
