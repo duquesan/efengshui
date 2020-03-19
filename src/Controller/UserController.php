@@ -67,7 +67,8 @@ class UserController extends AbstractController
     }
 
         /**
-        * @Route("/admin/user", name="gestion")    
+        * @Route("/admin/gestion", name="gestion")   
+        * @IsGranted("ROLE_ADMIN") 
         */
        public function compte_admin()
        {
@@ -101,10 +102,10 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         $em->persist($user);
         $em->flush();
 
-        return $this->redirectToRoute("home");
+        return $this->redirectToRoute("accueil");
 
     }else{
-        return $this->render('user/index.html.twig', ["bouton" => $bouton]); 
+        return $this->render('accueil/index.html.twig', ["bouton" => $bouton]); 
     }
     
 }
