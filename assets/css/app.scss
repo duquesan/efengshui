@@ -1,11 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 @font-face {
     font-family: "Noticia Text";
     @import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
     font-family: "Dancing Script";
     @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 }
+
+
+/*******RESET CSS ******************/
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -54,6 +60,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -122,7 +129,7 @@ body{
     justify-content: center;
 }
 
-button{
+.buttonDiag{
     border-radius: 10px;
     background-color:#ff8a84;
     width: 320px;
@@ -214,30 +221,28 @@ border-radius: 30px;
 
 }
 
-/*Right triangle, placed bottom left side slightly in*/
-.tri-right.border.btm-left-in:before {
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 30px;
-right: auto;
-top: auto;
-bottom: -40px;
-border: 20px solid;
-border-color: #666 transparent transparent #666;
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
 }
-.tri-right.btm-left-in:after{
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 38px;
-right: auto;
-top: auto;
-bottom: -20px;
-border: 12px solid;
-border-color: lightyellow transparent transparent lightyellow;
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: lightyellow lightyellow transparent transparent;
 }
 
 /* talk bubble contents */
@@ -259,9 +264,8 @@ color:#4d4d4d;
     width: 40px;;
 }
 
-/* Button */
 
-    
+
 /********************************************* INSCRIPTION */
 
 .para-concept{
@@ -345,8 +349,23 @@ h2{
 }
 
 /********************************************* ESTIMATION */
+.estimation{
+    display:flex;
+    justify-content: end;
+    position: fixed;
+    right: 10px;
+    bottom: 100px;
+}
+.estimation2{
+    display:flex;
+    justify-content: end;
+    position: fixed;
+    right: 10px;
+    bottom: 300px;
+}
+
 /* Title */
-h6{
+h5{
 font-weight: bold;
 color:#4d4d4d;
 }
@@ -355,9 +374,9 @@ color:#4d4d4d;
 margin: 40px;
 display: inline-block;
 position: relative;
-width: 150px;
+width:280px;
 height: auto;
-background-color: rgba(237,241,241,0.3);
+background-color: rgba(237,241,241,0.8);
 
 }
 .border{
@@ -495,74 +514,6 @@ border-radius: 30px;
 
 }
 
-/*Right triangle, placed bottom left side slightly in*/
-.tri-right.border.btm-left-in:before {
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 30px;
-right: auto;
-top: auto;
-bottom: -40px;
-border: 20px solid;
-border-color: #666 transparent transparent #666;
-}
-
-.tri-right.btm-left-in:after{
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 38px;
-right: auto;
-top: auto;
-bottom: -20px;
-border: 12px solid;
-border-color: lightyellow transparent transparent lightyellow;
-}
-
-/* talk bubble contents */
-.talktext{
-padding: 1em;
-text-align: justify;
-line-height: 1.5em;
-font-size: 12px;
-color:#4d4d4d;
-}
-
-.talktext p{
-/* remove webkit p margins */
--webkit-margin-before: 0em;
--webkit-margin-after: 0em;
-}
-
-/* INPUT m carre */
-.inputMcarre{
-    width: 40px;;
-}
-
-/* Button */
-
-.button{
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 8px;
-  border-radius: 10px;
-  background:rgb(172,215,189);
-  color:#4d4d4d;
-}
-
-/* Montant */
-#montant{
-  font-weight: bold;
-  color:#ff8a84;
-}
-
 /********************************************* CONNEXION */
 .connexion{
     width:300px;
@@ -582,3 +533,14 @@ color:#4d4d4d;
 #contenuContact{
     margin: 100px 100px;
 }
+
+/************** FAQ */
+
+.card{
+    background-color:white;
+}
+
+.abc{
+    color:red;
+}
+

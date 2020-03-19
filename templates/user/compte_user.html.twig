@@ -4,10 +4,70 @@
 
 {% block body %}
 
-<h1>Mon Compte</h1>
-<button onclick="myFunction()">Mes diagnostics</button>
 
+<h2>Mon Compte</h2>
+{# <button onclick="myFunction()">Mes diagnostic</button> #}
 
+<h3>Mes diagnostic</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th><th>Date</th><th>Statut paiement</th><th>Prix</th><th>Expertise</th><th>Statut expertise</th>
+                
+            </tr>
+        </thead>
+        {% for diagnostics in diagnostic %}
+            <tr>
+                <td>{{ diagnostic.id }}</td>
+                <td>{{ diagnostic.date }}</td>
+                <td>{{ diagnostic.statut_paiement }}</td>
+                <td>{{ diagnostic.prix }}</td>
+                <td>{{ diagnostic.expertise }}</td>
+                <td>{{ diagnostic.statut_expert }}</td
+                
+
+                
+            </tr>
+
+        {% endfor %}
+        <tfoot>
+                <td><a href=""><i class="fas fa-edit"></i></a></td>
+               
+                 
+   
+        </tfoot>
+    </table>
+
+<h2>Mon Compte</h2>
+{# <button onclick="myFunction()">Mes diagnostic</button> #}
+
+<h3>Mes informations</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th><th>Nom</th><th>Prenom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for users in user %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                
+
+                
+            </tr>
+
+        {% endfor %}
+        <tfoot>
+                <td><a href=""><i class="fas fa-edit"></i></a></td>
+               
+                 
+   
+        </tfoot>
+    </table>
+    <button type="submit">Modifier</button>
 
    
 {% endblock %}

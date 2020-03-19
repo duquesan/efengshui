@@ -10,7 +10,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-            Vous êtes connecté en tent que : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+            Vous êtes connecté en tant que : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
 
@@ -21,8 +21,10 @@
         <input type="password" name="password" id="inputPassword" class="form-control" required>
 
         <input type="hidden" name="_csrf_token"
-            value="{{ csrf_token('authenticate') }}"
-        >
+            value="{{ csrf_token('authenticate') }}">
+        
+        
+
 
         {#
             Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -34,8 +36,7 @@
                 </label>
             </div>
         #}
-
-        <button class="btn btn-lg btn-secondary" type="submit">
+        <button class="btn btn-lg btn-secondary" type="submit"><a href="{{ path('gestion') }}">
             Se connecter
         </button>
     </form>
