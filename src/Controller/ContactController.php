@@ -28,7 +28,7 @@ class ContactController extends AbstractController
             ->setFrom($contact['email'])
 
             // On attribue le destinataire
-            ->setTo('aicha.chibani1@gmail.com')
+            ->setTo('test90wf3@gmail.com')
 
             // On crée le texte avec la vue
             ->setBody(
