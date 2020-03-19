@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Efengshui!{% endblock %}</title>
         {{ encore_entry_link_tags("app") }}
         {% block stylesheets %}{% endblock %}
     </head>
@@ -12,24 +12,63 @@
       <div class="row">
        <nav class="col-lg-10">
         <div class="navbar-logo">
+
             <a ref="#" class="nav-link"><img src="./img/logo.png" atl="logo efeng shui"></a>
         <h1>Plateforme de diagnostic Feng Shui en ligne</h1>
         </div>
        </nav>
 
-        {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
        <div class="col-lg-2">
-       <div class="icone-entete">
-       <a href="#"><i class="fas fa-globe fa-2x"></i></a>
-        <a href="{{ path("app_login") }}"><i class="fas fa-user-circle fa-2x"></i></a>
+
+       <div class="icone-langue">
+            <a href="#"><i class="fas fa-globe fa-2x"></i></a>
+        </div>
+
+        <div class="dropdown">
+            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-2x"></i>
+            </a>
+
+
+<!-- Si PAS CONNECTé-->
+{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+
+                <a class="dropdown-item" href="{{ path("app_login") }}">Se connecter</a>
+            {% endif %}
+
+
+<!-- Si USER-->
+{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ path("compte_user") }}">Mon compte</a>
+                <a class="dropdown-item" href="{{ path("app_logout") }}">Déconnexion</a>
+            </div>
+            {% endif %}
+
+<!-- Si ADMIN-->
+
+{% if is_granted("ROLE_ADMIN") %}
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ path("gestion") }}">Mon compte</a>
+                <a class="dropdown-item" href="{{ path("accueil") }}">Liste des clients</a>
+                <a class="dropdown-item" href="{{ path("accueil") }}">Liste des demandes</a>
+                <a class="dropdown-item" href="{{ path("accueil") }}">Liste des diagnostics</a>
+                <a class="dropdown-item" href="{{ path("accueil") }}">Déconnexion</a>
+            </div>
+{% endif %}
+
+        </div>
+      
         </div>
         </div>
-        </div>
-        {% endif %}
+
 
         <ul class="nav-list">
             <li class="nav-list-item">
-                <a href="#" class="nav-link">Accueil</a>
+                <a href="{{ path('accueil') }}" class="nav-link">Accueil</a>
             </li>
             <li class="nav-list-item">
                 <a href="{{ path('criteres') }}" class="nav-link">Diagnostic</a>
@@ -91,5 +130,5 @@
 
         {% block javascripts %}{{ encore_entry_script_tags("app") }}{% endblock %}
     </footer>
-    
+   
 </html>

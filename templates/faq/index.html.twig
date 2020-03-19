@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} F.A.Q {% endblock %}
+{% block title %} e-Feng-Shui - F.A.Q {% endblock %}
 
 {% block body %}
 
-<div class="container">
+
     <h1> F.A.Q </h1>
 
 
@@ -13,11 +13,18 @@
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      
+      <div class="mb-0">
+       
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      
+          <h2 class="abc">
           1- A distance, comment ça marche ?
+          </h2>
+
         </button>
-      </h2>
+        
+      </div>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -78,17 +85,18 @@
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" id="headingOne">
+
+<div class="card">
+    <div class="card-header" id="headingFor">
       <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFor" aria-expanded="false" aria-controls="collapseFor">
           4- Combien ça coûte ?
         </button>
       </h2>
     </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseFor" class="collapse" aria-labelledby="headingFor" data-parent="#accordionExample">
       <div class="card-body">
+
         Un tarif de base de 200€ est à prévoir pour la préparation et la rédaction du rapport de votre analyse feng shui.  A ce tarif viendra s’ajouter la tarification de l’analyse à proprement parler qui dépend de :
         Nombre de pièces à analyser
         Nombre de niveaux  (ou étages)
@@ -141,7 +149,6 @@
       </div>
     </div>
   </div>
-</div>
 
 
 {% endblock %}

@@ -24,7 +24,9 @@
         </a>
     </div>
       <div class="btn_diagnostic">
-        <button><a href="">Commencez votre Diagnostic</a></button>
+
+        <button class="buttonDiag"><a href="">Commencez votre Diagnostic</a></button>
+        
       </div>
 <!-- Fin de Caroussel Bootstarp -->  
   <h2>L'expertise Feng Shui <Br>en utilisant l'intelligence artificielle </Br></h2>
@@ -39,7 +41,32 @@
     <div class="image">
       <img src="../img/img53.png" alt="">
     </div>
-  </div>  
+
+
+  </div><!-- ESTIMATION -->
+    <div class="estimation">
+        <div class="talk-bubble tri-right border round btm-right-in">
+            <div class="talktext">
+                <h5>Estimation de prix?</h5><br>
+                <p>Saisissez le nombre de m² de votre surface, pour lequelle vous voulez faire l'expertise Feng Shui</p>
+                <form method="POST" action="{{ path("estimation") }}">
+                    <input type="text" placeholder="m²" name="nbMcarre" class="inputMcarre">
+                    <button type="submit" class="button" id="buttonCalculer" >Calculer</button> 
+                </form>
+            </div>
+        </div>
+        {% if montant is defined %}
+        <div class="estimation2">
+          <div class='talk-bubble tri-right border round btm-right-in' id='resEstimation'>
+            <div class='talktext'>
+                <h5>Votre Estimation est de:</h5><br>
+                <p>{{ montant }} €<p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+    </div><!-- BUDDAH -->
+
   <div class="buddha">
     <img src="../img/img591.png" alt="" class="">
   </div>

@@ -187,16 +187,6 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 
 
-
-
-
-
-
-
-
-
-
-
 // $(document).ready(function(){
 //    $("#next-1").click(function(){
 //     $("#second").show();
