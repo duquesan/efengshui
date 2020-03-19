@@ -8,7 +8,9 @@
     @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 }
 
+
 /*******RESET CSS ******************/
+
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -67,20 +69,16 @@ body{
         width: auto;
     }
 
-.navbar-logo{
-    margin-left: 15px;
-}
+
 .navbar-logo h1{
+margin-top: -5px;   
 font-size: 30px;
 font-family: 'Dancing Script', cursive;
 }
 
-.navbar-logo img{
-    width: 20%; 
-}
 
 .icone-entete i{
-    color: black;
+    color: red;
     padding: 5px;
 }
 .icone-entete{
@@ -96,8 +94,8 @@ font-family: 'Dancing Script', cursive;
 .nav-list{
     list-style: none;
     line-height: 40px;
-    text-align: right;
     margin-right: 50px;
+    text-align: right;
 }
 
 .nav-list li{
@@ -267,6 +265,7 @@ color:#4d4d4d;
 }
 
 
+
 /********************************************* INSCRIPTION */
 
 .para-concept{
@@ -297,6 +296,7 @@ img{
 .buddha img{
     width: 90px;
     height: 90px;
+
 }
 
 /*--------------------------------------------------------------------------------------------------------- */

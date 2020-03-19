@@ -113,16 +113,9 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
         * @Route("/admin/gestion", name="gestion")   
         * @IsGranted("ROLE_ADMIN") 
         */
-       public function compte_admin()
-       {
-           return $this->render('user/compte_admin.html.twig');
-       }
-/**
-* @Route("/admin/user/liste", name="user_list")
-*/
-    public function index(UserRepository $ur)
+    public function compte_admin(UserRepository $ur)
         {
-            return $this->render('user/liste.html.twig', [ "liste" => $ur->findAll() ]);
+            return $this->render('user/compte_admin.html.twig', [ "user" => $ur->findAll() ]);
         }
     /**
  * @Route("/admin/user/ajouter", name="user_add")
@@ -145,11 +138,10 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         $em->persist($user);
         $em->flush();
 
-        return $this->redirectToRoute("accueil");
+        return $this->redirectToRoute("gestion");
 
     }else{
-        return $this->render('accueil/index.html.twig', ["bouton" => $bouton]); 
-    }
+        return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     
 }
 
