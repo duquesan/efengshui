@@ -22,7 +22,7 @@ class Criteres
     private $nb_m_carre;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(name="lieu", type="string", columnDefinition="enum('bureau', 'domicile')")
      */
     private $lieu;
 
@@ -81,12 +81,12 @@ class Criteres
         return $this;
     }
 
-    public function getLieu(): ?bool
+    public function getLieu(): ?string
     {
         return $this->lieu;
     }
 
-    public function setLieu(bool $lieu): self
+    public function setLieu(string $lieu): self
     {
         $this->lieu = $lieu;
 
