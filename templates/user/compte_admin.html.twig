@@ -6,6 +6,33 @@
 
 <h1>GESTION</h1>
 <button onclick="myFunction()">Liste des Clients</button>
-<button onclick="myFunction()">Liste des Diagnostics</button>
-   
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>id</th><th>E-mail</th><th>Rôles</th><th colspan=2>Actions</th>
+            </tr>
+        </thead<
+        {% for user in user %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|join(", ") }}</td>
+                <td>
+                    <a href="{{ path("user_update", { id: user.id }) }}">
+                        <i class="fa fa-pen"></i>
+                    </a>    
+                </td>
+                <td>
+                    <a href="{{ path("user_delete", { id: user.id }) }}">
+                        <i class="fa fa-trash"></i>
+                    </a>    
+                </td>
+            </tr>
+        {% endfor %}
+        <tfoot>
+            
+        </tfoot>
+    </table>
+    </button>
 {% endblock %}
