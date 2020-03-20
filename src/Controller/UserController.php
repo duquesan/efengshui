@@ -25,7 +25,7 @@ class UserController extends AbstractController
   /**
      * @Route("/inscription", name="user_subs")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(UserSubsFormType::class, $user);
@@ -61,23 +61,23 @@ class UserController extends AbstractController
     }
 
   
-     /**
-     * @Route("/user", name="compte_user")    
-     */
-    public function compte_user()
-    {
-        return $this->render('user/compte_user.html.twig');
-    }
+    //  /**
+    //  * @Route("/user", name="compte_user")    
+    //  */
+    // public function compte_user()
+    // {
+    //     return $this->render('user/compte_user.html.twig');
+    // }
 
          /**
-     * @Route("/user/informations", name="infos_user")    
+     * @Route("/user", name="infos_user")    
      */
-    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
+public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
-            $user = $ur->findAll();
-            $diagnostic = $dr->findAll();
-            return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
-        }
+    $user = $ur->findAll();
+    $diagnostic = $dr->findAll();
+        return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+     }
    
 
 
@@ -89,14 +89,15 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 {
     $bouton = "update";
     $userAmodifier = $ur->find($id);
-  
 
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
         $prenom = $request->request->get('prenom');
+        $mdp = $request->request->get('password');
 
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
+        $userAmodifier->setPassword($mdp);
         
 
         $em->persist($userAmodifier);
@@ -105,8 +106,28 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
         return $this->redirectToRoute("infos_user");
 
     }
-    return $this->render('user/informations.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
+    return $this->render('user/modif_user.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
 } 
+
+/**
+ * @Route("/user/supprimer/{id}", name="user_supprimer")
+
+ */
+public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
+{
+    $bouton = "delete";
+    $userAsupprimer = $ar->find($id);
+    
+    if ($request->isMethod("POST")){
+        $em->remove($userAsupprimer);
+        $em->flush();
+        return $this->redirectToRoute("infos_user");
+    }
+    return $this->render('user/modif_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+
+
+}
+
 
 
         /**
@@ -143,6 +164,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }else{
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     
+}
 }
 
 /**
