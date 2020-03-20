@@ -18,10 +18,6 @@
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" name="email" value="{{ user is defined ? user.email : "" }}">
     </div>
-    <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password" >
-    </div>
     
         {% if bouton == "update" %}
             <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-pen"></i></button>
