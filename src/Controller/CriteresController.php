@@ -38,10 +38,7 @@ class CriteresController extends AbstractController
   
         $formDemande = $this->createForm(CriteresType::class);
         //Il crée le formulaire à partir du LivreType::class, d'où l'argument
-        $formDemande->clearErrors();
 
-        // this removes errors from the form and all its children forms
-        $formDemande->clearErrors(true);
         $formDemande->handleRequest($rq);
         //Permet de lier la requête HTTP à mon objet Formulaire. Voir si ça a été soumis?
         if ($formDemande->isSubmitted()) {
@@ -69,7 +66,9 @@ class CriteresController extends AbstractController
             }
         }
         $formDemande = $formDemande->createView();
+        
         return $this->render('critere/formulaire.html.twig', compact("formDemande"));
+
 
     }
 }

@@ -114,6 +114,7 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
  * @Route("/user/supprimer/{id}", name="user_supprimer")
 
  */
+
 public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
 {
     $bouton = "delete";
@@ -133,7 +134,6 @@ public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id
         return $this->redirectToRoute("compte_user");
     }
     return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
-
 
 }
 
@@ -175,8 +175,6 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }
 }
 
-
-
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
  * @IsGranted("ROLE_ADMIN")
@@ -196,6 +194,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
             $userAmodifier->setPassword($mdp);
         }
+        
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
         $userAmodifier->setEmail($email);
