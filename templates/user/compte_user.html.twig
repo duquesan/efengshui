@@ -8,6 +8,32 @@
 <h2>Mon Compte</h2>
 {# <button onclick="myFunction()">Mes diagnostic</button> #}
 
+<h3>Mes informations</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th><th>Nom</th><th>Prenom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for users in user %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                
+
+                
+            </tr>
+
+        {% endfor %}
+        <tfoot>
+                <td><a href="{{ path("user_modifier") }}"><i class="fas fa-edit"></i></a></td>
+               
+                 
+   
+        </tfoot>
+    </table>
 <h3>Mes diagnostic</h3>
     <table class="table table-bordered">
         <thead>
@@ -38,36 +64,6 @@
         </tfoot>
     </table>
 
-<h2>Mon Compte</h2>
-{# <button onclick="myFunction()">Mes diagnostic</button> #}
-
-<h3>Mes informations</h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th><th>Nom</th><th>Prenom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        {% for users in user %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                
-
-                
-            </tr>
-
-        {% endfor %}
-        <tfoot>
-                <td><a href=""><i class="fas fa-edit"></i></a></td>
-               
-                 
-   
-        </tfoot>
-    </table>
-    <button type="submit">Modifier</button>
 
    
 {% endblock %}
