@@ -59,6 +59,17 @@ table {
 	border-spacing: 0;
 }
 
+a:link, a:visited { 
+    text-decoration: none; 
+    //color: inherit;
+}
+
+a:hover{
+color: grey;
+
+}
+
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -230,45 +241,45 @@ img{
 
 /* page feng shui */
 
-.fondText { 
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -50;
+// .fondText { 
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     z-index: -50;
 
  
-}
-.container {
-    width: 1200px;
-    height: 500px;
-    background-color: white;
-    border: rgba(0, 128, 0, 0.507);
-    border-radius: 15px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+// }
+// .container {
+//     width: 1200px;
+//     height: 500px;
+//     background-color: white;
+//     border: rgba(0, 128, 0, 0.507);
+//     border-radius: 15px;
+//     display: flex;
+//     margin-left: auto;
+//     margin-right: auto;
 
-}
+// }
 
-h2{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
-    padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
+// h2{
+//     text-align: center;
+//     font-weight: bold;
+//     margin: 10px;
+//     padding: 10px;
+//     color : rgba(0, 128, 0, 0.507);
     
-}
+// }
 
-.para1 {
-    width: 400px;
-    height: 450px;
-    margin: 30px;
-    padding: 10px;
-    text-align: justify;
-    font-size: 16px;
-}
+// .para1 {
+//     width: 400px;
+//     height: 450px;
+//     margin: 30px;
+//     padding: 10px;
+//     text-align: justify;
+//     font-size: 16px;
+// }
 
 /********************************************* ESTIMATION */
 .estimation{
@@ -399,13 +410,6 @@ text-align: center;
     padding: 15px 10px;
 }
 
-.fa-facebook{
-    color: blue;
-}
-.fa-instagram{
-    color:purple;
-}
-
 .border{
 border: 8px solid #666;
 }
@@ -419,17 +423,23 @@ border-radius: 30px;
 
 /********************************************* CONNEXION */
 .connexion{
-    width:300px;
-    height:300px;
-    position:absolute;
-    left:500px;
-    top:200px;
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
 }
 
 /* bouton se connecter */
-.btn-secondary{
-    margin: 10px 0;
-}
+#btnConnect{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    border-radius: 10px;
+    background: grey;
+    color: white;
+  }
 
 /********************************************* CONTACT */
 
@@ -651,9 +661,8 @@ border-radius: 30px;
 //     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
 //   }
 //   .progress .circle.done .title {
-//     color: #444;
-    
 //   }
+
   .progress .circle.active .label {
     color: #FFF;
     background: #93dbf9;
@@ -672,6 +681,7 @@ border-radius: 30px;
 
 .card{
     background-color:white;
+    margin: 0px 300px;
 }
 
 .titlefaq{
@@ -694,5 +704,31 @@ border-radius: 30px;
 
  }
 
+ /********************************************* INSCRIPTION */
 
-////LABEL BOUTON  IMAGE DOMICILE
+#contenuSubs{
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
+}
+
+
+
+#btnSubs{
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 8px;
+  border-radius: 10px;
+  background: grey;
+  color: white;
+}
+
+
+.colonne{
+    background-color: blue;
+    width: 600px;
+    margin: 10px;
+}
