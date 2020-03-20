@@ -149,7 +149,7 @@ h1{
     margin: 50px;
 
 }
-/********************************************* INSCRIPTION */
+/********************************************* accueil */
 
 .fondText { 
     background-size: contain;
@@ -193,77 +193,6 @@ h2{
     text-align: justify;
     font-size: 16px;
 }
-/********************************************* ESTIMATION */
-/* Title */
-h6{
-font-weight: bold;
-color:#4d4d4d;
-}
-/* CSS talk bubble */
-.talk-bubble {
-margin: 40px;
-display: inline-block;
-position: relative;
-width: 150px;
-height: auto;
-background-color: rgba(237,241,241,0.3);
-
-}
-.border{
-border: 8px solid #666;
-}
-.round{
-border-radius: 30px;
--webkit-border-radius: 30px;
--moz-border-radius: 30px;
-
-}
-
-/*Right triangle, placed bottom right side slightly in*/
-.tri-right.border.btm-right-in:before {
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: 30px;
-	bottom: -40px;
-	border: 20px solid;
-	border-color: #666 #666 transparent transparent;
-}
-.tri-right.btm-right-in:after{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: 38px;
-	bottom: -20px;
-	border: 12px solid;
-	border-color: lightyellow lightyellow transparent transparent;
-}
-
-/* talk bubble contents */
-.talktext{
-padding: 1em;
-text-align: justify;
-line-height: 1.5em;
-font-size: 12px;
-color:#4d4d4d;
-}
-.talktext p{
-/* remove webkit p margins */
--webkit-margin-before: 0em;
--webkit-margin-after: 0em;
-}
-
-/* INPUT m carre */
-.inputMcarre{
-    width: 40px;;
-}
-
-
-/********************************************* INSCRIPTION */
 
 .para-concept{
     width: 60%;
@@ -298,8 +227,8 @@ img{
 
 /*--------------------------------------------------------------------------------------------------------- */
 
-/* page feng shui */
 
+/* page feng shui */
 
 .fondText { 
     background-size: contain;
@@ -309,7 +238,6 @@ img{
     position: absolute;
     z-index: -50;
 
-  
  
 }
 .container {
@@ -321,9 +249,6 @@ img{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-
-  
 
 }
 
@@ -452,25 +377,6 @@ color:#4d4d4d;
   color:#ff8a84;
 }
 
-/********************************************* CONNEXION */
-.connexion{
-    width:300px;
-    height:300px;
-    position:absolute;
-    left:500px;
-    top:200px;
-}
-
-/* bouton se connecter */
-.btn-secondary{
-    margin: 10px 0;
-}
-
-/********************************************* CONTACT */
-
-#contenuContact{
-    margin:100px 100px;
-}
 /******************FOOTER************/
 .page-footer{
     padding-top: 20px;
@@ -531,26 +437,11 @@ border-radius: 30px;
     margin: 100px 100px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /********************************************* FORMULAIRE DIAGNOSTIC DEMANDE */
-
 
 #second,#third{
     display:none;
 }
-
 
 /* 
 *, *:after, *:before {
@@ -633,15 +524,30 @@ border-radius: 30px;
     color: #0c95be;
   }
   
-  
 /************** FAQ */
 
 .card{
     background-color:white;
 }
 
-.abc{
-    color:red;
+.titlefaq{
+    font-family: 'Noticia Text', serif;
+
 }
+
+#questionsfaq{
+    font-weight: bold;
+    font-size: 22px;
+    color : rgba(0, 128, 0, 0.507);
+    vertical-align: middle; 
+        
+}
+
+
+ .textFaq{
+    font-family: 'Noticia Text', serif;
+    font-size: 18px;
+
+ }
 
 
