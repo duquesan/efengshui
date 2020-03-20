@@ -13,7 +13,7 @@ use App\Entity\Criteres;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-class CriteresController extends AbstractController
+class CritereController extends AbstractController
 {
     /**
      * @Route("/criteres", name="criteres")
@@ -21,7 +21,7 @@ class CriteresController extends AbstractController
     public function index()
     {
         return $this->render('criteres/formulaire.html.twig', [
-            'controller_name' => 'CriteresController',
+            'controller_name' => 'CritereController',
         ]);
     }
    /**

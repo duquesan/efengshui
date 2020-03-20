@@ -3,9 +3,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Efengshui!{% endblock %}</title>
+
+        <title>{% block title %}e-Feng Shui{% endblock %}</title>
         {{ encore_entry_link_tags("app") }}
         {% block stylesheets %}{% endblock %}
+
     </head>
     <header>
        <nav class="main-navigation">
@@ -33,7 +35,13 @@
 <!-- Si PAS CONNECTé-->
 {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
 
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="{{ path("app_login") }}">Se connecter</a>
+                <a class="dropdown-item" href="{{ path("user_subs") }}">S'inscrire</a>
+
+            </div>
+
+
             {% endif %}
 
 
@@ -74,16 +82,24 @@
                 <a href="{{ path('criteres') }}" class="nav-link">Diagnostic</a>
             </li>
             <li class="nav-list-item">
-                <a href="{{ path('fengshui') }}" class="nav-link">Le feng shui</a>
+                <a href="{{ path('fengshui') }}" class="nav-link">Le Feng Shui</a>
             </li>
             <li class="nav-list-item">
-                <a href="{{ path('faq') }}" class="nav-link">FAQ</a>
+                <a href="{{ path('faq') }}" class="nav-link">F.A.Q</a>
             </li>
         </ul>
 
     </nav>
     </header>
-    <body></body>
+    <body>
+       {% for type, messages in app.flashes %}
+            <div class="alert alert-{{ type }}">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </body>
         {% block body %}{% endblock %}
     <footer><footer class="page-footer">
         <!-- Footer Links -->
@@ -98,7 +114,7 @@
                 <!-- Content -->
                 <div class="mention">
                 <a href="#" title="mentions legales" >Mentions légales</a><br>
-                <a href="#" title="contactez-nous">Contactez-nous</a>
+                <a href="{{ path("contact") }}" title="contactez-nous">Contactez-nous</a>
                 </div>
             </div>
             <!-- Grid column -->

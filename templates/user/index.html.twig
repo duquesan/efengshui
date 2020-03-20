@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Formulaire d'inscription{% endblock %}
+{% block title %}e-Feng Shui{% endblock %}
 
 {% block body %}
-    <h1>S'inscrire</h1>
+    <h1>Inscrivez-vous !</h1>
 
     {{ form_start(UserSubsForm) }}
         {{ form_row(UserSubsForm.nom) }}
         {{ form_row(UserSubsForm.prenom) }}
         {{ form_row(UserSubsForm.email) }}
-        {{ form_row(UserSubsForm.plainPassword) }}
-        {{ form_row(UserSubsForm.agreeTerms) }}
+        {{ form_row(UserSubsForm.password) }}
+        {{ form_row(UserSubsForm.conditions) }}
 
-        <button class="btn">M'enregistrer</button>
+        <button class="btn">M'inscrire</button>
     {{ form_end(UserSubsForm) }}
 {% endblock %}
 
