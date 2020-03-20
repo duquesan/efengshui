@@ -70,6 +70,7 @@ class UserController extends AbstractController
     //     return $this->render('user/compte_user.html.twig');
     // }
 
+
          /**
      * @Route("/user", name="compte_user")    
      */
@@ -143,7 +144,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
 
     }else{
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
-    
+    }
 }
 }
 
@@ -179,6 +180,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
     return $this->render('user/formulaire.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]); 
 
 }
+
 
 /**
  * @Route("/admin/user/supprimer/{id}", name="user_delete")
