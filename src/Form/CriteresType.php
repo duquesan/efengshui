@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Criteres;
+use App\Entity\Critere;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,17 +29,17 @@ class CriteresType extends AbstractType
             ->add('plan_lieu', Type\TextType::class, ["label" => "Téléchargez le plan de votre immeuble."])
             ->add('photo_lieu', Type\TextType::class,["label" => "Téléchargez les photos de votre appartement."])
             ->add('orientation', Type\TextType::class, ["label" => "Veuillez sélectionner l'orientation de votre immeuble."])
-            ->add('user', EntityType::class, [ "class" => User::class, "choice_label" => function(User $user){
-                return $user->getId();
-            }
-            ])
+            // ->add('user', EntityType::class, [ "class" => User::class, "choice_label" => function(User $user){
+            //     return $user->getId();
+            // }
+            // ])
             ->add('ajouter', Type\SubmitType::class)
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Criteres::class,
+            'data_class' => Critere::class,
         ]);
     }
 }

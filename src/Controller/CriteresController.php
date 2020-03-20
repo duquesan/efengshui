@@ -4,32 +4,38 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\CriteresRepository;
+use App\Repository\CritereRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\CriteresType;
 use App\Form\Criteres2Type;
-use App\Entity\Criteres;
+use App\Entity\Critere;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-class CritereController extends AbstractController
+class CriteresController extends AbstractController
 {
+
     /**
      * @Route("/criteres", name="criteres")
      */
     public function index()
     {
         return $this->render('criteres/formulaire.html.twig', [
+
+
             'controller_name' => 'CritereController',
+
         ]);
     }
    /**
      * @Route("/criteres/ajouter", name="criteres_ajouter")
      */
-    public function add(CriteresRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur)
+
+    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur)
     {
         //$demande = new Criteres();
+  
         $formDemande = $this->createForm(CriteresType::class);
         //Il crée le formulaire à partir du LivreType::class, d'où l'argument
         $formDemande->handleRequest($rq);
@@ -41,6 +47,10 @@ class CritereController extends AbstractController
                 //S'il est valide je crée $nouvelleDemande
                 $nouvelleDemande = $formDemande->getData();
                 //getData va permettre de créer l'objet en récupérant les données
+
+
+                $nouvelleDemande->setUser($this->getUser());
+              
                 $em->persist($nouvelleDemande);
                 //On récupère
                 $em->flush();

@@ -2,25 +2,29 @@
 
 namespace App\Repository;
 
-use App\Entity\Criteres;
+
+use App\Entity\Critere;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Criteres|null find($id, $lockMode = null, $lockVersion = null)
- * @method Criteres|null findOneBy(array $criteria, array $orderBy = null)
- * @method Criteres[]    findAll()
- * @method Criteres[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+
+ * @method Critere|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Critere|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Critere[]    findAll()
+ * @method Critere[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CriteresRepository extends ServiceEntityRepository
+class CritereRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Criteres::class);
+        parent::__construct($registry, Critere::class);
     }
 
     // /**
-    //  * @return Criteres[] Returns an array of Criteres objects
+    //  * @return Critere[] Returns an array of Critere objects
+
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +41,9 @@ class CriteresRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Criteres
+
+    public function findOneBySomeField($value): ?Critere
+
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
