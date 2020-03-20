@@ -40,7 +40,6 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
                     $form->get('password')->getData()
                 )
             );
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -72,6 +71,7 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
 
 
 
+
          /**
      * @Route("/user", name="compte_user")    
      */
@@ -81,6 +81,7 @@ public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     $diagnostic = $dr->findAll();
         return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
      }
+
    
 
 
@@ -168,6 +169,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     }
 }
+}
 
 
 /**
@@ -177,7 +179,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
 public function update(UserRepository $ur, Request $request, EMI $em, int $id)
 {
     $bouton = "update";
-    $userAmodifier = $ar->find($id);
+    $userAmodifier = $ur->find($id);
 
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
@@ -211,7 +213,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
 public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
 {
     $bouton = "delete";
-    $userAsupprimer = $ar->find($id);
+    $userAsupprimer = $ur->find($id);
     
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);

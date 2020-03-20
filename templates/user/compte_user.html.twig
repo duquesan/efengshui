@@ -16,11 +16,22 @@
                 <th>Actions</th>
             </tr>
         </thead>
+
+        {% for diagnostics in app.user.diagnostics %}
+            <tr>
+                <td>{{ app.diagnostics.id }}</td>
+                <td>{{ app.diagnostics.date }}</td>
+                <td>{{ app.diagnostics.statut_paiement }}</td>
+                <td>{{ app.diagnostics.prix }}</td>
+                <td>{{ app.diagnostics.expertise }}</td>
+                <td>{{ app.diagnostics.statut_expert }}</td>
+
         {% for users in user %}
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
+
                 
 
                 
