@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type;
+use Symfony\Component\Form\FormView;
+
 
 class UserSubsFormType extends AbstractType
 {
@@ -19,9 +21,9 @@ class UserSubsFormType extends AbstractType
     {
         $builder
             ->add('nom', Type\TextType::class, ["attr"=> ["placeholder" => "Entrez votre nom"]])
-            ->add('prenom', Type\TextType::class, ["attr"=> ["placeholder" => "Entrez votre prénom"]])
+            ->add('prenom', Type\TextType::class, ["label"=>"Prénom","attr"=> ["placeholder" => "Entrez votre prénom"]])
             ->add('email', Type\TextType::class, ["attr"=> ["placeholder" => "Entrez votre adresse mail"]])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, ["label"=>"Mot de passe","help"=>"Votre mot de passe doit contenir au moins 6 caractères","attr"=>["placeholder" => "Entrez votre mot de passe"],
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -35,11 +37,11 @@ class UserSubsFormType extends AbstractType
                 ],
             ])
 
-            ->add('agreeTerms', CheckboxType::class, [
+            ->add('conditions', CheckboxType::class, [ "label"=>"J'accepte les conditions générales du site",
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => "Etes-vous d'accord avec les termes ?",
+                        'message' => "Veuillez accepter les conditions afin de valider votre inscription",
                     ]),
                 ],
             ])

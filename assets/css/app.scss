@@ -524,13 +524,29 @@ border-radius: 30px;
     color: #0c95be;
   }
   
-  
 /************** FAQ */
 
 .card{
     background-color:white;
 }
 
-.abc{
-    color:red;
+.titlefaq{
+    font-family: 'Noticia Text', serif;
+
 }
+
+#questionsfaq{
+    font-weight: bold;
+    font-size: 22px;
+    color : rgba(0, 128, 0, 0.507);
+    vertical-align: middle; 
+        
+}
+
+ .textFaq{
+    font-family: 'Noticia Text', serif;
+    font-size: 18px;
+
+ }
+
+

@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
+use Symfony\Component\Form\FormView;
 
 
 class UserController extends AbstractController
@@ -36,7 +37,7 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -61,13 +62,14 @@ class UserController extends AbstractController
     }
 
   
-     ///**
-     //* @Route("/user", name="compte_user")    
-     //*/
-    //public function compte_user()
-    //{
-      //  return $this->render('user/compte_user.html.twig');
-    //}
+    //  /**
+    //  * @Route("/user", name="compte_user")    
+    //  */
+    // public function compte_user()
+    // {
+    //     return $this->render('user/compte_user.html.twig');
+    // }
+
 
          /**
      * @Route("/user", name="compte_user")    
@@ -144,6 +146,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     }
 }
+}
 
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
@@ -177,6 +180,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
     return $this->render('user/formulaire.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]); 
 
 }
+
 
 /**
  * @Route("/admin/user/supprimer/{id}", name="user_delete")
