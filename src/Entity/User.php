@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -44,20 +45,13 @@ class User implements UserInterface
      */
     private $prenom;
 
-     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Diagnostic", mappedBy="user", orphanRemoval=true)
-     */
-    private $diagnostics;
-
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Criteres", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Critere", mappedBy="user", orphanRemoval=true)
      */
     private $criteres;
 
     public function __construct()
     {
-        $this->diagnostic = new ArrayCollection();
-        $this->diagnostics = new ArrayCollection();
         $this->criteres = new ArrayCollection();
     }
 
@@ -155,46 +149,26 @@ class User implements UserInterface
         return $this;
     }
 
+
+
     /**
-     * @return Collection|Diagnostic[]
+     * @see UserInterface
      */
-    public function getDiagnostics(): Collection
+    public function eraseCredentials()
     {
-        return $this->diagnostics;
-    }
-
-    public function addDiagnostic(Diagnostic $diagnostic): self
-    {
-        if (!$this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics[] = $diagnostic;
-            $diagnostic->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDiagnostic(Diagnostic $diagnostic): self
-    {
-        if ($this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics->removeElement($diagnostic);
-            // set the owning side to null (unless already changed)
-            if ($diagnostic->getUser() === $this) {
-                $diagnostic->setUser(null);
-            }
-        }
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     /**
-     * @return Collection|Criteres[]
+     * @return Collection|Critere[]
      */
     public function getCriteres(): Collection
     {
         return $this->criteres;
     }
 
-    public function addCritere(Criteres $critere): self
+    public function addCritere(Critere $critere): self
     {
         if (!$this->criteres->contains($critere)) {
             $this->criteres[] = $critere;
@@ -204,7 +178,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeCritere(Criteres $critere): self
+    public function removeCritere(Critere $critere): self
     {
         if ($this->criteres->contains($critere)) {
             $this->criteres->removeElement($critere);
@@ -215,14 +189,5 @@ class User implements UserInterface
         }
 
         return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 }

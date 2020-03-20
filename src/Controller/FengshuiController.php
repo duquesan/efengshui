@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FengshuiConrollerController extends AbstractController
+class FengshuController extends AbstractController
 {
     /**
      * @Route("/fengshui", name="fengshui")
@@ -13,7 +13,7 @@ class FengshuiConrollerController extends AbstractController
     public function fengshui()
     {
         return $this->render('fengshui_conroller/fengshui.html.twig', [
-            'controller_name' => 'FengshuiConrollerController',
+            'controller_name' => 'FengshuiController',
         ]);
     }
 

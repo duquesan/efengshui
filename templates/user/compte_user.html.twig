@@ -6,9 +6,8 @@
 
 
 <h2>Mon Compte</h2>
-{# <button onclick="myFunction()">Mes diagnostic</button> #}
 
-<h3>Mes diagnostic</h3>
+<h3>Mes diagnostics</h3>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -16,17 +15,14 @@
                 
             </tr>
         </thead>
-        {% for diagnostics in diagnostic %}
+        {% for critere in app.user.criteres %}
             <tr>
-                <td>{{ diagnostic.id }}</td>
-                <td>{{ diagnostic.date }}</td>
-                <td>{{ diagnostic.statut_paiement }}</td>
-                <td>{{ diagnostic.prix }}</td>
-                <td>{{ diagnostic.expertise }}</td>
-                <td>{{ diagnostic.statut_expert }}</td
-                
-
-                
+                <td>{{ critere.diagnostic.id }}</td>
+                <td>{{ critere.diagnostic.date }}</td>
+                <td>{{ critere.diagnostic.statut_paiement }}</td>
+                <td>{{ critere.diagnostic.prix }}</td>
+                <td>{{ critere.diagnostic.expertise }}</td>
+                <td>{{ critere.diagnostic.statut_expert }}</td>
             </tr>
 
         {% endfor %}
@@ -39,7 +35,7 @@
     </table>
 
 <h2>Mon Compte</h2>
-{# <button onclick="myFunction()">Mes diagnostic</button> #}
+
 
 <h3>Mes informations</h3>
     <table class="table table-bordered">
@@ -49,17 +45,12 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        {% for users in user %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                
-
-                
+                <td>{{ app.user.id }}</td>
+                <td>{{ app.user.nom }}</td>
+                <td>{{ app.user.prenom }}</td>
             </tr>
 
-        {% endfor %}
         <tfoot>
                 <td><a href=""><i class="fas fa-edit"></i></a></td>
                
