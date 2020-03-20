@@ -13,15 +13,17 @@ use App\Entity\Criteres;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-class CriteresController extends AbstractController
-{
+class CritereController extends AbstractController
+
     /**
      * @Route("/criteres", name="criteres")
      */
     public function index()
     {
         return $this->render('criteres/formulaire.html.twig', [
-            'controller_name' => 'CriteresController',
+
+            'controller_name' => 'CritereController',
+
         ]);
     }
    /**
@@ -29,9 +31,11 @@ class CriteresController extends AbstractController
      */
     public function add(CriteresRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur)
     {
+
         $nouvelleDemande = new Criteres();
-        
-        
+       
+        //$demande = new Criteres();
+
         $formDemande = $this->createForm(CriteresType::class);
         //Il crée le formulaire à partir du LivreType::class, d'où l'argument
         $formDemande->handleRequest($rq);
@@ -43,7 +47,9 @@ class CriteresController extends AbstractController
                 //S'il est valide je crée $nouvelleDemande
                 $nouvelleDemande = $formDemande->getData();
                 //getData va permettre de créer l'objet en récupérant les données
+
                 $nouvelleDemande->setUser($this->getUser());
+
                 $em->persist($nouvelleDemande);
                 //On récupère
                 $em->flush();
