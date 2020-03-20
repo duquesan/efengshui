@@ -7,7 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Critere
 
 /**
+<<<<<<< HEAD
  * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
+=======
+
+ * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
+ */
+class Critere
+
+ * @ORM\Entity(repositoryClass="App\Repository\CriteresRepository")
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
  */
 
 {

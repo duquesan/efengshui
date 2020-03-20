@@ -70,15 +70,21 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
     // }
 
 
-         /**
+    /**
      * @Route("/user", name="compte_user")    
      */
+<<<<<<< HEAD
 public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
 
     $user = $ur->findAll();
     $diagnostic = $dr->findAll();
         return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+=======
+    public function infos_user()
+    {
+        return $this->render('user/compte_user.html.twig');
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
      }
 
    
@@ -107,7 +113,7 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
         $em->persist($userAmodifier);
         $em->flush();
 
-        return $this->redirectToRoute("infos_user");
+        return $this->redirectToRoute("compte_user");
 
     }
     return $this->render('user/modif_user.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
@@ -117,6 +123,7 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
  * @Route("/user/supprimer/{id}", name="user_supprimer")
 
  */
+<<<<<<< HEAD
 public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
 {
     $bouton = "delete";
@@ -128,6 +135,27 @@ public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
         return $this->redirectToRoute("infos_user");
     }
     return $this->render('user/modif_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+=======
+public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
+{
+    $bouton = "delete";
+    $userAsupprimer = $ur->find($id);
+    
+    if ($request->isMethod("POST")){
+        $nom = $request->request->get('nom');
+        $prenom = $request->request->get('prenom');
+        $mdp = $request->request->get('password');
+
+        $userAmodifier->setNom($nom);
+        $userAmodifier->setPrenom($prenom);
+        $userAmodifier->setPassword($mdp);
+        
+        $em->remove($userAsupprimer);
+        $em->flush();
+        return $this->redirectToRoute("compte_user");
+    }
+    return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
 
 
 }
@@ -169,6 +197,11 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
 
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
