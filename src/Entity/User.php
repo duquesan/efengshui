@@ -191,17 +191,4 @@ class User implements UserInterface
         return $this;
     }
 
-<<<<<<< HEAD
-=======
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->mdp = null;
-    }
-
->>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
 }
