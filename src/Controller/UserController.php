@@ -146,7 +146,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     }
 }
-}
+
 
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
@@ -167,6 +167,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
             $userAmodifier->setPassword($mdp);
         }
+        
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
         $userAmodifier->setEmail($email);

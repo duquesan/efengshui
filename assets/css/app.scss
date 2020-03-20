@@ -59,6 +59,8 @@ table {
 	border-spacing: 0;
 }
 
+a { text-decoration: none; color: white;}
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -528,6 +530,7 @@ border-radius: 30px;
 
 .card{
     background-color:white;
+    margin: 0px 300px;
 }
 
 .titlefaq{
@@ -548,5 +551,29 @@ border-radius: 30px;
     font-size: 18px;
 
  }
+
+
+ /********************************************* INSCRIPTION */
+
+#contenuSubs{
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
+}
+
+
+
+#btnSubs{
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 8px;
+  border-radius: 10px;
+  background: grey;
+  color: white;
+}
+
 
 
