@@ -45,4 +45,5 @@ class AccueilController extends AbstractController
        
         return $this->render('accueil/accueil.html.twig',[ "montant" => $montant ]);
     }
+
 }
