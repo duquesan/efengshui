@@ -5,9 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+
  * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
  */
 class Critere
+
+ * @ORM\Entity(repositoryClass="App\Repository\CriteresRepository")
+ */
+
 {
     /**
      * @ORM\Id()
@@ -53,13 +58,16 @@ class Critere
 
 
     /**
+
      * @ORM\OneToOne(targetEntity="App\Entity\Diagnostic", mappedBy="critere", cascade={"persist", "remove"})
+
      */
     private $diagnostic;
 
     /**
+
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="critere")
-     * @ORM\JoinColumn(nullable=false)
+
      */
     private $user;
 
@@ -164,19 +172,26 @@ class Critere
         $this->diagnostic = $diagnostic;
 
         // set the owning side of the relation if necessary
+
         if ($diagnostic->getCritere() !== $this) {
             $diagnostic->setCritere($this);
+
         }
 
         return $this;
     }
 
+
     public function getUser(): ?User
+
+
     {
         return $this->user;
     }
 
+
     public function setUser(?User $user): self
+
     {
         $this->user = $user;
 

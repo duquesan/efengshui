@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
+use Symfony\Component\Form\FormView;
 
 
 class UserController extends AbstractController
@@ -25,7 +26,7 @@ class UserController extends AbstractController
   /**
      * @Route("/inscription", name="user_subs")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(UserSubsFormType::class, $user);
@@ -36,10 +37,9 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -69,13 +69,18 @@ class UserController extends AbstractController
     //     return $this->render('user/compte_user.html.twig');
     // }
 
+
          /**
      * @Route("/user", name="compte_user")    
      */
-    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
+public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
-            return $this->render('user/compte_user.html.twig');
-        }
+
+    $user = $ur->findAll();
+    $diagnostic = $dr->findAll();
+        return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+     }
+
    
 
 
@@ -88,14 +93,15 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 {
     $bouton = "update";
     $userAmodifier = $ur->find($id);
-  
 
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
         $prenom = $request->request->get('prenom');
+        $mdp = $request->request->get('password');
 
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
+        $userAmodifier->setPassword($mdp);
         
 
         $em->persist($userAmodifier);
@@ -104,8 +110,28 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
         return $this->redirectToRoute("infos_user");
 
     }
-    return $this->render('user/informations.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
+    return $this->render('user/modif_user.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
 } 
+
+/**
+ * @Route("/user/supprimer/{id}", name="user_supprimer")
+
+ */
+public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
+{
+    $bouton = "delete";
+    $userAsupprimer = $ar->find($id);
+    
+    if ($request->isMethod("POST")){
+        $em->remove($userAsupprimer);
+        $em->flush();
+        return $this->redirectToRoute("infos_user");
+    }
+    return $this->render('user/modif_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+
+
+}
+
 
 
         /**
@@ -141,9 +167,11 @@ public function add(UserRepository $ur, EMI $em, Request $request)
 
     }else{
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
-    
+    }
 }
 }
+}
+
 
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
@@ -178,6 +206,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
 
 }
 
+
 /**
  * @Route("/admin/user/supprimer/{id}", name="user_delete")
  * @IsGranted("ROLE_ADMIN")
@@ -187,6 +216,7 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
     $bouton = "delete";
     $userAsupprimer = $ur->find($id);
 
+    
 
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);

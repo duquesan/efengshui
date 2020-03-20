@@ -13,17 +13,17 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request, \Swift_Mailer $mailer)
+    public function index(Request $request, Swift_Mailer $mailer)
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-            dd($contact);
+            //dd($contact);
             
             // Ici nous enverrons l'e-mail
-            $message = (new \Swift_Message('Nouveau contact'))
+            $message = (new Swift_Message('Nouveau contact'))
             // On attribue l'expéditeur
             ->setFrom($contact['email'])
 

@@ -2,11 +2,14 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Critere;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
+
  * @method Critere|null find($id, $lockMode = null, $lockVersion = null)
  * @method Critere|null findOneBy(array $criteria, array $orderBy = null)
  * @method Critere[]    findAll()
@@ -21,6 +24,7 @@ class CritereRepository extends ServiceEntityRepository
 
     // /**
     //  * @return Critere[] Returns an array of Critere objects
+
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +41,9 @@ class CritereRepository extends ServiceEntityRepository
     */
 
     /*
+
     public function findOneBySomeField($value): ?Critere
+
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
