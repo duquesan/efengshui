@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="connexion">
-    <h1>Connecte toi</h1><br><br><br>
+    <h1>Connecte-toi !</h1><br><br><br>
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -34,7 +34,11 @@
                 </label>
             </div>
         #}
+<<<<<<< HEAD
+        <button id="btnConnect" class="btn btn-lg btn-secondary" type="submit">
+=======
         <button class="btn btn-lg btn-secondary" type="submit">
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
             Se connecter
         </button>
     </form>

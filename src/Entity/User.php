@@ -191,6 +191,8 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
+=======
 
     /**
      * @see UserInterface
@@ -201,4 +203,5 @@ class User implements UserInterface
         // $this->mdp = null;
     }
 
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
 }

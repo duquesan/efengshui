@@ -17,6 +17,38 @@
                 <th>Actions</th>
             </tr>
         </thead>
+<<<<<<< HEAD
+
+        {% for critere in app.user.criteres %}
+            <tr>
+                <td>{{ critere.diagnostic.id }}</td>
+                <td>{{ critere.diagnostic.date }}</td>
+                <td>{{ critere.diagnostic.statut_paiement }}</td>
+                <td>{{ critere.diagnostic.prix }}</td>
+                <td>{{ critere.diagnostic.expertise }}</td>
+                <td>{{ critere.diagnostic.statut_expert }}</td>
+{ # quel for est correct # }
+
+        {% for diagnostics in app.user.diagnostics %}
+            <tr>
+                <td>{{ app.diagnostics.id }}</td>
+                <td>{{ app.diagnostics.date }}</td>
+                <td>{{ app.diagnostics.statut_paiement }}</td>
+                <td>{{ app.diagnostics.prix }}</td>
+                <td>{{ app.diagnostics.expertise }}</td>
+                <td>{{ app.diagnostics.statut_expert }}</td>
+
+        {% for users in user %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+
+                
+
+                
+
+=======
 
 
             <tr>
@@ -24,10 +56,15 @@
                 <td>{{ app.user.nom }}</td>
                 <td>{{ app.user.prenom }}</td>
                 <td><a href="{{ path("user_modifier", {id: app.user.id}) }}"><i class="fas fa-edit"></i></a></td>
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
             </tr>
 
         <tfoot>
+<<<<<<< HEAD
+                <td><a href="{{ path("user_modifier") }}"><i class="fas fa-edit"></i></a></td>
+=======
 
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
                
                  
    
@@ -40,6 +77,32 @@
         <thead>
             <tr>
                 <th>Id</th><th>Date</th><th>Statut paiement</th><th>Prix</th><th>Expertise</th><th>Statut expertise</th>
+<<<<<<< HEAD
+                
+            </tr>
+        </thead>
+
+{ # A voir pour les tableaux et les for si erreur? Problème de conflit merge # }
+            <tr>
+                <td>{{ app.user.id }}</td>
+                <td>{{ app.user.nom }}</td>
+                <td>{{ app.user.prenom }}</td>
+
+        {% for diagnostics in diagnostic %}
+            <tr>
+                <td>{{ diagnostic.id }}</td>
+                <td>{{ diagnostic.date }}</td>
+                <td>{{ diagnostic.statut_paiement }}</td>
+                <td>{{ diagnostic.prix }}</td>
+                <td>{{ diagnostic.expertise }}</td>
+                <td>{{ diagnostic.statut_expert }}</td
+                
+
+              
+
+            </tr>
+
+=======
                 <th>Actions</th>
             </tr>
         </thead>
@@ -57,8 +120,13 @@
             </tr>
         {% endfor %}
         </tbody>
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
         <tfoot>
         </tfoot>
     </table>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 875044a7aa8278a5c626f8cdde79ca23169a512d
 
 {% endblock %}
