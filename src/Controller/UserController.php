@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
+use Symfony\Component\Form\FormView;
 
 
 class UserController extends AbstractController
@@ -36,7 +37,7 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -61,16 +62,16 @@ class UserController extends AbstractController
     }
 
   
-     /**
-     * @Route("/user", name="compte_user")    
-     */
-    public function compte_user()
-    {
-        return $this->render('user/compte_user.html.twig');
-    }
+    //  /**
+    //  * @Route("/user", name="compte_user")    
+    //  */
+    // public function compte_user()
+    // {
+    //     return $this->render('user/compte_user.html.twig');
+    // }
 
          /**
-     * @Route("/user/informations", name="infos_user")    
+     * @Route("/user", name="compte_user")    
      */
     public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
@@ -143,6 +144,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }else{
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     
+}
 }
 
 /**
