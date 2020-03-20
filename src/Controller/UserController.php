@@ -70,19 +70,19 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
     // }
 
 
-
-
          /**
      * @Route("/user", name="compte_user")    
      */
 public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
+
     $user = $ur->findAll();
     $diagnostic = $dr->findAll();
         return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
      }
 
    
+
 
 
    /**
@@ -170,6 +170,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }
 }
 }
+}
 
 
 /**
@@ -198,7 +199,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
         $em->persist($userAmodifier);
         $em->flush();
 
-        return $this->redirectToRoute("user_list");
+        return $this->redirectToRoute("gestion");
 
     }
     return $this->render('user/formulaire.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]); 
@@ -214,11 +215,13 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
 {
     $bouton = "delete";
     $userAsupprimer = $ur->find($id);
+
     
+
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);
         $em->flush();
-        return $this->redirectToRoute("user_list");
+        return $this->redirectToRoute("gestion");
     }
     return $this->render('user/formulaire.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
 } 

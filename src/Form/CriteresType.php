@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Criteres;
+use App\Entity\Critere;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -39,7 +39,7 @@ class CriteresType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Criteres::class,
+            'data_class' => Critere::class,
         ]);
     }
 }

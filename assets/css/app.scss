@@ -437,6 +437,7 @@ border-radius: 30px;
     margin: 100px 100px;
 }
 
+
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
 
 #second, #third{
@@ -581,9 +582,20 @@ border-radius: 30px;
 //     font-family: "Open Sans";
 //   }
 
+
 #second,#third{
     display:none;
 }
+
+/* 
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
+  } */
+  
+
   /* Form Progress */
 //   .progress {
 //     width: 1000px;
