@@ -6,70 +6,44 @@
 {% block body %}
 
 
-{# <div class="progress" style="height:40px;">
-		<div class="progress-bar bg-danger rounded" role="progressbar" style="width:20%;" id="progressBar">
-			<b class="lead" id="progressbarText">Etape - 1</b>
-		</div>
-	</div>  #}
+<!-- multistep form -->
+<form method="POST" action="" id="msform">
+	<!-- progressbar -->
+	<ul id="progressbar">
+	
+		<li class="active">Etape 1</li>
+		<li>Etape 2</li>
+		<li>Etape 3</li>
+	</ul>
+	<!-- fieldsets -->
+	<fieldset id="first">
+		<h2 class="fs-title">Etape 1</h2>
+			    {{ form_start(formDemande) }}
+				{{ form_row(formDemande.titre_diagnostic)}}
+				{{ form_row(formDemande.nb_m_carre)}}
+				{{ form_row(formDemande.lieu)}}
+				{{ form_row(formDemande.annee_constr)}}			
+		<input type="button" name="next" id="next-1" class="next action-button" value="Next">
 
-	<div class="progress">
-		<div class="circle done">
-			<span class="label"></span>
-			<span class="title">Connexion</span>
-		</div>
-		<span class="bar done"></span>
-		<div class="circle done">
-			<span class="label"></span>
-			<span class="title">Années</span>
-		</div>
-		<span class="bar half"></span>
-		<div class="circle active">
-			<span class="label"></span>
-			<span class="title">Plans</span>
-		</div>
-		<span class="bar"></span>
-		<div class="circle">
-			<span class="label"></span>
-			<span class="title">Paiement</span>
-		</div>
-		<span class="bar"></span>
-		<div class="circle">
-			<span class="label"></span>
-			<span class="title">Télécharger</span>
-		</div>
-	</div>
+	</fieldset>
+	<fieldset id="second">
 
-	<h4>Votre diagnostic</h4>
-	<div class="row justify-content-md-center">
-		<div id="first">
-			{{ form_start(formDemande) }}
-			{{ form_row(formDemande.titre_diagnostic)}}
-			{{ form_row(formDemande.nb_m_carre)}}
-			{{ form_row(formDemande.lieu)}}
-			{{ form_row(formDemande.annee_constr)}}
-			<div class="form-group">
-				<a href="#" class="btn btn-danger" id="next-1">Suivant</a>
-			</div>
-		</div>
-		<div id="second">
-			{{ form_row(formDemande.plan_lieu)}}
-			{{ form_row(formDemande.photo_lieu)}}
-			{{ form_row(formDemande.orientation)}}
-			{{ form_row(formDemande.user)}}
-			<div class="form-group">
-				<a href="#" class="btn btn-danger" id="prev-2">Précédent</a>
-				<a href="#" class="btn btn-danger" id="next-2">Suivant</a>
-			</div>
-		</div>
-		<div id="third">
-			<h4>Mode de paiement</h4>
-			<a href="#" class="btn btn-danger" id="prev-3">Précédent</a>
-			{{ form_row(formDemande.ajouter) }}
-			{{ form_end(formDemande) }}
-		</div>
-	</div>
+		<h2 class="fs-title">Etape 2</h2>
+				{{ form_row(formDemande.plan_lieu)}}
+				{{ form_row(formDemande.photo_lieu)}}
+				{{ form_row(formDemande.orientation)}}
+		<input type="button" name="previous" id="prev-2" class="previous action-button" value="Previous">
+		<input type="button" name="next" id="next-2" class="next action-button" value="Next">
+		
+	</fieldset>
+	<fieldset id="third">
 
+		<h2 class="fs-title">Etape 3</h2>
+		<input type="button" name="previous" id="prev-3" class="previous action-button" value="Previous">
+				{{ form_row(formDemande.ajouter) }}
+				{{ form_end(formDemande) }}	
+		</fieldset>
+		
+</form>
 
 {% endblock %}
-
-

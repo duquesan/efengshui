@@ -39,7 +39,6 @@ class UserController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -61,22 +60,20 @@ class UserController extends AbstractController
     }
 
   
-     /**
+    //  /**
+    //  * @Route("/user", name="compte_user")    
+    //  */
+    // public function compte_user()
+    // {
+    //     return $this->render('user/compte_user.html.twig');
+    // }
+
+    /**
      * @Route("/user", name="compte_user")    
      */
-    public function compte_user()
+    public function infos_user(UserRepository $ur)
     {
-        return $this->render('user/compte_user.html.twig');
-    }
-
-         /**
-     * @Route("/user/informations", name="infos_user")    
-     */
-    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
-    {
-            $user = $ur->findAll();
-            $diagnostic = $dr->findAll();
-            return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+            return $this->render('user/compte_user.html.twig', [ "user" => $ur ]);
         }
    
 
@@ -144,6 +141,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     
 }
+}
 
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
@@ -152,7 +150,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
 public function update(UserRepository $ur, Request $request, EMI $em, int $id)
 {
     $bouton = "update";
-    $userAmodifier = $ar->find($id);
+    $userAmodifier = $ur->find($id);
 
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
@@ -185,7 +183,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
 public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
 {
     $bouton = "delete";
-    $userAsupprimer = $ar->find($id);
+    $userAsupprimer = $ur->find($id);
     
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);
