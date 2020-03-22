@@ -23,13 +23,23 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-      <div class="btn_diagnostic">
+    <div class="btn_diagnostic">
 
-        <button class="buttonDiag"><a href="">Commencez votre Diagnostic</a></button>
+      <!-- Si PAS CONNECTé-->
+      {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+        <button class="buttonDiag"><a href="{{ path("app_login") }}">Commencez votre Diagnostic</a></button>
+
+      {% endif %}
+
+      <!-- Si USER-->
+      {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+        <button class="buttonDiag"><a href="{{ path("fengshui") }}">Commencez votre Diagnostic</a></button>
         
-      </div>
+      {% endif %}
+        
+    </div>
 <!-- Fin de Caroussel Bootstarp -->  
-  <h2>L'expertise Feng Shui <Br>en utilisant l'intelligence artificielle </Br></h2>
+  <h2 class="titre_accueil">L'expertise Feng Shui <Br>en utilisant l'intelligence artificielle </Br></h2>
   <div class="concept">
     <div class="para-concept">
       <p>
@@ -39,8 +49,9 @@
       </p>
     </div>
     <div class="image">
-      <img src="../img/img53.png" alt="">
+      <img src="/img/img53.png" alt="">
     </div>
+  </div>
 
 
   </div><!-- ESTIMATION -->
@@ -68,7 +79,7 @@
     </div><!-- BUDDAH -->
 
   <div class="buddha">
-    <img src="../img/img591.png" alt="" class="">
+    <img src="/img/img591.png" alt="" class="">
   </div>
      <!-- Footer -->
          
