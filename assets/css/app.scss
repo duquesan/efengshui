@@ -1,3 +1,4 @@
+
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -59,6 +60,21 @@ table {
 	border-spacing: 0;
 }
 
+a:link, a:visited { 
+    text-decoration: none; 
+    //color: inherit;
+}
+
+a:hover{
+color: grey;
+
+}
+
+
+
+/*******FIN RESET CSS ******************/
+
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -72,6 +88,7 @@ body{
 margin-top: -5px;   
 font-size: 30px;
 font-family: 'Dancing Script', cursive;
+color:#4d4d4d;
 }
 
 
@@ -92,8 +109,7 @@ font-family: 'Dancing Script', cursive;
 .nav-list{
     list-style: none;
     line-height: 40px;
-    margin-right: 50px;
-    text-align: right;
+    margin-left: 30em;
 }
 
 .nav-list li{
@@ -103,7 +119,8 @@ font-family: 'Dancing Script', cursive;
     text-decoration:none;
 }
 .nav-link, .mention a{
-    color: black;
+    color:#4d4d4d;
+    
 }
 
 /***************CARROUSEL***********/
@@ -140,16 +157,28 @@ a{
     color: white;
 }
 
-h1{
+.titre_accueil{
     margin: 70px;
-    font-size: 50px;
+    font-size: 40px;
+    
 }
 .concept{
     display: flex;
     margin: 50px;
+    text-align: center;
+    font-weight: bold;
 
 }
+
+
+
+.carousel-item img {
+    object-fit: cover;
+}
+
+
 /********************************************* accueil */
+
 
 .fondText { 
     background-size: contain;
@@ -171,18 +200,19 @@ h1{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-  
-
 }
 
-h2{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
+#titleHome{
+    text-align: left;
+    font-size: 40px;
+    margin-left: 2em;
     padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
+
     
+
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif; 
+
 }
 
 .para1 {
@@ -198,19 +228,19 @@ h2{
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
-    font-size: 16px;
-  
-   
-}
-.image{
-    width: 40%;
-    padding: 0px 150px 0px 50px;
-
+    font-size: 18px;
+    padding: 10px;
+    text-indent: 1.5em;
+    line-height: 1.5;
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif;
 
 }
-img{
-    width: 320px;
-    height: 330px;
+
+.imgAccueil{
+    width: 500px;
+    height: 400px;
+    padding-bottom: 30em;
 }
 .buddha{
     position: fixed;
@@ -230,44 +260,50 @@ img{
 
 /* page feng shui */
 
-.fondText { 
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -50;
+// .fondText { 
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     z-index: -50;
 
  
-}
-.container {
-    width: 1200px;
-    height: 500px;
-    background-color: white;
-    border: rgba(0, 128, 0, 0.507);
-    border-radius: 15px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+// }
+// .container {
+//     width: 1200px;
+//     height: 500px;
+//     background-color: white;
+//     border: rgba(0, 128, 0, 0.507);
+//     border-radius: 15px;
+//     display: flex;
+//     margin-left: auto;
+//     margin-right: auto;
 
-}
+// }
 
-h2{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
-    padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
+// h2{
+//     text-align: center;
+//     font-weight: bold;
+//     margin: 10px;
+//     padding: 10px;
+//     color : rgba(0, 128, 0, 0.507);
     
-}
+// }
 
-.para1 {
+// .para1 {
+//     width: 400px;
+//     height: 450px;
+//     margin: 30px;
+//     padding: 10px;
+//     text-align: justify;
+//     font-size: 16px;
+// }
+
+.card-columns{
     width: 400px;
-    height: 450px;
-    margin: 30px;
-    padding: 10px;
-    text-align: justify;
-    font-size: 16px;
+    margin: 50px auto;
+    text-align: center;
 }
 
 /********************************************* ESTIMATION */
@@ -299,8 +335,12 @@ position: relative;
 width:280px;
 height: auto;
 background-color: rgba(237,241,241,0.8);
-
 }
+
+.talktext{
+    font-family: 'Noticia Text', serif;
+}
+
 .border{
 border: 8px solid #666;
 }
@@ -379,8 +419,8 @@ color:#4d4d4d;
 
 /******************FOOTER************/
 .page-footer{
+    font-family: 'Noticia Text', serif;
     padding-top: 20px;
-    
     background:#acd7bd;
     width: 100%;
     
@@ -388,23 +428,34 @@ color:#4d4d4d;
 .container-fluid a, h5{
     font-size: 22px;
 }
-.memtion{
+.mention{
 text-align: center;
+color:#4d4d4d;
+margin-top: 3em;
+
 }
 .register-newsletter{
     float: left;
 }
 
+.btn-search{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    background: #4d4d4d;
+    color: white;
+}
+
+
+
 .reseaux-sociaux i{
     padding: 15px 10px;
 }
 
-.fa-facebook{
-    color: blue;
-}
-.fa-instagram{
-    color:purple;
-}
 
 .border{
 border: 8px solid #666;
@@ -417,19 +468,49 @@ border-radius: 30px;
 
 }
 
+.fa-facebook{
+    color: rgb(27, 27, 95);  
+}
+
+.fa-twitter{
+    color: rgb(44, 190, 209);  
+}
+
+.fa-instagram{
+    color: rgb(209, 32, 171);  
+}
+
+.fa-linkedin-in{
+    color: rgb(30, 92, 184);  
+}
+
+.fa-google-plus-g{
+    color: rgb(209, 27, 3);  
+}
+
+.fa-youtube{
+    color: rgb(175, 1, 1);  
+}
+
 /********************************************* CONNEXION */
 .connexion{
-    width:300px;
-    height:300px;
-    position:absolute;
-    left:500px;
-    top:200px;
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
 }
 
 /* bouton se connecter */
-.btn-secondary{
-    margin: 10px 0;
-}
+#btnConnect{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    border-radius: 10px;
+    background: grey;
+    color: white;
+  }
 
 /********************************************* CONTACT */
 
@@ -651,9 +732,9 @@ border-radius: 30px;
 //     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
 //   }
 //   .progress .circle.done .title {
-//     color: #444;
-    
-  }
+
+//     color: #444;}
+
   .progress .circle.active .label {
     color: #FFF;
     background: #93dbf9;
@@ -672,6 +753,7 @@ border-radius: 30px;
 
 .card{
     background-color:white;
+    margin: 0px 300px;
 }
 
 .titlefaq{
@@ -694,5 +776,74 @@ border-radius: 30px;
 
  }
 
+ /********************************************* INSCRIPTION */
 
-////LABEL BOUTON  IMAGE DOMICILE
+#contenuSubs{
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
+}
+
+
+
+
+#btnSubs{
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 8px;
+  border-radius: 10px;
+  background: grey;
+  color: white;
+}
+
+
+
+
+
+/********************************************* INFO COMPTE USER */
+.diag{
+    display: flex;
+    align-items: flex-start;
+    width: 700px;
+
+}
+.titre{
+    font-size: 35px;
+    color: rgba(0, 128, 0, 0.507);
+    font-weight: bold;
+    margin: 30px;
+}
+.card-title{
+    font-size: 25px;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+label{
+    padding: 10px;
+    font-size: 20px;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+.table-bordered{
+    text-decoration: solid;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+th{
+    height: 18px;
+    font-size: 18px;
+    color: rgba(0, 128, 0, 0.507);
+    padding: 8px;
+    text-align: center;
+
+}
+
+
+
+

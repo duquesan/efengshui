@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+<head>
+
+{% block %} <meta http-equiv="refresh" content="1000 ; url=accueil.html.twig">{% endblock %}
+{% block title %}e-Feng Shui{% endblock %}
+
+</head>
+
+
+
+
+{% block body %}
+
+
+    
+    {% for message in app.flashes('info') %}
+    <div class="alert alert-succes">
+    {{ message}}
+
+    </div 
+    {% endfor %}
+
+
+ 
+{% endblock %}

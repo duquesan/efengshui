@@ -5,19 +5,50 @@
 {% block body %}
 
 
-<h2>Mon Compte</h2>
+<h2>{% trans %}My account{% endtrans %}</h2>
+
+{# A VERIFIER #}
+<div class="diag">
+<div class="flex-fill">
+  <div class="w-50 ">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Mes informations</h5>
+                <div class="form-group">
+                    <label for="nom">Mon identifiant</label>
+                    <input type="text" class="form-control" id="id" name="id" value="{{ app.user.id}}">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" value="{{ app.user.nom }}">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Prenom</label>
+                    <input type="text" class="form-control" id="prenom" name="prenom" value="{{ app.user.prenom }}">
+                </div>
+            <a href="{{ path("user_modifier", {id: app.user.id}) }}" class="btn btn-dark">Modifier mon compte</a>
+            <a href="{{ path("user_supprimer", {id: app.user.id}) }}" class="btn btn-dark">Supprimer mon Compte</a>
+        
+        </div>
+    </div>
+  </div>
 
 
-<h3>Mes informations</h3>
+  <div class="w-50 ">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Mes diagnostics</h5>
+            <table class="table table-bordered">
+
+<h3>{% trans %}My informations {% endtrans %}</h3>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th><th>Nom</th><th>Prenom</th>
-                <th>Actions</th>
+                <th>{% trans %}Id{% endtrans %}</th><th>{% trans %}Name{% endtrans %}</th><th>{% trans %}First name{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
-
 
             <tr>
                 <td>{{ app.user.id }}</td>
@@ -28,22 +59,20 @@
 
         <tfoot>
 
-               
-                 
-   
+          
         </tfoot>
     </table>
 
-<h3>Mes diagnostic</h3>
+<h3>{% trans %}My diagnostics {% endtrans %}</h3>
 
     <table class="table table-bordered">
+
         <thead>
             <tr>
-                <th>Id</th><th>Date</th><th>Statut paiement</th><th>Prix</th><th>Expertise</th><th>Statut expertise</th>
-                <th>Actions</th>
+                <th>{% trans %}Id {% endtrans %}</th><th>{% trans %}Date {% endtrans %}</th><th>{% trans %}Payment status{% endtrans %}</th><th>{% trans %}Price{% endtrans %}</th><th>{% trans %}Expertise {% endtrans %}</th><th>{% trans %}Expertise status{% endtrans %}</th>
+                <th>{% trans %}Actions {% endtrans %}</th>
             </tr>
         </thead>
-
         <tbody>
         {% for critere in app.user.criteres %}
             <tr>
@@ -59,6 +88,19 @@
         </tbody>
         <tfoot>
         </tfoot>
-    </table>
+            </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
 
 {% endblock %}
+
+
+
+
+

@@ -110,32 +110,35 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
     return $this->render('user/modif_user.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
 } 
 
+
 /**
  * @Route("/user/supprimer/{id}", name="user_supprimer")
 
  */
+
 public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
 {
-    $bouton = "delete";
+    
     $userAsupprimer = $ur->find($id);
     
-    if ($request->isMethod("POST")){
-        $nom = $request->request->get('nom');
-        $prenom = $request->request->get('prenom');
-        $mdp = $request->request->get('password');
-
-        $userAmodifier->setNom($nom);
-        $userAmodifier->setPrenom($prenom);
-        $userAmodifier->setPassword($mdp);
         
         $em->remove($userAsupprimer);
         $em->flush();
-        return $this->redirectToRoute("compte_user");
-    }
-    return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+
+
+        
+        $this->addFlash(
+            'info',
+            'Votre compte a bien ete supprime'
+        );
+      
+    
+    return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, ]);
 
 
 }
+
+
 
 
 
@@ -175,8 +178,6 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }
 }
 
-
-
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
  * @IsGranted("ROLE_ADMIN")
@@ -196,6 +197,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
             $userAmodifier->setPassword($mdp);
         }
+        
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
         $userAmodifier->setEmail($email);
