@@ -18,6 +18,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
 use Symfony\Component\Form\FormView;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializationContext;
+use JMS\Serializer\SerializerInterface;
 
 
 class UserController extends AbstractController
@@ -60,30 +63,16 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
         ]);
     }
 
-  
-    //  /**
-    //  * @Route("/user", name="compte_user")    
-    //  */
-    // public function compte_user()
-    // {
-    //     return $this->render('user/compte_user.html.twig');
-    // }
-
-
-         /**
+     /**
      * @Route("/user", name="compte_user")    
      */
-public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
+    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
     {
 
     $user = $ur->findAll();
     $diagnostic = $dr->findAll();
         return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
      }
-
-   
-
-
 
    /**
  * @Route("/user/modifier/{id}", name="user_modifier")
@@ -120,7 +109,7 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
 {
     $bouton = "delete";
-    $userAsupprimer = $ar->find($id);
+    $userAsupprimer = $ur->find($id);
     
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);
@@ -132,17 +121,38 @@ public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
 
 }
 
+/**
+* @Route("/admin/gestion", name="gestion")   
+* @IsGranted("ROLE_ADMIN") 
+*/
+public function compte_admin()
+{
+  
+    return $this->render('user/compte_admin.html.twig');
+}
 
+/**
+* @Route("/admin/gestion/listeUser", name="liste_user")   
+* @IsGranted("ROLE_ADMIN") 
+*/
+public function afficheListeUser(UserRepository $ur, SerializerInterface $serializer)
+{
+    
+    $clients=$ur->findAll();
+    
+    $data = $serializer->serialize($clients,'json');
 
-        /**
-        * @Route("/admin/gestion", name="gestion")   
-        * @IsGranted("ROLE_ADMIN") 
-        */
-    public function compte_admin(UserRepository $ur)
-        {
-            return $this->render('user/compte_admin.html.twig', [ "user" => $ur->findAll() ]);
-        }
-    /**
+    $response = new Response($data);
+    $response->headers->set('Content-Type', 'application/json');
+    return $response;
+
+        /*return $this->json($clients, 200, [], [
+            'groups' => ['liste'],
+            ]);*/
+}
+
+        
+/**
  * @Route("/admin/user/ajouter", name="user_add")
  * @IsGranted("ROLE_ADMIN")
  */
@@ -169,8 +179,7 @@ public function add(UserRepository $ur, EMI $em, Request $request)
         return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
     }
 }
-}
-}
+
 
 
 /**
