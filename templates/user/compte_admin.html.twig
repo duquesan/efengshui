@@ -4,13 +4,13 @@
 
 {% block body %}
 
-<h1>GESTION</h1>
-<button onclick="myFunction()">Liste des Clients</button>
+<h1>{% trans %}MANAGEMENT{% endtrans %}</h1>
+<button onclick="myFunction()">{% trans %}Customer List{% endtrans %}</button>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nom</th><th>Prénom</th><th>E-mail</th><th>Rôles</th><th colspan=2>Actions</th>
+                <th>{% trans %}Name{% endtrans %}</th><th>{% trans %}First name{% endtrans %}</th><th>{% trans %}E-mail{% endtrans %}</th><th>{% trans %}Roles{% endtrans %}</th><th colspan=2>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead<
         {% for user in user %}

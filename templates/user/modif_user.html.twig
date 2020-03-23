@@ -4,23 +4,23 @@
 
 {% block body %}
 
-<h2 class="h2 text-center mt-3 mb-5">Modifier mon compte</h2>
+<h2 class="h2 text-center mt-3 mb-5">{% trans %}Modify my acocunt{% endtrans %}</h2>
 
 <div class="d-flex justify-content-center">
     <form class="col-md-6 text-center" method="post">
     <div class="form-group">
-        <label for="nom">Nom</label>
+        <label for="nom">{% trans %}Name{% endtrans %}</label>
         <input type="text" class="form-control" id="nom" name="nom" value="{{ user is defined ? user.nom : "" }}">
     </div>
         <div class="form-group">
-        <label for="nom">Prenom</label>
+        <label for="nom">{% trans %}First name{% endtrans %}</label>
         <input type="text" class="form-control" id="prenom" name="prenom" value="{{ user is defined ? user.prenom : "" }}">
     </div>
     <div class="form-group">
-        <label for="password">Mot de passe</label>
+        <label for="password">{% trans %}Password{% endtrans %}</label>
         <input type="password" class="form-control" id="password" name="password" >
     </div>
-   <button type="submit" name="submit" class="btn btn-dark">Modifier</button>
+   <button type="submit" name="submit" class="btn btn-dark">{% trans %}Modify{% endtrans %}</button>
     
     </form>
 
