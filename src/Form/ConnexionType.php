@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type;
 
 class ConnexionType extends AbstractType
 {
@@ -18,6 +19,7 @@ class ConnexionType extends AbstractType
             ->add('password')
             ->add('nom')
             ->add('prenom')
+            ->add('ajouter', Type\SubmitType::class)
         ;
     }
 

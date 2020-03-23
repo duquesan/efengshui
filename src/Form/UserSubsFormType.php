@@ -27,7 +27,7 @@ class UserSubsFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Entrez votre motde passe',
+                        'message' => 'Entrez votre mot de passe',
                     ]),
                     new Length([
                         'min' => 6,

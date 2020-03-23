@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
+use App\Repository\CritereRepository;
 use Symfony\Component\Form\FormView;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
@@ -66,10 +67,14 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
     /**
      * @Route("/user", name="compte_user")    
      */
-    public function infos_user()
+    public function infos_user(UserRepository $ur, DiagnosticRepository $dr, CritereRepository $cr)
     {
-        return $this->render('user/compte_user.html.twig');
-     }
+    $user = $ur->findAll();
+    $diagnostic = $dr->findAll();
+    $critere = $cr->findAll();
+
+        return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr, "critere" => $cr ]);
+    }
 
    /**
  * @Route("/user/modifier/{id}", name="user_modifier")
@@ -108,9 +113,8 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
 {
 
-    $bouton = "delete";
     $userAsupprimer = $ur->find($id);
-           
+
         $em->remove($userAsupprimer);
         $em->flush();
 

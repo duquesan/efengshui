@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CritereRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\ConnexionType;
 use App\Form\CriteresType;
 use App\Form\Criteres2Type;
+use App\Entity\User;
 use App\Entity\Critere;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -23,25 +26,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CriteresController extends AbstractController
 {
 
-
-    /**
-     * @Route("/criteres", name="criteres")
-     */
-    public function index()
-    {
-        return $this->render('criteres/formulaire.html.twig', [
-
-
-            'controller_name' => 'CritereController',
-
-        ]);
-    }
-
    /**
      * @Route("/criteres/ajouter", name="criteres_ajouter")
      */
-    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur,TranslatorInterface $translator)
-    {
+
+    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils): Response
+   {
+        $user = new User();
+        $formConnexion = $this->createForm(ConnexionType::class);
         //$demande = new Criteres();
 
         $formDemande = $this->createForm(CriteresType::class);
@@ -55,9 +47,9 @@ class CriteresController extends AbstractController
                 //Je teste s'il est valide
                 //S'il est valide je crée $nouvelleDemande
                 $nouvelleDemande = $formDemande->getData();
+                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
+                // pour définir dans quel dossier va être enregistré l'image téléchargée
 
-                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
-                // pour définir dans quel dossier va être enregistré l'image téléchargée
                 $destination = $this->getParameter("dossier_images");
                 //Je mets les informations de la photo téléchargée dans la variable phototelecharger et s'il y a bien une photo téléchargée
                 if(($planTelecharge = $formDemande["plan_lieu"]->getData()) && ($photoTelechargee = $formDemande["photo_lieu"]->getData())){
@@ -79,7 +71,6 @@ class CriteresController extends AbstractController
                 }
                 
                 $nouvelleDemande->setUser($this->getUser());     
-
                 $em->persist($nouvelleDemande);
                 //On récupère
                 $em->flush();
@@ -89,8 +80,8 @@ class CriteresController extends AbstractController
                 $this->addFlash("success", $msg);
 
                 //Permet d'envoyer des messages. Premier le type "error" => "danger", "success",... et ensuite on met le message
-                return $this->redirectToRoute("criteres_ajouter");
-                //Suite à tout ça, on redirige en mettant le name de la route où l'on souhaite rediriger
+                // return $this->redirectToRoute("accueil");
+                //Suite à tout ça, on redirige en mettant le name de la route où l'on souhaite rediriger               
             } else {
 
                 $msg = $translator->trans("The form is not valid.");
@@ -99,10 +90,11 @@ class CriteresController extends AbstractController
                 //Dans le cas où le formulaire n'est pas. "danger" et "succès" sont des classes à bootstrap.
             }
         }
-        $formDemande = $formDemande->createView();
 
-        
-        return $this->render('critere/formulaire.html.twig', compact("formDemande"));
+        $formDemande = $formDemande->createView();      
+        $formConnexion = $formConnexion->createView();
+        return $this->render('critere/formulaire.html.twig', compact('formDemande', 'formConnexion'));
+
 
 
 
@@ -124,6 +116,7 @@ class CriteresController extends AbstractController
 
         return $response;
         
+
     }
 }
 

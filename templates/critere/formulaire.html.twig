@@ -1,5 +1,4 @@
-{% extends "base.html.twig" %}
-
+{% extends 'base.html.twig' %}
 
 {% block title %}e-Feng Shui{% endblock %}
 
@@ -8,24 +7,49 @@
 
 
 <!-- multistep form -->
-<form method="POST" action="" id="msform" enctype="multipart/form-data">
-	<!-- progressbar -->
+<div>
 	<ul id="progressbar">
 	
-		<li class="active">{% trans %}Step 1 {% endtrans %}</li>
-		<li>{% trans %}Step 2 {% endtrans %}</li>
-		<li>{% trans %}Step 3 {% endtrans %}</li>
-	</ul>
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>	
+</div>
+	
+<div class="co">
+    <form method="post" id="co" action="{{ path('app_login') }}">
+	<h1>Connecte-toi !</h1>
+    
+	  <label for="inputEmail">Email</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" required autofocus>
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" required>
+		<input type="submit" name="next" class="next action-button" onclick="location.href='#';" value="Next">
+	 <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}">	
+    </form>
+</div>
+<div>
+<form method="POST" action="" id="msform" name="msform" enctype="multipart/form-data">
+	<!-- progressbar -->
 	<!-- fieldsets -->
+	{# FAIRE LA CONNEXION #}	
 	<fieldset id="first">
-		<h2 class="fs-title">{% trans %}Step 1 {% endtrans %}</h2>
-			    {{ form_start(formDemande) }}
+		<h2 class="fs-title">Etape 2</h2>
+			    {{ form_start(formDemande)}}
 				{{ form_row(formDemande.titre_diagnostic)}}
 				<b class="form-text text-danger" id="titreError"></b>	
 				{{ form_row(formDemande.nb_m_carre)}}
-				<b class="form-text text-danger" id="mCarreError"></b>	
+				<b class="form-text text-danger" id="mCarreError"></b>
 				{{ form_row(formDemande.lieu)}}
+				<div id="lieuImage">	
+				<!--RADIO IMAGE-->
+        		<label class="label_image" for="criteres_lieu_0"> <img src="/img/img153.png"> </label>
+				<label class="label_image" for="criteres_lieu_1"> <img src="/img/img154.png"> </label>
 				<b class="form-text text-danger" id="lieuError"></b>	
+				</div>
 				{{ form_row(formDemande.annee_constr)}}
 				<b class="form-text text-danger" id="anneeError"></b>			
 		<input type="button" name="next" id="next-1" class="next action-button" onclick="location.href='#';" value="Next">
@@ -33,7 +57,7 @@
 	</fieldset>
 	<fieldset id="second">
 
-		<h2 class="fs-title">{% trans %}Step 2 {% endtrans %}</h2>
+		<h2 class="fs-title">Etape 3</h2>
 				{{ form_row(formDemande.plan_lieu)}}
 				<b class="form-text text-danger" id="planError"></b>	
 				{{ form_row(formDemande.photo_lieu)}}
@@ -46,13 +70,44 @@
 	</fieldset>
 	<fieldset id="third">
 
-		<h2 class="fs-title">{% trans %}Step 3 {% endtrans %}</h2>
-		<input type="button" name="previous" id="prev-3" class="previous action-button" value="Previous">
-				{{ form_row(formDemande.ajouter) }}
+		<h2 class="fs-title">Etape 4</h2>
+		
+
+<div class="paiement">
+<fieldset>
+      <h1>Mode de paiement</h1>
+      <p>Toutes les transactions sont sécurisées et cryptées</p>
+      <div class="modePaie">
+          <img src="/img/img223.png" atl="logo paiements" id="visa">
+          <img src="/img/img221.png" atl="logo paiements">
+          <img src="/img/img222.png" atl="logo paiements">
+          <img src="/img/img224.png" atl="logo paiements">
+      </div>
+      <form method="POSTE">
+        <div class="input-group input-group-sm mb-3">
+            <input name="numeros" placeholder="Numéros de la carte" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><label><i class="fas fa-credit-card"></i></label>
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" name="titulaire" placeholder="Nom du titulaire" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input type="text" name="expiration" placeholder="MM/AA" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <input name="cvv" placeholder="CVV" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><label><i class="fas fa-question-circle"></i></label>
+            <input type="checkbox" name="termes" class="termes">
+            <label for="termes" >Termes et conditions</label>
+        </div>
+      </form>
+    
+<input type="button" name="previous" id="prev-3" class="previous action-button" onclick="location.href='#';" value="Previous">
+		
+				{{ form_row(formDemande.paiement) }}
 				{{ form_end(formDemande) }}	
 		</fieldset>
-		
+	<fieldset id="valid">
+	<p>Ok</p>
+	<fieldset>
+	</div>
 </form>
-
+</div>
 {% endblock %}
 
