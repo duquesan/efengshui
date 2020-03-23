@@ -21,20 +21,27 @@
 		<h2 class="fs-title">{% trans %}Step 1 {% endtrans %}</h2>
 			    {{ form_start(formDemande) }}
 				{{ form_row(formDemande.titre_diagnostic)}}
+				<b class="form-text text-danger" id="titreError"></b>	
 				{{ form_row(formDemande.nb_m_carre)}}
+				<b class="form-text text-danger" id="mCarreError"></b>	
 				{{ form_row(formDemande.lieu)}}
-				{{ form_row(formDemande.annee_constr)}}			
-		<input type="button" name="next" id="next-1" class="next action-button" value="Next">
+				<b class="form-text text-danger" id="lieuError"></b>	
+				{{ form_row(formDemande.annee_constr)}}
+				<b class="form-text text-danger" id="anneeError"></b>			
+		<input type="button" name="next" id="next-1" class="next action-button" onclick="location.href='#';" value="Next">
 
 	</fieldset>
 	<fieldset id="second">
 
 		<h2 class="fs-title">{% trans %}Step 2 {% endtrans %}</h2>
 				{{ form_row(formDemande.plan_lieu)}}
+				<b class="form-text text-danger" id="planError"></b>	
 				{{ form_row(formDemande.photo_lieu)}}
+				<b class="form-text text-danger" id="photoError"></b>	
 				{{ form_row(formDemande.orientation)}}
-		<input type="button" name="previous" id="prev-2" class="previous action-button" value="Previous">
-		<input type="button" name="next" id="next-2" class="next action-button" value="Next">
+				<b class="form-text text-danger" id="orientationError"></b>	
+		<input type="button" name="previous" id="prev-2" class="previous action-button" onclick="location.href='#';" value="Previous">
+		<input type="button" name="next" id="next-2" class="next action-button" onclick="location.href='#';" value="Next">
 		
 	</fieldset>
 	<fieldset id="third">
