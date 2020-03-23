@@ -1,3 +1,4 @@
+
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @font-face {
@@ -59,6 +60,10 @@ a:hover {
     color: grey;
 }
 
+
+
+/*******FIN RESET CSS ******************/
+
 /*******HEADER******************/
 
 body {
@@ -68,12 +73,19 @@ body {
     width: auto;
 }
 
-.navbar-logo h1 {
-    margin-top: -5px;
-    font-size: 30px;
-    font-family: 'Dancing Script', cursive;
+.navbar-logo h1{
+margin-top: -5px;   
+font-size: 30px;
+font-family: 'Dancing Script', cursive;
+color:#4d4d4d;
 }
 
+#boussole{
+    width:30%;
+}
+#imglogo{
+    width: 20%;
+}
 .icone-entete i {
     color: red;
     padding: 5px;
@@ -92,8 +104,7 @@ body {
 .nav-list {
     list-style: none;
     line-height: 40px;
-    margin-right: 50px;
-    text-align: right;
+    margin-left: 30em;
 }
 
 .nav-list li {
@@ -103,8 +114,9 @@ body {
     text-decoration: none;
 }
 
-.nav-link, .mention a {
-    color: black;
+.nav-link, .mention a{
+    color:#4d4d4d;
+
 }
 
 /***************CARROUSEL***********/
@@ -117,6 +129,14 @@ body {
 
 .carousel-inner {
     position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 .btn_diagnostic {
@@ -137,19 +157,32 @@ a {
     color: white;
 }
 
-h1 {
+
+.titre_accueil{
     margin: 70px;
-    font-size: 50px;
+    font-size: 40px;
+    
 }
 
 .concept {
     display: flex;
     margin: 50px;
+
 }
 
 /********************************************* accueil */
 
-.fondText {
+//.fondText {
+//    text-align: center;
+//    font-weight: bold;
+
+//}
+
+
+
+
+
+.fondText { 
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
@@ -169,12 +202,15 @@ h1 {
     margin-right: auto;
 }
 
-h2 {
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
+
+#titleHome{
+    text-align: left;
+    font-size: 40px;
+    margin-left: 2em;
     padding: 10px;
-    color: rgba(0, 128, 0, 0.507);
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif; 
+
 }
 
 .para1 {
@@ -190,7 +226,12 @@ h2 {
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 10px;
+    text-indent: 1.5em;
+    line-height: 1.5;
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif;
 }
 
 .image {
@@ -198,11 +239,8 @@ h2 {
     padding: 0px 150px 0px 50px;
 }
 
-img {
-    width: 320px;
-    height: 330px;
-}
 
+  
 .buddha {
     position: fixed;
     right: 10px;
@@ -251,6 +289,13 @@ img {
 //     text-align: justify;
 //     font-size: 16px;
 // }
+
+.card-columns{
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
 /********************************************* ESTIMATION */
 
 .estimation {
@@ -279,16 +324,20 @@ h5 {
 /* CSS talk bubble */
 
 .talk-bubble {
-    margin: 40px;
-    display: inline-block;
-    position: relative;
-    width: 280px;
-    height: auto;
-    background-color: rgba(237, 241, 241, 0.8);
+margin: 40px;
+display: inline-block;
+position: relative;
+width:280px;
+height: auto;
+background-color: rgba(237,241,241,0.8);
 }
 
-.border {
-    border: 8px solid #666;
+.talktext{
+    font-family: 'Noticia Text', serif;
+}
+
+.border{
+border: 8px solid #666;
 }
 
 .round {
@@ -345,7 +394,6 @@ h5 {
 
 .inputMcarre {
     width: 40px;
-    ;
 }
 
 /* Button */
@@ -372,9 +420,10 @@ h5 {
 
 /******************FOOTER************/
 
-.page-footer {
+.page-footer{
+    font-family: 'Noticia Text', serif;
     padding-top: 20px;
-    background: #acd7bd;
+    background:#acd7bd;
     width: 100%;
 }
 
@@ -382,26 +431,67 @@ h5 {
     font-size: 22px;
 }
 
-.memtion {
-    text-align: center;
+.mention{
+text-align: center;
+color:#4d4d4d;
+margin-top: 3em;
 }
 
 .register-newsletter {
     float: left;
 }
 
-.reseaux-sociaux i {
+.btn-search{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    background: #4d4d4d;
+    color: white;
+}
+
+
+
+.reseaux-sociaux i{
     padding: 15px 10px;
 }
 
-.border {
-    border: 8px solid #666;
+
+.border{
+border: 8px solid #666;
 }
 
 .round {
     border-radius: 30px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
+}
+
+.fa-facebook{
+    color: rgb(27, 27, 95);  
+}
+
+.fa-twitter{
+    color: rgb(44, 190, 209);  
+}
+
+.fa-instagram{
+    color: rgb(209, 32, 171);  
+}
+
+.fa-linkedin-in{
+    color: rgb(30, 92, 184);  
+}
+
+.fa-google-plus-g{
+    color: rgb(209, 27, 3);  
+}
+
+.fa-youtube{
+    color: rgb(175, 1, 1);  
 }
 
 /********************************************* CONNEXION */
@@ -486,11 +576,6 @@ h5 {
 
 #first, #second, #third, #valid {
     display: none;
-}
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 /*form styles*/
@@ -648,8 +733,6 @@ h5 {
     color: white;
     font-weight: bold;
     font-size: 18px;
-    
-
 }
 
 // *, *:after, *:before {
@@ -752,13 +835,29 @@ h5 {
     align-items: flex-start;
 }
 
-.form-check-label {
-    display: none;
-}
+  .progress .circle.active .label {
+    color: #FFF;
+    background: #93dbf9;
+    box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+    width: 40px;
+    height: 40px;
+    margin: -1px 10px 0px -2px;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+  .progress .circle.active .title {
+    color: #0c95be;
+  }
+  
+/************** FAQ */
 
-.form-check input {
-    display: none;
-}
+// .form-check-label {
+//     display: none;
+// }
+
+// .form-check input {
+//     display: none;
+// }
 
 input:checked+label>img {
     background-color: blue;
@@ -780,6 +879,7 @@ label>img {
     transition: all 0.4s ease-out;
 }
 
+//Préciser l'image
 label>img:hover {
     background-color: blue;
     color: white;
@@ -836,10 +936,51 @@ label>img:hover {
     width: 400px;
     margin: 50px auto;
     text-align: center;
-}
 
+}
 //Fin de formulaire diagnostic
 
-.carousel-item img {
-    object-fit: cover;
+/********************************************* INFO COMPTE USER */
+.diag{
+    display: flex;
+    align-items: flex-start;
+    width: 700px;
+
 }
+.titre{
+    font-size: 35px;
+    color: rgba(0, 128, 0, 0.507);
+    font-weight: bold;
+    margin: 30px;
+}
+.card-title{
+    font-size: 25px;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+// label{
+//     padding: 10px;
+//     font-size: 20px;
+//     color: rgba(0, 128, 0, 0.507);
+
+// }
+
+.table-bordered{
+    text-decoration: solid;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+// th{
+//     height: 18px;
+//     font-size: 18px;
+//     color: rgba(0, 128, 0, 0.507);
+//     padding: 8px;
+//     text-align: center;
+
+// }
+
+
+
+
