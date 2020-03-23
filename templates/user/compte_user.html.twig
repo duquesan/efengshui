@@ -42,7 +42,8 @@
         </thead>
 
         <tbody>
-        {% for critere in app.user.criteres %}
+    {# Ici ça pose problème car pas encore rempli...? ou alors on appelle pas ce qu'il faut? A voir #}
+        {% for critere in critere %}
             <tr>
                 <td>{{ critere.diagnostic.id }}</td>
                 <td>{{ critere.diagnostic.date }}</td>

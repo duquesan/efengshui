@@ -1,6 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-
 @font-face {
     font-family: "Noticia Text";
     @import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
@@ -15,164 +14,150 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
 }
+
 body {
-	line-height: 1;
+    line-height: 1;
 }
+
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
+
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-a:link, a:visited { 
-    text-decoration: none; 
-    //color: inherit;
+a:link, a:visited {
+    text-decoration: none; //color: inherit;
 }
 
-a:hover{
-color: grey;
-
+a:hover {
+    color: grey;
 }
-
 
 /*******HEADER******************/
-body{
+
+body {
     background-color: #edf7f1;
-        margin: 0;
-        padding: 0;
-        width: auto;
-    }
-
-
-.navbar-logo h1{
-margin-top: -5px;   
-font-size: 30px;
-font-family: 'Dancing Script', cursive;
+    margin: 0;
+    padding: 0;
+    width: auto;
 }
 
+.navbar-logo h1 {
+    margin-top: -5px;
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+}
 
-.icone-entete i{
+.icone-entete i {
     color: red;
     padding: 5px;
 }
-.icone-entete{
+
+.icone-entete {
     margin-top: 25px;
     margin-left: 40px;
 }
 
-.col-lg-1{
+.col-lg-1 {
     margin-top: 15px;
-    padding: 10px;  
+    padding: 10px;
 }
 
-.nav-list{
+.nav-list {
     list-style: none;
     line-height: 40px;
     margin-right: 50px;
     text-align: right;
 }
 
-.nav-list li{
+.nav-list li {
     display: inline-block;
     font-size: 25px;
     font-family: 'Noticia Text', serif;
-    text-decoration:none;
+    text-decoration: none;
 }
-.nav-link, .mention a{
+
+.nav-link, .mention a {
     color: black;
 }
 
 /***************CARROUSEL***********/
 
-
 /* page accueil */
-body{
+
+body {
     background: #edf7f1;
-    
 }
 
-.carousel-inner{
+.carousel-inner {
     position: relative;
-  
-
 }
 
-.btn_diagnostic{
+.btn_diagnostic {
     padding: 40px 0px 0px 50px;
     display: flex;
     justify-content: center;
 }
 
-.buttonDiag{
+.buttonDiag {
     border-radius: 10px;
-    background-color:#ff8a84;
+    background-color: #ff8a84;
     width: 320px;
     height: 90px;
-   
 }
 
-a{
+a {
     text-decoration: none;
     color: white;
 }
 
-h1{
+h1 {
     margin: 70px;
     font-size: 50px;
 }
-.concept{
+
+.concept {
     display: flex;
     margin: 50px;
-
 }
+
 /********************************************* accueil */
 
-.fondText { 
+.fondText {
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: -50;
-
-  
- 
 }
+
 .container {
     width: 1200px;
     height: 500px;
@@ -182,18 +167,14 @@ h1{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-  
-
 }
 
-h2{
+h2 {
     text-align: center;
     font-weight: bold;
     margin: 10px;
     padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
-    
+    color: rgba(0, 128, 0, 0.507);
 }
 
 .para1 {
@@ -205,39 +186,35 @@ h2{
     font-size: 16px;
 }
 
-.para-concept{
+.para-concept {
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
     font-size: 16px;
-  
-   
 }
-.image{
+
+.image {
     width: 40%;
     padding: 0px 150px 0px 50px;
-
-
 }
-img{
+
+img {
     width: 320px;
     height: 330px;
 }
-.buddha{
+
+.buddha {
     position: fixed;
     right: 10px;
     bottom: 10px;
-
-
 }
-.buddha img{
+
+.buddha img {
     width: 90px;
     height: 90px;
-
 }
 
 /*--------------------------------------------------------------------------------------------------------- */
-
 
 /* page feng shui */
 
@@ -248,8 +225,6 @@ img{
 //     height: 100%;
 //     position: absolute;
 //     z-index: -50;
-
- 
 // }
 // .container {
 //     width: 1200px;
@@ -260,18 +235,14 @@ img{
 //     display: flex;
 //     margin-left: auto;
 //     margin-right: auto;
-
 // }
-
 // h2{
 //     text-align: center;
 //     font-weight: bold;
 //     margin: 10px;
 //     padding: 10px;
 //     color : rgba(0, 128, 0, 0.507);
-    
 // }
-
 // .para1 {
 //     width: 400px;
 //     height: 450px;
@@ -280,17 +251,18 @@ img{
 //     text-align: justify;
 //     font-size: 16px;
 // }
-
 /********************************************* ESTIMATION */
-.estimation{
-    display:flex;
+
+.estimation {
+    display: flex;
     justify-content: end;
     position: fixed;
     right: 10px;
     bottom: 100px;
 }
-.estimation2{
-    display:flex;
+
+.estimation2 {
+    display: flex;
     justify-content: end;
     position: fixed;
     right: 10px;
@@ -298,137 +270,150 @@ img{
 }
 
 /* Title */
-h5{
-font-weight: bold;
-color:#4d4d4d;
-}
-/* CSS talk bubble */
-.talk-bubble {
-margin: 40px;
-display: inline-block;
-position: relative;
-width:280px;
-height: auto;
-background-color: rgba(237,241,241,0.8);
 
+h5 {
+    font-weight: bold;
+    color: #4d4d4d;
 }
-.border{
-border: 8px solid #666;
+
+/* CSS talk bubble */
+
+.talk-bubble {
+    margin: 40px;
+    display: inline-block;
+    position: relative;
+    width: 280px;
+    height: auto;
+    background-color: rgba(237, 241, 241, 0.8);
 }
-.round{
-border-radius: 30px;
--webkit-border-radius: 30px;
--moz-border-radius: 30px;
-  
+
+.border {
+    border: 8px solid #666;
+}
+
+.round {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
 }
 
 /*Right triangle, placed bottom left side slightly in*/
+
 .tri-right.border.btm-left-in:before {
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 30px;
-right: auto;
-top: auto;
-bottom: -40px;
-border: 20px solid;
-border-color: #666 transparent transparent #666;
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 30px;
+    right: auto;
+    top: auto;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: #666 transparent transparent #666;
 }
-.tri-right.btm-left-in:after{
-content: ' ';
-position: absolute;
-width: 0;
-height: 0;
-left: 38px;
-right: auto;
-top: auto;
-bottom: -20px;
-border: 12px solid;
-border-color: lightyellow transparent transparent lightyellow;
+
+.tri-right.btm-left-in:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 38px;
+    right: auto;
+    top: auto;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: lightyellow transparent transparent lightyellow;
 }
 
 /* talk bubble contents */
-.talktext{
-padding: 1em;
-text-align: justify;
-line-height: 1.5em;
-font-size: 12px;
-color:#4d4d4d;
+
+.talktext {
+    padding: 1em;
+    text-align: justify;
+    line-height: 1.5em;
+    font-size: 12px;
+    color: #4d4d4d;
 }
-.talktext p{
-/* remove webkit p margins */
--webkit-margin-before: 0em;
--webkit-margin-after: 0em;
+
+.talktext p {
+    /* remove webkit p margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
 }
 
 /* INPUT m carre */
-.inputMcarre{
-    width: 40px;;
+
+.inputMcarre {
+    width: 40px;
+    ;
 }
 
 /* Button */
 
-.button{
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 8px;
-  border-radius: 10px;
-  background:rgb(172,215,189);
-  color:#4d4d4d;
+.button {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    border-radius: 10px;
+    background: rgb(172, 215, 189);
+    color: #4d4d4d;
 }
 
 /* Montant */
-#montant{
-  font-weight: bold;
-  color:#ff8a84;
+
+#montant {
+    font-weight: bold;
+    color: #ff8a84;
 }
 
 /******************FOOTER************/
-.page-footer{
+
+.page-footer {
     padding-top: 20px;
-    
-    background:#acd7bd;
+    background: #acd7bd;
     width: 100%;
-    
 }
-.container-fluid a, h5{
+
+.container-fluid a, h5 {
     font-size: 22px;
 }
-.memtion{
-text-align: center;
+
+.memtion {
+    text-align: center;
 }
-.register-newsletter{
+
+.register-newsletter {
     float: left;
 }
 
-.reseaux-sociaux i{
+.reseaux-sociaux i {
     padding: 15px 10px;
 }
 
-.border{
-border: 8px solid #666;
+.border {
+    border: 8px solid #666;
 }
 
-.round{
-border-radius: 30px;
--webkit-border-radius: 30px;
--moz-border-radius: 30px;
-
+.round {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
 }
 
 /********************************************* CONNEXION */
-.connexion{
+
+.connexion {
     margin: 100px 535px;
     font-family: 'Noticia Text', serif;
 }
 
 /* bouton se connecter */
-#btnConnect{
+
+#btnConnect {
     border: none;
     padding: 10px;
     text-align: center;
@@ -439,151 +424,233 @@ border-radius: 30px;
     border-radius: 10px;
     background: grey;
     color: white;
-  }
+}
 
 /********************************************* CONTACT */
 
-#contenuContact{
+#contenuContact {
     margin: 100px 100px;
+}
+
+/************** FAQ */
+
+.card {
+    background-color: white;
+    margin: 0px 300px;
+}
+
+.titlefaq {
+    font-family: 'Noticia Text', serif;
+}
+
+#questionsfaq {
+    font-weight: bold;
+    font-size: 22px;
+    color: rgba(0, 128, 0, 0.507);
+    vertical-align: middle;
+}
+
+.textFaq {
+    font-family: 'Noticia Text', serif;
+    font-size: 18px;
+}
+
+/********************************************* INSCRIPTION */
+
+#contenuSubs {
+    margin: 100px 535px;
+    font-family: 'Noticia Text', serif;
+}
+
+#btnSubs {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    border-radius: 10px;
+    background: grey;
+    color: white;
+}
+
+.colonne {
+    background-color: blue;
+    width: 600px;
+    margin: 10px;
 }
 
 
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
 
-#second, #third{
+#first, #second, #third, #valid {
     display: none;
 }
 
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
-
 
 /*form styles*/
+
 #msform {
-	width: 400px;
-	margin: 50px auto;
-	text-align: center;
-	position: relative;
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
 }
+
 // #msform fieldset {
 // 	background: white;
 // 	border: 0 none;
 // 	border-radius: 3px;
 // 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 // 	padding: 20px 30px;
-	
 // 	box-sizing: border-box;
 // 	width: 80%;
 // 	margin: 0 10%;
-	
 // 	/*stacking fieldsets above each other*/
 // 	position: absolute;
 // }
 /*Hide all except first fieldset*/
 
 /*inputs*/
+
 #msform input {
-	padding: 15px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin-bottom: 10px;
-	width: 100%;
-	box-sizing: border-box;
-	font-family: montserrat;
-	color: #2C3E50;
-	font-size: 13px;
-}
-/*buttons*/
-#msform .action-button {
-	width: 100px;
-	background: #27AE60;
-	font-weight: bold;
-	color: white;
-	border: 0 none;
-	border-radius: 1px;
-	padding: 10px 5px;
-	margin: 10px 5px;
-}
-#msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
-}
-/*headings*/
-.fs-title {
-	font-size: 15px;
-	text-transform: uppercase;
-	color: #2C3E50;
-	margin-bottom: 10px;
-}
-.fs-subtitle {
-	font-weight: normal;
-	font-size: 13px;
-	color: #666;
-	margin-bottom: 20px;
-}
-/*progressbar*/
-#progressbar {
-	margin-bottom: 30px;
-	overflow: hidden;
-	/*CSS counters to number the steps*/
-	counter-reset: step;
-}
-#progressbar li {
-	list-style-type: none;
-	color: white;
-	text-transform: uppercase;
-	font-size: 9px;
-	width: 33.33%;
-	float: left;
-	position: relative;
-}
-#progressbar li:before {
-	content: counter(step);
-	counter-increment: step;
-    width: 36px;
-    height: 36px;
-	line-height: 36px;
-	display: block;
-	font-size: 10px;
-	color: #333;
-	background: white;
-	border-radius: 36px;
-	margin: 0 auto 5px auto;
-}
-/*progressbar connectors*/
-#progressbar li:after {
-	content: '';
-	width: 100%;
-	height: 2px;
-	background: rgb(95, 87, 87);
-	position: absolute;
-	left: -50%;
-    top: 15px;
-	z-index: -1; /*put it behind the numbers*/
-}
-#progressbar li:first-child:after {
-	/*connector not needed before the first step*/
-	content: none; 
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
 }
 
-#progressbar li.done:before{
+/*buttons*/
+
+#co .action-button {
+    width: 100px;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button {
+    width: 100px;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+/*headings*/
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+
+#progressbar {
+    width: 800px;
+    margin: 10px auto;
+    text-align: center;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 10%;
+    align-items: center;
+    display: inline-block;
+    position: relative;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: white;
+    border-radius: 36px;
+    margin: 0 auto 5px auto;
+}
+
+/*progressbar connectors*/
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: rgb(177, 168, 168);
+    position: absolute;
+    left: -50%;
+    top: 15px;
+    z-index: -1;
+    /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+#progressbar li.done:before {
     background: #27AE60;
     color: white;
 }
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
-#progressbar li.active:before,  #progressbar li.active:after{
-    background: rgb(202, 226, 212);
-    color: white;
+
+#progressbar li.white:before {
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
+/*marking active/completed steps green*/
 
+/*The number of the step and the connector before it = green*/
 
+#progressbar li.active:before/* , #progressbar li.active:after */ {
+    background: rgb(156, 212, 250);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    
 
-
-
-
+}
 
 // *, *:after, *:before {
 //     margin: 0;
@@ -591,10 +658,8 @@ border-radius: 30px;
 //     box-sizing: border-box;
 //     font-family: "Open Sans";
 //   }
-
-
-#second,#third{
-    display:none;
+#second, #third {
+    display: none;
 }
 
 /* 
@@ -604,9 +669,9 @@ border-radius: 30px;
     box-sizing: border-box;
     font-family: "Open Sans";
   } */
-  
 
-  /* Form Progress */
+/* Form Progress */
+
 //   .progress {
 //     width: 1000px;
 //     margin: 20px auto;
@@ -649,7 +714,6 @@ border-radius: 30px;
 //     line-height: 30px;
 //     margin-left: -5px;
 //   }
-  
 //   /* Done / Active */
 //   .progress .bar.done,
 //   .progress .circle.done {
@@ -662,73 +726,120 @@ border-radius: 30px;
 //   }
 //   .progress .circle.done .title {
 //   }
+//   .progress .circle.active .label {
+//     color: #FFF;
+//     // background: #93dbf9;
+//     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+//     width: 40px;
+//     height: 40px;
+//     margin: -1px 10px 0px -2px;
+//     font-size: 25px;
+//     font-weight: bolder;
+//   }
+//   .progress .circle.active .title {
+//     color: #0c95be;
+//   }
 
-  .progress .circle.active .label {
-    color: #FFF;
-    background: #93dbf9;
-    box-shadow: inset 0 0 2px rgba(0,0,0,.2);
-    width: 40px;
-    height: 40px;
-    margin: -1px 10px 0px -2px;
-    font-size: 25px;
-    font-weight: bolder;
-  }
-  .progress .circle.active .title {
-    color: #0c95be;
-  }
-  
-/************** FAQ */
-
-.card{
-    background-color:white;
-    margin: 0px 300px;
+//LABEL BOUTON
+// .form-check-input {
+//     display: none;
+//   }
+// img {
+//     border: solid;
+// }
+#lieuImage {
+    display: flex;
+    align-items: flex-start;
 }
 
-.titlefaq{
-    font-family: 'Noticia Text', serif;
-
+.form-check-label {
+    display: none;
 }
 
-#questionsfaq{
-    font-weight: bold;
-    font-size: 22px;
-    color : rgba(0, 128, 0, 0.507);
-    vertical-align: middle; 
-        
+.form-check input {
+    display: none;
 }
 
-
- .textFaq{
-    font-family: 'Noticia Text', serif;
-    font-size: 18px;
-
- }
-
- /********************************************* INSCRIPTION */
-
-#contenuSubs{
-    margin: 100px 535px;
-    font-family: 'Noticia Text', serif;
-}
-
-
-
-#btnSubs{
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 8px;
-  border-radius: 10px;
-  background: grey;
-  color: white;
-}
-
-
-.colonne{
+input:checked+label>img {
     background-color: blue;
-    width: 600px;
-    margin: 10px;
+    color: white;
+}
+
+label>img {
+    height: 50%;
+    width: 50%;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    background-color: white;
+    color: blue;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, .2);
+    transition: all 0.4s ease-out;
+}
+
+label>img:hover {
+    background-color: blue;
+    color: white;
+}
+
+//bootstrap browse text
+.custom-file-input~.custom-file-label::after {
+    content: "Envoyer";
+}
+
+.custom-file-input:hover {
+    cursor: pointer;
+}
+
+//Paiement
+.paiement {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    background: rgba(211, 211, 211, 0.5);
+}
+
+.modePaie img {
+    width: 10%;
+    height: 10%;
+}
+
+// .modePaie{
+// 	display: flex;
+//  width:200px;
+// 	height: 40px;
+// 	justify-content: space-between;
+// 	margin: 15px auto 15px auto;
+// }
+.termes {
+    margin-left: 70px;
+    width: 50px;
+}
+
+.buttonPaye {
+    border-radius: 5px;
+    background-color: #ff8a84;
+    width: 100px;
+    height: 40px;
+    padding: 3px;
+    color: white;
+    position: absolute;
+    left: 300px;
+    bottom: 50px;
+}
+
+.co {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+//Fin de formulaire diagnostic
+
+.carousel-item img {
+    object-fit: cover;
 }

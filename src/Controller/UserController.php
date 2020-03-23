@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Repository\DiagnosticRepository;
+use App\Repository\CritereRepository;
 use Symfony\Component\Form\FormView;
 
 
@@ -73,10 +74,14 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
     /**
      * @Route("/user", name="compte_user")    
      */
-    public function infos_user()
+    public function infos_user(UserRepository $ur, DiagnosticRepository $dr, CritereRepository $cr)
     {
-        return $this->render('user/compte_user.html.twig');
-     }
+    $user = $ur->findAll();
+    $diagnostic = $dr->findAll();
+    $critere = $cr->findAll();
+
+        return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr, "critere" => $cr ]);
+    }
 
    
 
@@ -125,9 +130,9 @@ public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id
         $prenom = $request->request->get('prenom');
         $mdp = $request->request->get('password');
 
-        $userAmodifier->setNom($nom);
-        $userAmodifier->setPrenom($prenom);
-        $userAmodifier->setPassword($mdp);
+        $userAsupprimer->setNom($nom);
+        $userAsupprimer->setPrenom($prenom);
+        $userAsupprimer->setPassword($mdp);
         
         $em->remove($userAsupprimer);
         $em->flush();

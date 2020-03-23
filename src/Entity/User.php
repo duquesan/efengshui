@@ -48,7 +48,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Critere", mappedBy="user", orphanRemoval=true)
      */
-    private $criteres;
+    private $critere;
 
     public function __construct()
     {
