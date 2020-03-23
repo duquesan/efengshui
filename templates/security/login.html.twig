@@ -2,7 +2,9 @@
 
 {% block body %}
 <div class="connexion">
-    <h1>{% trans %}Connecte-toi !</h1><br><br><br>
+
+    <h1>{% trans %}Sign in{% endtrans %}</h1><br><br><br>
+
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -29,7 +31,7 @@
         #}
 
         <button id="btnConnect" class="btn btn-lg btn-secondary" type="submit">
-            {% trans %}Se connecter {% endtrans %}
+            {% trans %}Sign in{% endtrans %}
         </button>
     </form>
 </div>

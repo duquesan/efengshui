@@ -14,6 +14,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 
+
 class CriteresController extends AbstractController
 {
 
@@ -34,6 +35,7 @@ class CriteresController extends AbstractController
      */
 
     public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur,TranslatorInterface $translator)
+
     {
         //$demande = new Criteres();
   
@@ -57,20 +59,26 @@ class CriteresController extends AbstractController
                 //On récupère
                 $em->flush();
                 //On lance
+
                 $msg = $translator->trans('Your request has been registered.');
                 $this->addFlash("success", $msg);
+
                 //Permet d'envoyer des messages. Premier le type "error" => "danger", "success",... et ensuite on met le message
                 return $this->redirectToRoute("criteres_ajouter");
                 //Suite à tout ça, on redirige en mettant le name de la route où l'on souhaite rediriger
             } else {
+
                 $msg = $translator->trans("The form is not valid.");
                 $this->addFlash("danger", $msg);
+
                 //Dans le cas où le formulaire n'est pas. "danger" et "succès" sont des classes à bootstrap.
             }
         }
         $formDemande = $formDemande->createView();
+
         
         return $this->render('critere/formulaire.html.twig', compact("formDemande"));
+
 
 
     }

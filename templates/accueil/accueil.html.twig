@@ -23,13 +23,28 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-      <div class="btn_diagnostic">
+    <div class="btn_diagnostic">
 
-        <button class="buttonDiag"><a href="{{ path ("criteres") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
+
+      <!-- Si PAS CONNECTé-->
+      {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+        <button class="buttonDiag"><a href="{{ path("app_login") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
+
+      {% endif %}
+
+      <!-- Si USER-->
+      {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+       
+        <button class="buttonDiag"><a href="{{ path ("critere") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
         
-      </div>
+      {% endif %}
+
+        
+    </div>
 <!-- Fin de Caroussel Bootstarp -->  
+
   <h2 id="titleHome">{% trans %}Feng Shui expertise{% endtrans %}<br>{% trans %}using artificial intelligence{% endtrans %}</h2>
+
   <div class="concept">
     <div class="para-concept">
       <p>
@@ -38,10 +53,12 @@
         new technology is and will be increasingly used. The implementation of an artificial intelligence (chatbot) will on the one hand allow us to have a quick access to information necessary for the expertise. But also to give more precise and faster advice.{% endtrans %}        
       </p>
     </div>
+
     <div class="imgAccueil">
       <img src="/img/boussole.jpg" alt="boussole">
     </div>
   </div>  
+
 
 
   </div><!-- ESTIMATION -->
@@ -69,7 +86,7 @@
     </div><!-- BUDDAH -->
 
   <div class="buddha">
-    <img src="../img/img591.png" alt="" class="">
+    <img src="/img/img591.png" alt="" class="">
   </div>
      <!-- Footer -->
          

@@ -1,3 +1,4 @@
+
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -69,7 +70,10 @@ color: grey;
 
 }
 
+
+
 /*******FIN RESET CSS ******************/
+
 
 /*******HEADER******************/
 body{
@@ -153,15 +157,20 @@ a{
     color: white;
 }
 
-h1{
+.titre_accueil{
     margin: 70px;
-    font-size: 50px;
+    font-size: 40px;
+    
 }
 .concept{
     display: flex;
     margin: 50px;
+    text-align: center;
+    font-weight: bold;
 
 }
+
+
 
 .carousel-item img {
     object-fit: cover;
@@ -169,6 +178,7 @@ h1{
 
 
 /********************************************* accueil */
+
 
 .fondText { 
     background-size: contain;
@@ -197,8 +207,12 @@ h1{
     font-size: 40px;
     margin-left: 2em;
     padding: 10px;
+
+    
+
     color:#4d4d4d;
     font-family: 'Noticia Text', serif; 
+
 }
 
 .para1 {
@@ -214,9 +228,13 @@ h1{
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 10px;
+    text-indent: 1.5em;
+    line-height: 1.5;
     color:#4d4d4d;
     font-family: 'Noticia Text', serif;
+
 }
 
 .imgAccueil{
@@ -242,45 +260,45 @@ h1{
 
 /* page feng shui */
 
-.fondText { 
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -50;
+// .fondText { 
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     z-index: -50;
 
  
-}
-.container {
-    width: 1200px;
-    height: 500px;
-    background-color: white;
-    border: rgba(0, 128, 0, 0.507);
-    border-radius: 15px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+// }
+// .container {
+//     width: 1200px;
+//     height: 500px;
+//     background-color: white;
+//     border: rgba(0, 128, 0, 0.507);
+//     border-radius: 15px;
+//     display: flex;
+//     margin-left: auto;
+//     margin-right: auto;
 
-}
+// }
 
-h2{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
-    padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
+// h2{
+//     text-align: center;
+//     font-weight: bold;
+//     margin: 10px;
+//     padding: 10px;
+//     color : rgba(0, 128, 0, 0.507);
     
-}
+// }
 
-.para1 {
-    width: 400px;
-    height: 450px;
-    margin: 30px;
-    padding: 10px;
-    text-align: justify;
-    font-size: 16px;
-}
+// .para1 {
+//     width: 400px;
+//     height: 450px;
+//     margin: 30px;
+//     padding: 10px;
+//     text-align: justify;
+//     font-size: 16px;
+// }
 
 .card-columns{
     width: 400px;
@@ -432,9 +450,12 @@ margin-top: 3em;
     color: white;
 }
 
+
+
 .reseaux-sociaux i{
     padding: 15px 10px;
 }
+
 
 .border{
 border: 8px solid #666;
@@ -711,7 +732,8 @@ border-radius: 30px;
 //     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
 //   }
 //   .progress .circle.done .title {
-//   }
+
+//     color: #444;}
 
   .progress .circle.active .label {
     color: #FFF;
@@ -763,6 +785,7 @@ border-radius: 30px;
 
 
 
+
 #btnSubs{
   border: none;
   padding: 10px;
@@ -775,3 +798,52 @@ border-radius: 30px;
   background: grey;
   color: white;
 }
+
+
+
+
+
+/********************************************* INFO COMPTE USER */
+.diag{
+    display: flex;
+    align-items: flex-start;
+    width: 700px;
+
+}
+.titre{
+    font-size: 35px;
+    color: rgba(0, 128, 0, 0.507);
+    font-weight: bold;
+    margin: 30px;
+}
+.card-title{
+    font-size: 25px;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+label{
+    padding: 10px;
+    font-size: 20px;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+.table-bordered{
+    text-decoration: solid;
+    color: rgba(0, 128, 0, 0.507);
+
+}
+
+th{
+    height: 18px;
+    font-size: 18px;
+    color: rgba(0, 128, 0, 0.507);
+    padding: 8px;
+    text-align: center;
+
+}
+
+
+
+
