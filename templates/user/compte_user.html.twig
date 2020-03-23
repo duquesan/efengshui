@@ -73,32 +73,61 @@
                 <th>{% trans %}Actions {% endtrans %}</th>
             </tr>
         </thead>
-        <tbody>
-        {% for critere in app.user.criteres %}
+
+
+        {# {% for critere in app.user.criteres %} #}
+            {# <tr> #}
+                {# <td>{{ critere.diagnostic.id }}</td> #}
+                {# <td>{{ critere.diagnostic.date|date("d/m/Y") }}</td> #}
+                {# <td>{{ critere.diagnostic.statut_paiement }}</td> #}
+                {# <td>{{ critere.diagnostic.prix }}</td> #}
+                {# <td>{{ critere.diagnostic.expertise }}</td> #}
+                {# <td>{{ critere.diagnostic.statut_expert }}</td> #}
+            {# </tr> #}
+        {# {% endfor %} #}
+
+        {% for users in user %}
             <tr>
-                <td>{{ critere.diagnostic.id }}</td>
-                <td>{{ critere.diagnostic.date }}</td>
-                <td>{{ critere.diagnostic.statut_paiement }}</td>
-                <td>{{ critere.diagnostic.prix }}</td>
-                <td>{{ critere.diagnostic.expertise }}</td>
-                <td>{{ critere.diagnostic.statut_expert }}</td>
-                <td><a href=""><i class="fas fa-eye"></i></a></td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+
+
+                {#<td><a href=""><i class="fas fa-eye"></i></a></td>#}
+
             </tr>
         {% endfor %}
         </tbody>
         <tfoot>
         </tfoot>
-            </table>
+      </table>
 
       </div>
     </div>
   </div>
 </div>
 
-</div>
-
-
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>N°diagnostic</th><th>Date</th><th>Prix</th><th>Expertise</th>
+                
+            </tr>
+        </thead>
+        {% for critere in app.user.criteres %}
+            <tr>
+                <td>{{ critere.diagnostic.id }}</td>
+                <td>{{ critere.diagnostic.date|date("d/m/Y") }} </td>
+                <td>{{ critere.diagnostic.prix }}</td>
+                <td>{{ critere.diagnostic.expertise }}</td>
+            </tr>
+        {% endfor %}
+        <tfoot>
+            <td><a href=""><i class="fas fa-edit"></i></a></td>
+        </tfoot>
+    </table>
 {% endblock %}
+
 
 
 

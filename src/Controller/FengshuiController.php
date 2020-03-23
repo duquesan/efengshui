@@ -14,9 +14,6 @@ class FengshuiController extends AbstractController
      */
     public function fengshui()
     {
-
-
-
         return $this->render('fengshui/fengshui.html.twig', [
 
             'controller_name' => 'FengshuiController',

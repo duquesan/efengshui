@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as Serializer;
 
 
 /**
@@ -11,46 +11,53 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Critere
 
-{
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *  @Serializer\Groups({"demande"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=10)
+     *  @Serializer\Groups({"demande"})
      */
     private $nb_m_carre;
 
     /**
      * @ORM\Column(name="lieu", type="string", columnDefinition="enum('bureau', 'domicile')")
+     * @Serializer\Groups({"demande"})
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"demande"})
      */
     private $annee_constr;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Serializer\Groups({"demande"})
      */
     private $plan_lieu;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Serializer\Groups({"demande"})
      */
     private $photo_lieu;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Serializer\Groups({"demande"})
      */
     private $orientation;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Serializer\Groups({"demande"})
      */
     private $titre_diagnostic;
 

@@ -4,6 +4,18 @@
 
 {% block body %}
 
+
+<h1>GESTION</h1>
+<button id="clientsList">Liste des Clients</button>
+<button id="diagList">Liste des Diagnostics</button>
+<button id="demandesList">Liste des Demandes</button>
+<div>
+    <table class="table table-bordered">
+        <thead class="entete">   
+        </thead>
+        <tbody class="corps">
+        </tbody>
+    </table>
 <h1>{% trans %}MANAGEMENT{% endtrans %}</h1>
 <button onclick="myFunction()">{% trans %}Customer List{% endtrans %}</button>
 
@@ -34,6 +46,8 @@
         <tfoot>
             
         </tfoot>
+
     </table>
-    </button>
+</div>
+   
 {% endblock %}
