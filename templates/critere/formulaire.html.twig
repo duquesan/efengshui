@@ -12,13 +12,13 @@
 	<!-- progressbar -->
 	<ul id="progressbar">
 	
-		<li class="active">Etape 1</li>
-		<li>Etape 2</li>
-		<li>Etape 3</li>
+		<li class="active">{% trans %}Step 1 {% endtrans %}</li>
+		<li>{% trans %}Step 2 {% endtrans %}</li>
+		<li>{% trans %}Step 3 {% endtrans %}</li>
 	</ul>
 	<!-- fieldsets -->
 	<fieldset id="first">
-		<h2 class="fs-title">Etape 1</h2>
+		<h2 class="fs-title">{% trans %}Step 1 {% endtrans %}</h2>
 			    {{ form_start(formDemande) }}
 				{{ form_row(formDemande.titre_diagnostic)}}
 				{{ form_row(formDemande.nb_m_carre)}}
@@ -29,7 +29,7 @@
 	</fieldset>
 	<fieldset id="second">
 
-		<h2 class="fs-title">Etape 2</h2>
+		<h2 class="fs-title">{% trans %}Step 2 {% endtrans %}</h2>
 				{{ form_row(formDemande.plan_lieu)}}
 				{{ form_row(formDemande.photo_lieu)}}
 				{{ form_row(formDemande.orientation)}}
@@ -39,7 +39,7 @@
 	</fieldset>
 	<fieldset id="third">
 
-		<h2 class="fs-title">Etape 3</h2>
+		<h2 class="fs-title">{% trans %}Step 3 {% endtrans %}</h2>
 		<input type="button" name="previous" id="prev-3" class="previous action-button" value="Previous">
 				{{ form_row(formDemande.ajouter) }}
 				{{ form_end(formDemande) }}	

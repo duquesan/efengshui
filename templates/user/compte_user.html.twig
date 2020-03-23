@@ -5,16 +5,16 @@
 {% block body %}
 
 
-<h2>Mon Compte</h2>
+<h2>{% trans %}My account{% endtrans %}</h2>
 
 
-<h3>Mes informations</h3>
+<h3>{% trans %}My informations {% endtrans %}</h3>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th><th>Nom</th><th>Prenom</th>
-                <th>Actions</th>
+                <th>{% trans %}Id{% endtrans %}</th><th>{% trans %}Name{% endtrans %}</th><th>{% trans %}First name{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
 
@@ -31,13 +31,13 @@
         </tfoot>
     </table>
 
-<h3>Mes diagnostic</h3>
+<h3>{% trans %}My diagnostics {% endtrans %}</h3>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th><th>Date</th><th>Statut paiement</th><th>Prix</th><th>Expertise</th><th>Statut expertise</th>
-                <th>Actions</th>
+                <th>{% trans %}Id {% endtrans %}</th><th>{% trans %}Date {% endtrans %}</th><th>{% trans %}Payment status{% endtrans %}</th><th>{% trans %}Price{% endtrans %}</th><th>{% trans %}Expertise {% endtrans %}</th><th>{% trans %}Expertise status{% endtrans %}</th>
+                <th>{% trans %}Actions {% endtrans %}</th>
             </tr>
         </thead>
 
