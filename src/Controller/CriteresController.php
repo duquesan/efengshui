@@ -14,20 +14,28 @@ use App\Form\Criteres2Type;
 use App\Entity\User;
 use App\Entity\Critere;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializationContext;
+use JMS\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 
 class CriteresController extends AbstractController
 {
+
    /**
      * @Route("/criteres/ajouter", name="criteres_ajouter")
      */
 
     public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils): Response
-    {
+   {
         $user = new User();
         $formConnexion = $this->createForm(ConnexionType::class);
         //$demande = new Criteres();
+
         $formDemande = $this->createForm(CriteresType::class);
         //Il crée le formulaire à partir du LivreType::class, d'où l'argument
 
@@ -41,6 +49,7 @@ class CriteresController extends AbstractController
                 $nouvelleDemande = $formDemande->getData();
                 //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
                 // pour définir dans quel dossier va être enregistré l'image téléchargée
+
                 $destination = $this->getParameter("dossier_images");
                 //Je mets les informations de la photo téléchargée dans la variable phototelecharger et s'il y a bien une photo téléchargée
                 if(($planTelecharge = $formDemande["plan_lieu"]->getData()) && ($photoTelechargee = $formDemande["photo_lieu"]->getData())){
@@ -66,17 +75,50 @@ class CriteresController extends AbstractController
                 //On récupère
                 $em->flush();
                 //On lance
-                $this->addFlash("success", "Votre demande a bien été enregistrée");
+
+                $msg = $translator->trans('Your request has been registered.');
+                $this->addFlash("success", $msg);
+
                 //Permet d'envoyer des messages. Premier le type "error" => "danger", "success",... et ensuite on met le message
                 // return $this->redirectToRoute("accueil");
                 //Suite à tout ça, on redirige en mettant le name de la route où l'on souhaite rediriger               
             } else {
-                $this->addFlash("danger", "Le formulaire n'est pas valide");
+
+                $msg = $translator->trans("The form is not valid.");
+                $this->addFlash("danger", $msg);
+
                 //Dans le cas où le formulaire n'est pas. "danger" et "succès" sont des classes à bootstrap.
             }
         }
+
         $formDemande = $formDemande->createView();      
         $formConnexion = $formConnexion->createView();
         return $this->render('critere/formulaire.html.twig', compact('formDemande', 'formConnexion'));
+
+
+
+
+    }
+
+
+    /**
+    * @Route("/admin/gestion/listeCritere", name="liste_critere")   
+    * @IsGranted("ROLE_ADMIN") 
+    */
+    public function afficheListeCritere(CritereRepository $cr, SerializerInterface $serializer)
+    {
+        
+        $demandes=$cr->findAll();
+        $data = $serializer->serialize($demandes, 'json', SerializationContext::create()->setGroups(array('demande')));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+        
+
     }
 }
+
+                
+

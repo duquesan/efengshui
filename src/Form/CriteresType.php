@@ -29,7 +29,9 @@ class CriteresType extends AbstractType
             ->add('plan_lieu', Type\FileType::class, ["mapped" => false ], ["required" => false, "label" => "Téléchargez le plan de votre immeuble."])
             ->add('photo_lieu', Type\FileType::class, ["mapped" => false ], ["required" => false, "label" => "Téléchargez les photos de votre appartement."])
             ->add('orientation', Type\ChoiceType::class, ['choices' => [ "Nord" => "nord", "Nord-Ouest" => "nord_ouest", "Nord-Est" => "nord_est", "Est" => "est", "Sud" => "sud", "Sud-Ouest" => "sud_ouest", "Sud-Est" => "sud_est", "Ouest" => "ouest"]] , ["required" => false, "label" => "Veuillez sélectionner l'orientation de votre immeuble."])
+
             ->add('paiement', Type\SubmitType::class)
+
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
