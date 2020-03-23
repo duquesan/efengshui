@@ -63,15 +63,12 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
         ]);
     }
 
-     /**
+    /**
      * @Route("/user", name="compte_user")    
      */
-    public function infos_user(UserRepository $ur, DiagnosticRepository $dr)
+    public function infos_user()
     {
-
-    $user = $ur->findAll();
-    $diagnostic = $dr->findAll();
-        return $this->render('user/compte_user.html.twig', [ "user" => $ur,"diagnostic" => $dr ]);
+        return $this->render('user/compte_user.html.twig');
      }
 
    /**
@@ -96,27 +93,36 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
         $em->persist($userAmodifier);
         $em->flush();
 
-        return $this->redirectToRoute("infos_user");
+        return $this->redirectToRoute("compte_user");
 
     }
     return $this->render('user/modif_user.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]);
 } 
 
+
 /**
  * @Route("/user/supprimer/{id}", name="user_supprimer")
 
  */
-public function supprimer(UserRepository $ur, Request $request,EMI $em, int $id)
+
+public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
 {
+
     $bouton = "delete";
     $userAsupprimer = $ur->find($id);
-    
-    if ($request->isMethod("POST")){
+           
         $em->remove($userAsupprimer);
         $em->flush();
-        return $this->redirectToRoute("infos_user");
-    }
-    return $this->render('user/modif_user.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+
+
+        
+        $this->addFlash(
+            'info',
+            'Votre compte a bien ete supprime'
+        );
+      
+    
+    return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, ]);
 
 
 }
@@ -145,13 +151,17 @@ public function afficheListeUser(UserRepository $ur, SerializerInterface $serial
     $response = new Response($data);
     $response->headers->set('Content-Type', 'application/json');
     return $response;
-
-        /*return $this->json($clients, 200, [], [
-            'groups' => ['liste'],
-            ]);*/
 }
 
-        
+
+        /**
+        * @Route("/admin/gestion", name="gestion")   
+        * @IsGranted("ROLE_ADMIN") 
+        */
+    public function compte_admin(UserRepository $ur)
+        {
+            return $this->render('user/compte_admin.html.twig', [ "user" => $ur->findAll() ]);
+        }
 /**
  * @Route("/admin/user/ajouter", name="user_add")
  * @IsGranted("ROLE_ADMIN")
@@ -180,8 +190,6 @@ public function add(UserRepository $ur, EMI $em, Request $request)
     }
 }
 
-
-
 /**
  * @Route("/admin/user/modifier/{id}", name="user_update")
  * @IsGranted("ROLE_ADMIN")
@@ -201,6 +209,7 @@ public function update(UserRepository $ur, Request $request, EMI $em, int $id)
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
             $userAmodifier->setPassword($mdp);
         }
+        
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
         $userAmodifier->setEmail($email);
