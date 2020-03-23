@@ -4,12 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-class Critere
+
 
 /**
-
  * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
  */
+class Critere
 
 {
     /**

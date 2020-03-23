@@ -4,12 +4,12 @@
 
 {% block body %}
 
-<h1>Liste des utilisateurs</h1>
+<h1>{% trans %}List of users{% endtrans %}</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>id</th><th>Nom</th><th>Prenom</th><th>E-mail</th><th>Rôles</th><th>Mot de Passe</th>
-                <th>Actions</th>
+                <th>{% trans %}id{% endtrans %}</th><th>{% trans %}Name{% endtrans %}</th><th>{% trans %}Firstname{% endtrans %}</th><th>{% trans %}E-mail{% endtrans %}</th><th>{% trans %}Roles{% endtrans %}</th><th>{% trans %}Password{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         {% for user in liste %}

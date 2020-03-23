@@ -71,6 +71,10 @@ color: grey;
 }
 
 
+
+/*******FIN RESET CSS ******************/
+
+
 /*******HEADER******************/
 body{
     background-color: #edf7f1;
@@ -84,6 +88,7 @@ body{
 margin-top: -5px;   
 font-size: 30px;
 font-family: 'Dancing Script', cursive;
+color:#4d4d4d;
 }
 
 
@@ -104,8 +109,7 @@ font-family: 'Dancing Script', cursive;
 .nav-list{
     list-style: none;
     line-height: 40px;
-    margin-right: 50px;
-    text-align: right;
+    margin-left: 30em;
 }
 
 .nav-list li{
@@ -115,7 +119,8 @@ font-family: 'Dancing Script', cursive;
     text-decoration:none;
 }
 .nav-link, .mention a{
-    color: black;
+    color:#4d4d4d;
+    
 }
 
 /***************CARROUSEL***********/
@@ -165,6 +170,16 @@ a{
 
 }
 
+
+
+.carousel-item img {
+    object-fit: cover;
+}
+
+
+/********************************************* accueil */
+
+
 .fondText { 
     background-size: contain;
     background-repeat: no-repeat;
@@ -185,20 +200,19 @@ a{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-  
-
 }
 
-h2{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px;
+#titleHome{
+    text-align: left;
+    font-size: 40px;
+    margin-left: 2em;
     padding: 10px;
-    color : rgba(0, 128, 0, 0.507);
-    font-size: 30px;
 
     
+
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif; 
+
 }
 
 .para1 {
@@ -218,20 +232,15 @@ h2{
     padding: 10px;
     text-indent: 1.5em;
     line-height: 1.5;
-    font-family: "Noticia Text";
-    
-  
-   
-}
-.image{
-    width: 40%;
-    padding: 0px 150px 0px 50px;
-
+    color:#4d4d4d;
+    font-family: 'Noticia Text', serif;
 
 }
-img{
-    width: 320px;
-    height: 330px;
+
+.imgAccueil{
+    width: 500px;
+    height: 400px;
+    padding-bottom: 30em;
 }
 .buddha{
     position: fixed;
@@ -291,6 +300,12 @@ img{
 //     font-size: 16px;
 // }
 
+.card-columns{
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
 /********************************************* ESTIMATION */
 .estimation{
     display:flex;
@@ -320,8 +335,12 @@ position: relative;
 width:280px;
 height: auto;
 background-color: rgba(237,241,241,0.8);
-
 }
+
+.talktext{
+    font-family: 'Noticia Text', serif;
+}
+
 .border{
 border: 8px solid #666;
 }
@@ -400,8 +419,8 @@ color:#4d4d4d;
 
 /******************FOOTER************/
 .page-footer{
+    font-family: 'Noticia Text', serif;
     padding-top: 20px;
-    
     background:#acd7bd;
     width: 100%;
     
@@ -409,16 +428,34 @@ color:#4d4d4d;
 .container-fluid a, h5{
     font-size: 22px;
 }
-.memtion{
+.mention{
 text-align: center;
+color:#4d4d4d;
+margin-top: 3em;
+
 }
 .register-newsletter{
     float: left;
 }
 
+.btn-search{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 8px;
+    background: #4d4d4d;
+    color: white;
+}
+
+
+
 .reseaux-sociaux i{
     padding: 15px 10px;
 }
+
 
 .border{
 border: 8px solid #666;
@@ -429,6 +466,30 @@ border-radius: 30px;
 -webkit-border-radius: 30px;
 -moz-border-radius: 30px;
 
+}
+
+.fa-facebook{
+    color: rgb(27, 27, 95);  
+}
+
+.fa-twitter{
+    color: rgb(44, 190, 209);  
+}
+
+.fa-instagram{
+    color: rgb(209, 32, 171);  
+}
+
+.fa-linkedin-in{
+    color: rgb(30, 92, 184);  
+}
+
+.fa-google-plus-g{
+    color: rgb(209, 27, 3);  
+}
+
+.fa-youtube{
+    color: rgb(175, 1, 1);  
 }
 
 /********************************************* CONNEXION */
@@ -671,8 +732,9 @@ border-radius: 30px;
 //     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
 //   }
 //   .progress .circle.done .title {
+
 //     color: #444;}
-// }
+
   .progress .circle.active .label {
     color: #FFF;
     background: #93dbf9;
@@ -723,6 +785,7 @@ border-radius: 30px;
 
 
 
+
 #btnSubs{
   border: none;
   padding: 10px;
@@ -737,11 +800,7 @@ border-radius: 30px;
 }
 
 
-.colonne{
-    background-color: blue;
-    width: 600px;
-    margin: 10px;
-}
+
 
 
 /********************************************* INFO COMPTE USER */
@@ -784,3 +843,7 @@ th{
     text-align: center;
 
 }
+
+
+
+
