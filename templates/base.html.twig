@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0" />
 
 		<title>
 			{% block title %}e-Feng Shui
@@ -47,7 +48,7 @@
 				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user-circle fa-2x"></i>
 				</a>
-
+	
 
 				<!-- Si PAS CONNECTé-->
 
@@ -112,9 +113,7 @@
 		</ul>
 	</nav>
 </header>
-
-{% block body %}
-
+<div>
 	{% for type, messages in app.flashes %}
 		<div class="alert alert-{{ type }}">
 			{% for message in messages %}
@@ -122,6 +121,10 @@
 			{% endfor %}
 		</div>
 	{% endfor %}
+</div>
+
+{% block body %}
+
 
 {% endblock %}<footer class="page-footer">
 <!-- Footer Links -->

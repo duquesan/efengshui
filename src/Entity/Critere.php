@@ -52,7 +52,7 @@ class Critere
     private $photo_lieu;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string")
      * @Serializer\Groups({"demande"})
      */
     private $orientation;
@@ -140,12 +140,12 @@ class Critere
         return $this;
     }
 
-    public function getOrientation(): ?bool
+    public function getOrientation(): ?string
     {
         return $this->orientation;
     }
 
-    public function setOrientation(bool $orientation): self
+    public function setOrientation(?string $orientation): self
     {
         $this->orientation = $orientation;
 
