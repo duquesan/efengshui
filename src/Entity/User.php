@@ -187,6 +187,7 @@ class User implements UserInterface
         return $this;
     }
 
+
     public function eraseCredentials()    {
     }
      /**
@@ -194,6 +195,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $resetToken;
+
 
     /**
      * @return string

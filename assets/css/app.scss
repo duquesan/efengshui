@@ -89,6 +89,7 @@ font-family: 'Dancing Script', cursive;
 color:#4d4d4d;
 }
 
+
 .sloggan{
     padding-left:30px;
 }
@@ -104,6 +105,7 @@ color:#4d4d4d;
     display: flex;
     float: right;
 }
+
 
 .fa-globe{
     color:#4d4d4d;
@@ -194,13 +196,6 @@ a {
 
 /********************************************* accueil */
 
-//.fondText {
-//    text-align: center;
-//    font-weight: bold;
-
-//}
-
-
 .fondText { 
     background-size: contain;
     background-repeat: no-repeat;
@@ -270,50 +265,18 @@ a {
     height: 90px;
 }
 
-/*-------------------------------------------------------------------------------------- */
 
-/* page feng shui */
+/*------------------------------------page feng shui-------------------------------------------------- */
 
-// .fondText { 
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     width: 100%;
-//     height: 100%;
-//     position: absolute;
-//     z-index: -50;
-// }
-// .container {
-//     width: 1200px;
-//     height: 500px;
-//     background-color: white;
-//     border: rgba(0, 128, 0, 0.507);
-//     border-radius: 15px;
-//     display: flex;
-//     margin-left: auto;
-//     margin-right: auto;
-// }
-// h2{
-//     text-align: center;
-//     font-weight: bold;
-//     margin: 10px;
-//     padding: 10px;
-//     color : rgba(0, 128, 0, 0.507);
-// }
-// .para1 {
-//     width: 400px;
-//     height: 450px;
-//     margin: 30px;
-//     padding: 10px;
-//     text-align: justify;
-//     font-size: 16px;
-// }
 
 .carte{
     display: flex;
     justify-content: space-around;
     margin: 50px 30px 30px 30px;
     vertical-align: baseline;
+ 
 }
+
 
 .bloc{
     width: 400px;
@@ -330,6 +293,7 @@ a {
     line-height: 1.5;
     text-align: justify;
 }
+
 /********************************************* ESTIMATION */
 
 .estimation {
@@ -663,6 +627,7 @@ border: 8px solid #666;
 
 
 
+
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
 .startDiag{
     font-size: 30px;
@@ -871,6 +836,7 @@ border: 8px solid #666;
     display: none;
 }
 
+
 #msform input:checked+label>img {
     background-color: blue;
     color: white;
@@ -1001,6 +967,11 @@ label{
     padding: 15px;
 }
 
+.btn-dark{
+    margin: 15px;
+    padding: 15px;
+}
+
 .table-bordered{
     text-decoration: solid;
     color: rgba(0, 128, 0, 0.507);
@@ -1014,6 +985,8 @@ th{
     text-align: center;
 }
 
+
 .error-template{
     margin: auto;
 }
+

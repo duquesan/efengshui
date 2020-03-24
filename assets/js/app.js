@@ -189,6 +189,7 @@ $(document).on('change', '.custom-file-input', function (event) {
    min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}."),
 })
 
+
  
 $(document).ready(function() {
 $("#msform").submit(function(e) {
@@ -371,3 +372,4 @@ $("#co").submit(function(e) {
 
       }, 'json' );
    }
+

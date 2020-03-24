@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 
+
 		<meta name="viewport" content="initial-scale=1.0" />
 
 
@@ -48,11 +49,13 @@
 			<!-- Icone "Inscription/Mon compte/Déconnexion"-->
 
 			<div class="dropdown2">
+
 				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user-circle fa-2x"></i>
 				</a>
 
 				<!-- Si PAS CONNECTé-->
+
 
 				{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
 
