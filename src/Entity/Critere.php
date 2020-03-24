@@ -10,14 +10,16 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
  */
 class Critere
+{
 
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     *  @Serializer\Groups({"demande"})
+     * @Serializer\Groups({"demande"})
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=10)

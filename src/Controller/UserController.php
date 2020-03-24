@@ -85,16 +85,18 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
     $bouton = "update";
     $userAmodifier = $ur->find($id);
 
+    // Récupération des données envoyées par le formulaire
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
         $prenom = $request->request->get('prenom');
         $mdp = $request->request->get('password');
 
+        // Création d'un objet Record avec les données récupérées
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
         $userAmodifier->setPassword($mdp);
         
-
+        // Enregistrement en BDD
         $em->persist($userAmodifier);
         $em->flush();
 
@@ -115,32 +117,22 @@ public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id
 
     $userAsupprimer = $ur->find($id);
 
+        // Enregistrement en BDD
         $em->remove($userAsupprimer);
         $em->flush();
 
 
-        
+        // Ajout de message Alert
         $this->addFlash(
             'info',
-            'Votre compte a bien ete supprime'
+            'Etes vous sur de bien vouloir supprimer votre compte?'
         );
-      
+        
     
     return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, ]);
 
 
 }
-
-/**
-* @Route("/admin/gestion", name="gestion")   
-* @IsGranted("ROLE_ADMIN") 
-*/
-public function compte_admin()
-{
-  
-    return $this->render('user/compte_admin.html.twig');
-}
-
 /**
 * @Route("/admin/gestion/listeUser", name="liste_user")   
 * @IsGranted("ROLE_ADMIN") 

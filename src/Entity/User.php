@@ -55,7 +55,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Critere", mappedBy="user", orphanRemoval=true)
      */
-    private $critere;
+    private $criteres;
 
     public function __construct()
     {
@@ -186,6 +186,8 @@ class User implements UserInterface
 
         return $this;
     }
-
+    public function eraseCredentials()
+    {
+    }
 
 }
