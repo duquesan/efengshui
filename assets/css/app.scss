@@ -1,4 +1,5 @@
 
+
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @font-face {
@@ -71,29 +72,34 @@ body {
     margin: 0;
     padding: 0;
     width: auto;
-
+}
 
 .navbar-logo h1{
 margin-top: -5px;   
 font-size: 30px;
 font-family: 'Dancing Script', cursive;
 color:#4d4d4d;
-
-
-.navbar-logo h1 {
-    margin-top: -5px;
-    font-size: 30px;
-    font-family: 'Dancing Script', cursive;
 }
 
-.icone-entete i {
-    color: red;
-    padding: 5px;
+#imglogo{
+    widows:200px;
+    height:150px;
+    margin:10px 10px 10px 10px;
 }
 
-.icone-entete {
-    margin-top: 25px;
-    margin-left: 40px;
+.icones{
+    display: flex;
+    float: right;
+}
+
+.fa-globe{
+    color:#4d4d4d;
+    margin:10px 20px 10px 20px;
+}
+
+.fa-user-circle{
+    color:#4d4d4d;
+    margin:10px -10px 5px 20px;
 }
 
 .col-lg-1 {
@@ -103,8 +109,11 @@ color:#4d4d4d;
 
 .nav-list {
     list-style: none;
-    line-height: 40px;
-    margin-left: 30em;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .nav-list li {
@@ -129,6 +138,14 @@ body {
 
 .carousel-inner {
     position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 .btn_diagnostic {
@@ -171,12 +188,6 @@ a {
 //}
 
 
-
-.carousel-item img {
-    object-fit: cover;
-}
-
-
 .fondText { 
     background-size: contain;
     background-repeat: no-repeat;
@@ -201,8 +212,6 @@ a {
 #titleHome{
     text-align: left;
     font-size: 40px;
-    margin-left: 2em;
-    padding: 10px;
     color:#4d4d4d;
     font-family: 'Noticia Text', serif; 
 
@@ -217,7 +226,7 @@ a {
     font-size: 16px;
 }
 
-.para-concept {
+.textAccueil {
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
@@ -229,13 +238,13 @@ a {
     font-family: 'Noticia Text', serif;
 }
 
-.image {
-    width: 40%;
-    padding: 0px 150px 0px 50px;
+#boussole{
+    width:400px;
+    height:400px;
+    margin-left:100px;
+    margin-bottom: 100px;
 }
-
-
-  
+ 
 .buddha {
     position: fixed;
     right: 10px;
@@ -247,7 +256,7 @@ a {
     height: 90px;
 }
 
-/*--------------------------------------------------------------------------------------------------------- */
+/*-------------------------------------------------------------------------------------- */
 
 /* page feng shui */
 
@@ -285,12 +294,29 @@ a {
 //     font-size: 16px;
 // }
 
-.card-columns{
-    width: 400px;
-    margin: 50px auto;
-    text-align: center;
+.carte{
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 30px 30px 30px;
+    vertical-align: baseline;
+ 
 }
 
+.bloc{
+    width: 400px;
+    margin: 10px;
+    background-color: white;
+    
+}
+.card-img{
+    width: 400px;
+    height: 280px;
+}
+.card-text{
+    font-family: "Noticia Text";
+    line-height: 1.5;
+    text-align: justify;
+}
 /********************************************* ESTIMATION */
 
 .estimation {
@@ -332,7 +358,7 @@ background-color: rgba(237,241,241,0.8);
 }
 
 .border{
-border: 8px solid #666;
+border: 2px solid rgb(172, 215, 189);
 }
 
 .round {
@@ -561,11 +587,6 @@ border: 8px solid #666;
     color: white;
 }
 
-.colonne {
-    background-color: blue;
-    width: 600px;
-    margin: 10px;
-}
 
 
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
@@ -748,91 +769,6 @@ border: 8px solid #666;
     display: none;
 }
 
-/* 
-*, *:after, *:before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Open Sans";
-  } */
-
-/* Form Progress */
-
-//   .progress {
-//     width: 1000px;
-//     margin: 20px auto;
-//     padding: 100px;
-//     text-align: center;
-//   }
-//   .progress .circle,
-//   .progress .bar {
-//     display: inline-block;
-//     background:  rgb(207, 206, 206);
-//     width: 36px;
-//     height: 36px;
-//     border-radius: 36px;
-//     margin-top: 1px;
-//   }
-//   .progress .bar {
-//     position: relative;
-//     width: 80px;
-//     height: 0px;
-//     margin: 20px 0px 10px 0px;
-//     border-bottom: none;
-//     border-left: none;
-//     border-right: none;
-//     border-radius: 0;
-//     border: 1px solid rgb(207, 206, 206);
-//   }
-//   .progress .circle .label {
-//     display: inline-block;
-//     width: 36px;
-//     height: 36px;
-//     line-height: 36px;
-//     border-radius: 36px;
-//     margin-top: 1px;
-//     color: #b5b5ba;
-//     font-size: 17px;
-//   }
-//   .progress .circle .title {
-//     color: #b5b5ba;
-//     font-size: 13px;
-//     line-height: 30px;
-//     margin-left: -5px;
-//   }
-//   /* Done / Active */
-//   .progress .bar.done,
-//   .progress .circle.done {
-//     background: #eee;
-//   }
-//   .progress .circle.done .label {
-//     color: #FFF;
-//     background: #acd7bd;
-//     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
-//   }
-//   .progress .circle.done .title {
-//   }
-//   .progress .circle.active .label {
-//     color: #FFF;
-//     // background: #93dbf9;
-//     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
-//     width: 40px;
-//     height: 40px;
-//     margin: -1px 10px 0px -2px;
-//     font-size: 25px;
-//     font-weight: bolder;
-//   }
-//   .progress .circle.active .title {
-//     color: #0c95be;
-//   }
-
-//LABEL BOUTON
-// .form-check-input {
-//     display: none;
-//   }
-// img {
-//     border: solid;
-// }
 #lieuImage {
     display: flex;
     align-items: flex-start;
@@ -854,13 +790,13 @@ border: 8px solid #666;
   
 /************** FAQ */
 
-.form-check-label {
-    display: none;
-}
+// .form-check-label {
+//     display: none;
+// }
 
-.form-check input {
-    display: none;
-}
+// .form-check input {
+//     display: none;
+// }
 
 input:checked+label>img {
     background-color: blue;
@@ -938,7 +874,7 @@ label>img:hover {
     width: 400px;
     margin: 50px auto;
     text-align: center;
-
+}
 
 //Fin de formulaire diagnostic
 
@@ -951,14 +887,22 @@ label>img:hover {
 }
 .titre{
     font-size: 35px;
-    color: rgba(0, 128, 0, 0.507);
     font-weight: bold;
+    text-align: center;
     margin: 30px;
+    padding: 20px;
 }
 .card-title{
     font-size: 25px;
     color: rgba(0, 128, 0, 0.507);
+    text-align: center;
+    padding: 15px;
 
+}
+
+.fa-eye{
+    background-color: grey;
+    width: 21px;
 }
 
 label{
@@ -966,6 +910,11 @@ label{
     font-size: 20px;
     color: rgba(0, 128, 0, 0.507);
 
+}
+
+.btn-dark{
+    margin: 15px;
+    padding: 15px;
 }
 
 .table-bordered{
@@ -980,9 +929,4 @@ th{
     color: rgba(0, 128, 0, 0.507);
     padding: 8px;
     text-align: center;
-
 }
-
-
-
-

@@ -19,7 +19,7 @@ class AccueilController extends AbstractController
     }
 
        /**
-     * @Route("/", name="home")
+     * @Route("/accueil", name="home")
      */
     public function home()
     {
