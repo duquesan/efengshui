@@ -98,12 +98,14 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
     if($request->isMethod("POST")){ 
         $nom = $request->request->get('nom');
         $prenom = $request->request->get('prenom');
-        $mdp = $request->request->get('password');
+        $email = $request->request->get('email');
+      
 
-        // Création d'un objet Record avec les données récupérées
+        // Création des elements avec les données récupérées
         $userAmodifier->setNom($nom);
         $userAmodifier->setPrenom($prenom);
-        $userAmodifier->setPassword($mdp);
+        $userAmodifier->setEmail($email);
+        
         
         // Enregistrement en BDD
         $em->persist($userAmodifier);

@@ -13,13 +13,13 @@
             <input type="text" class="form-control" id="nom" name="nom" value="{{ user is defined ? user.nom : "" }}">
         </div>
             <div class="form-group">
-            <label for="nom">{% trans %}First name{% endtrans %}</label>
+            <label for="prenom">{% trans %}First name{% endtrans %}</label>
             <input type="text" class="form-control" id="prenom" name="prenom" value="{{ user is defined ? user.prenom : "" }}">
         </div>
         <div class="form-group">
-            <label for="password">{% trans %}Password{% endtrans %}</label>
-            <input type="password" class="form-control" id="password" name="password" >
-        </div>
+            <label for="email">{% trans %}Email{% endtrans %}</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{ user is defined ? user.email : "" }}">
+
 
    <button type="submit" name="submit" class="btn btn-dark">{% trans %}Modify{% endtrans %}</button>
     </form>
@@ -27,3 +27,4 @@
 </div>
 
 {% endblock %}
+
