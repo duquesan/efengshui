@@ -186,6 +186,7 @@ class User implements UserInterface
 
         return $this;
     }
+
     public function eraseCredentials()    {
     }
      /**
