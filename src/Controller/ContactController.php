@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Swift_Mailer;
 use App\Form\ContactType;
 use Symfony\Component\Translation\TranslatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class ContactController extends AbstractController
@@ -25,7 +26,7 @@ class ContactController extends AbstractController
             //dd($contact);
             
             // Ici nous enverrons l'e-mail
-            $message = (new Swift_Message('Nouveau contact'))
+            $message = (new \Swift_Message('Nouveau contact'))
             // On attribue l'expéditeur
             ->setFrom($contact['email'])
 

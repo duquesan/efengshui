@@ -40,7 +40,7 @@ class ContactType extends AbstractType
             new Length([ "min" => 2, "max" => 300, "minMessage" => "Le titre doit avoir au moins 2 caractères", "maxMessage" =>"Le titre ne doit pas dépasser 300 caractères" ])
           ]
           ])
-        ->add('envoyer', SubmitType::class)
+        ->add('paiement', SubmitType::class)
     ;}
 
     public function configureOptions(OptionsResolver $resolver)

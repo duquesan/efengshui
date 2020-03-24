@@ -20,17 +20,28 @@ use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 class CriteresController extends AbstractController
 {
+    private $session;
+    
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
 
    /**
      * @Route("/criteres/ajouter", name="criteres_ajouter")
      */
 
-    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils): Response
+    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils)
    {
+        $this->session->set('diagnostic_demande', 'diagnostic_demande');
+        //Name et Value
+        $diagnosticDemande = $this->session->get('diagnostic_demande');
+
         $user = new User();
         $formConnexion = $this->createForm(ConnexionType::class);
         //$demande = new Criteres();
@@ -93,10 +104,6 @@ class CriteresController extends AbstractController
         $formDemande = $formDemande->createView();      
         $formConnexion = $formConnexion->createView();
         return $this->render('critere/formulaire.html.twig', compact('formDemande', 'formConnexion'));
-
-
-
-
     }
 
 

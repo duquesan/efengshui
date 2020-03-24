@@ -17,18 +17,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DiagnosticController extends AbstractController
 {
-    /**
-     * @Route("/diagnostic", name="diagnostic")
-     */
-    public function index()
-    {
-        return $this->render('diagnostic/index.html.twig', [
-            'controller_name' => 'DiagnosticController',
-        ]);
-    }
+    // /**
+    //  * @Route("/diagnostic", name="diagnostic")
+    //  */
+    // public function index()
+    // {
+    //     return $this->render('diagnostic/index.html.twig', [
+    //         'controller_name' => 'DiagnosticController',
+    //     ]);
+    // }
 
      /**
-     * @Route("/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
+     * @Route("admin/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
      */
 
     public function add(DiagnosticRepository $diagRepo, Request $rq, EntityManagerInterface $em,CritereRepository $critereRepo, int $id){
