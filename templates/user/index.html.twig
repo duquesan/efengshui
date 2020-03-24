@@ -15,8 +15,8 @@
         {{ form_row(UserSubsForm.conditions) }}
 
         <button id="btnSubs">{% trans %}Sign me up{% endtrans %}</button>
+        {{ form_row(UserSubsForm._token) }}
     {{ form_end(UserSubsForm) }}
-
     </div>
 
 {% endblock %}

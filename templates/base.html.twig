@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 
+		<meta name="viewport" content="initial-scale=1.0" />
+
+
 		<title>
 			{% block title %}e-Feng Shui
 			{% endblock %}
@@ -15,15 +18,16 @@
 
 	<header>
 		<nav class="main-navigation"><!-- Logo et sloggan -->
-		
-			<div class="row">
-				<nav class="col-lg-10">
-					<div class="navbar-logo">
-						<a ref="{{ path("accueil") }}" class="nav-link"><img src="/img/logo.png" class="imglogo" atl="logo efeng shui"></a>
-						<h1 class="sloggan">{% trans %}Online Feng Shui Diagnostic Platform{% endtrans %}</h1>
-					</div>
-				</nav>
 
+		</nav>
+		<div class="row">
+			<nav class="col-lg-9">
+				<div class="navbar-logo">
+					<a href="{{ path("accueil") }}"><img src="/img/logo.png" class="imglogo"  atl="logo efeng shui"></a>
+					<h1>{% trans %}Online Feng Shui Diagnostic Platform{% endtrans %}</h1>
+				</div>
+		</div>
+          
 		<div class="icones">
 
 			<!-- Icone "Choix de la langue"-->
@@ -47,7 +51,6 @@
 				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user-circle fa-2x"></i>
 				</a>
-
 
 				<!-- Si PAS CONNECTé-->
 
@@ -92,8 +95,6 @@
 			</div>
 
 		</div>
-			
-			
 
 				<!-- Barre de Menu -->
 
@@ -131,17 +132,23 @@
 <footer class="page-footer">
 <!-- Footer Links -->
 
+</div>
+
+{% block body %}
+
 <div class="container-fluid">
 
 	<!-- Grid row -->
 	<div class="row">
 
 		<!-- Grid column -->
-		<div class="col-lg-6">
+
+		<div
+			class="col-lg-6">
 
 			<!-- Content -->
 			<div class="mention">
-				<a href="#" title="mentions legales">{% trans %}Legal notices{% endtrans %}</a><br>
+				<a href="{{ path("mentions_legales") }}" title="mentions legales">{% trans %}Legal notices{% endtrans %}</a><br>
 				<a href="{{ path("contact") }}" title="contactez-nous">{% trans %}Contact us{% endtrans %}</a>
 			</div>
 		</div>
@@ -150,6 +157,7 @@
 		<div class="col-lg-5">
 
 			<!-- Newsletter -->
+
 			<div class="newsletter">
 
 			<h5 class="newsletter" {% trans %}>Newsletter{% endtrans %}</h5>
@@ -159,6 +167,7 @@
 			</form>
 
 			</div>
+
 
 			<!-- Icones réseaux sociaux -->
 
@@ -196,5 +205,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </footer>
-
 </html>
