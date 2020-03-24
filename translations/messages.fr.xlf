@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="zOsdb48" resname="Start your Diagnostic">
         <source>Start your Diagnostic</source>
-        <target>Commencez votre diagnostique</target>
+        <target>Commencez votre diagnostic</target>
       </trans-unit>
       <trans-unit id="6H3R6rY" resname="Feng Shui expertise">
         <source>Feng Shui expertise</source>
@@ -49,7 +49,7 @@
       </trans-unit>
       <trans-unit id="SgIkcQK" resname="Online Feng Shui Diagnostic Platform">
         <source>Online Feng Shui Diagnostic Platform</source>
-        <target>Plateforme de diagnostique Feng Shui en ligne</target>
+        <target>Plateforme diagnostic Feng Shui en ligne</target>
       </trans-unit>
       <trans-unit id="nWMiwfT" resname="Login">
         <source>Login</source>
@@ -77,14 +77,14 @@
       </trans-unit>
       <trans-unit id="yunPGwl" resname="List of diagnostics">
         <source>List of diagnostics</source>
-        <target>Liste des diagnostiques</target>
+        <target>Liste des diagnostics</target>
       </trans-unit>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
         <target>Accueil</target>
       </trans-unit>
       <trans-unit id="icWhdy1" resname="Diagnostique">
-        <source>Diagnostique</source>
+        <source>Diagnostic</source>
         <target>Diagnostic</target>
       </trans-unit>
       <trans-unit id="AEGvGpQ" resname="Feng Shui">
@@ -316,7 +316,7 @@
       </trans-unit>
       <trans-unit id="sfqHipi" resname="Diagnostic">
         <source>Diagnostic</source>
-        <target>Diagnostique</target>
+        <target>Diagnostic</target>
       </trans-unit>
       <trans-unit id="3Z.D8h_" resname="&gt;Subject">
         <source>&gt;Subject</source>

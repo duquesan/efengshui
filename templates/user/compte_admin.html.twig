@@ -3,28 +3,32 @@
 {% block title %} e-Feng Shui {% endblock %}
 
 {% block body %}
-
-<h1 class="titre">{% trans %}MANAGEMENT{% endtrans %}</h1>
-<div id="load"></div>
-<div class="btn-group-vertical">
-    <button type="button" class="btn btn-secondary"id="clientsList">{% trans %}Customer List{% endtrans %}</button>
-    <button type="button" class="btn btn-secondary" id="diagList">{% trans %}Diagnostic List{% endtrans %}</button>
-    <button type="button" class="btn btn-secondary" id="demandesList">{% trans %}Request List{% endtrans %}</button>
+<div id="blocTgestion">
+    <h1 class="titre">{% trans %}MANAGEMENT{% endtrans %}</h1>
+    <div id="load"></div>
 </div>
-<div id="resultat">
-    <div class="flex-column-reverse">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">{% trans %}My diagnostics {% endtrans %}</h3>
-                    <table class="table table-bordered">
-                        <thead class="entete"> 
-                            <!-- Emplacement des donnees venant de app.js, entete du tableau correspondant à l'une des liste-->  
-                        </thead>
-                        <tbody class="corps">
-                            <!-- Emplacement des donnees venant de app.js, resultat de la requete-->
-                        </tbody>
-                    </table>
+<div class="blocAdmin">
+    <aside>
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-secondary"id="clientsList">{% trans %}Customer List{% endtrans %}</button>
+            <button type="button" class="btn btn-secondary" id="diagList">{% trans %}Diagnostic List{% endtrans %}</button>
+            <button type="button" class="btn btn-secondary" id="demandesList">{% trans %}Request List{% endtrans %}</button>
+        </div>
+    </aside>
+        <div class="flex-column-reverse" id="blocResultat">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="resultat">
+                            <table class="table table-bordered">
+                                <thead class="entete"> 
+                                    <!-- Emplacement des donnees venant de app.js, entete du tableau correspondant à l'une des liste-->  
+                                </thead>
+                                <tbody class="corps">
+                                    <!-- Emplacement des donnees venant de app.js, resultat de la requete-->
+                                </tbody>
+                            </table>
+                    </div>
                 </div>
             </div>
         </div>
