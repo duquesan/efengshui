@@ -45,22 +45,12 @@ class Diagnostic
 
    
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="diagnostics")
+     * @ORM\OneToOne(targetEntity="App\Entity\Critere", inversedBy="diagnostic", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\criteres", inversedBy="diagnostic", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $criteres;
+    private $critere;
 
     
-    public function __construct()
-    {
-        $this->diagnostics = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -127,58 +117,14 @@ class Diagnostic
         return $this;
     }
 
-    
-    public function getUser(): ?User
+    public function getCritere(): ?Critere
     {
-        return $this->user;
+        return $this->critere;
     }
 
-    public function setUser(?User $user): self
+    public function setCritere(Critere $critere): self
     {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Diagnostic[]
-     */
-    public function getDiagnostics(): Collection
-    {
-        return $this->diagnostics;
-    }
-
-    public function addDiagnostic(Diagnostic $diagnostic): self
-    {
-        if (!$this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics[] = $diagnostic;
-            $diagnostic->setCriteres($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDiagnostic(Diagnostic $diagnostic): self
-    {
-        if ($this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics->removeElement($diagnostic);
-            // set the owning side to null (unless already changed)
-            if ($diagnostic->getCriteres() === $this) {
-                $diagnostic->setCriteres(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCriteres(): ?criteres
-    {
-        return $this->criteres;
-    }
-
-    public function setCriteres(criteres $criteres): self
-    {
-        $this->criteres = $criteres;
+        $this->critere = $critere;
 
         return $this;
     }

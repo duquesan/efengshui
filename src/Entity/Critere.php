@@ -3,63 +3,74 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CriteresRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
  */
-class Criteres
+class Critere
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"demande"})
      */
     private $id;
 
+
     /**
      * @ORM\Column(type="string", length=10)
+     *  @Serializer\Groups({"demande"})
      */
     private $nb_m_carre;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(name="lieu", type="string", columnDefinition="enum('bureau', 'domicile')")
+     * @Serializer\Groups({"demande"})
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"demande"})
      */
     private $annee_constr;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Serializer\Groups({"demande"})
      */
     private $plan_lieu;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Serializer\Groups({"demande"})
      */
     private $photo_lieu;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string")
+     * @Serializer\Groups({"demande"})
      */
     private $orientation;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Serializer\Groups({"demande"})
      */
     private $titre_diagnostic;
 
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Diagnostic", mappedBy="criteres", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Diagnostic", mappedBy="critere", cascade={"persist", "remove"})
      */
     private $diagnostic;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="criteres")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="critere")
      */
     private $user;
 
@@ -81,12 +92,12 @@ class Criteres
         return $this;
     }
 
-    public function getLieu(): ?bool
+    public function getLieu(): ?string
     {
         return $this->lieu;
     }
 
-    public function setLieu(bool $lieu): self
+    public function setLieu(string $lieu): self
     {
         $this->lieu = $lieu;
 
@@ -129,12 +140,12 @@ class Criteres
         return $this;
     }
 
-    public function getOrientation(): ?bool
+    public function getOrientation(): ?string
     {
         return $this->orientation;
     }
 
-    public function setOrientation(bool $orientation): self
+    public function setOrientation(?string $orientation): self
     {
         $this->orientation = $orientation;
 
@@ -164,23 +175,30 @@ class Criteres
         $this->diagnostic = $diagnostic;
 
         // set the owning side of the relation if necessary
-        if ($diagnostic->getCriteres() !== $this) {
-            $diagnostic->setCriteres($this);
+
+        if ($diagnostic->getCritere() !== $this) {
+            $diagnostic->setCritere($this);
+
         }
 
         return $this;
     }
 
-    public function getUser(): ?user
+
+    public function getUser(): ?User
+
+
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+
+    public function setUser(?User $user): self
+
     {
         $this->user = $user;
 
         return $this;
     }
-    
+
 }

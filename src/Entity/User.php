@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * 
  */
 class User implements UserInterface
 {
@@ -14,16 +18,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"list","demande"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Serializer\Groups({"list"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Serializer\Groups({"list"})
      */
     private $roles = [];
 
@@ -35,28 +42,23 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Serializer\Groups({"list"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Serializer\Groups({"list"})
      */
     private $prenom;
 
-     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Diagnostic", mappedBy="user", orphanRemoval=true)
-     */
-    private $diagnostics;
-
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Criteres", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Critere", mappedBy="user", orphanRemoval=true)
      */
     private $criteres;
 
     public function __construct()
     {
-        $this->diagnostic = new ArrayCollection();
-        $this->diagnostics = new ArrayCollection();
         $this->criteres = new ArrayCollection();
     }
 
@@ -155,45 +157,14 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Diagnostic[]
-     */
-    public function getDiagnostics(): Collection
-    {
-        return $this->diagnostics;
-    }
-
-    public function addDiagnostic(Diagnostic $diagnostic): self
-    {
-        if (!$this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics[] = $diagnostic;
-            $diagnostic->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDiagnostic(Diagnostic $diagnostic): self
-    {
-        if ($this->diagnostics->contains($diagnostic)) {
-            $this->diagnostics->removeElement($diagnostic);
-            // set the owning side to null (unless already changed)
-            if ($diagnostic->getUser() === $this) {
-                $diagnostic->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Criteres[]
+     * @return Collection|Critere[]
      */
     public function getCriteres(): Collection
     {
         return $this->criteres;
     }
 
-    public function addCritere(Criteres $critere): self
+    public function addCritere(Critere $critere): self
     {
         if (!$this->criteres->contains($critere)) {
             $this->criteres[] = $critere;
@@ -203,7 +174,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeCritere(Criteres $critere): self
+    public function removeCritere(Critere $critere): self
     {
         if ($this->criteres->contains($critere)) {
             $this->criteres->removeElement($critere);
@@ -215,13 +186,27 @@ class User implements UserInterface
 
         return $this;
     }
+    public function eraseCredentials()    {
+    }
+     /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $resetToken;
 
     /**
-     * @see UserInterface
+     * @return string
      */
-    public function eraseCredentials()
+    public function getResetToken(): string
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        return $this->resetToken;
+    }
+
+    /**
+     * @param string $resetToken
+     */
+    public function setResetToken(?string $resetToken): void
+    {
+        $this->resetToken = $resetToken;
     }
 }
