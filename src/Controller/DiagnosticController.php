@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DiagnosticController extends AbstractController
 {
+
     /**
      * @Route("/diagnostic", name="diagnostic")
      */
@@ -27,7 +28,7 @@ class DiagnosticController extends AbstractController
     }
 
      /**
-     * @Route("/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
+     * @Route("admin/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
      */
     public function add(Request $rq, EntityManagerInterface $em,CritereRepository $critereRepo, int $id){
 

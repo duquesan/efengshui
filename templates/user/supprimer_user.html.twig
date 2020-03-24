@@ -1,12 +1,9 @@
 {% extends 'base.html.twig' %}
 
-<head>
+ 
 
-{% block %} <meta http-equiv="refresh" content="1000 ; url=accueil.html.twig">{% endblock %}
+
 {% block title %}e-Feng Shui{% endblock %}
-
-</head>
-
 
 
 
@@ -15,12 +12,12 @@
 
     
     {% for message in app.flashes('info') %}
-    <div class="alert alert-succes">
+    <div class="alert alert-info" role="alert">
     {{ message}}
 
     </div 
     {% endfor %}
 
-
+<button><a href="{{ path("accueil") }}" class="btn btn-dark" onclick="return confirm('Votre compte a bien été supprime')">Confirmer</a></button>
  
 {% endblock %}

@@ -20,28 +20,29 @@ class UserSubsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', Type\TextType::class, ["attr"=> ["placeholder" => "Entrez votre nom"]])
-            ->add('prenom', Type\TextType::class, ["label"=>"Prénom","attr"=> ["placeholder" => "Entrez votre prénom"]])
-            ->add('email', Type\TextType::class, ["attr"=> ["placeholder" => "Entrez votre adresse mail"]])
-            ->add('password', PasswordType::class, ["label"=>"Mot de passe","help"=>"Votre mot de passe doit contenir au moins 6 caractères","attr"=>["placeholder" => "Entrez votre mot de passe"],
+            ->add('nom', Type\TextType::class, ["label"=>"Name","attr"=> ["placeholder" => "Enter your name"]])
+            ->add('prenom', Type\TextType::class, ["label"=>"First name","attr"=> ["placeholder" => "Enter your first-name"]])
+            ->add('email', Type\TextType::class, ["label"=>"Email","attr"=> ["placeholder" => "Enter your email"]])
+            ->add('password', PasswordType::class, ["label"=>"Password","help"=>"Your password must have minimum 6 caracters","attr"=>["placeholder" => "Enter your password"],
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Entrez votre mot de passe',
+                        'message' => 'Enter your password',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
+                        'minMessage' => 'Your password must have minimum {{ limit }} caracters',
                         'max' => 4096,
                     ]),
                 ],
             ])
 
-            ->add('conditions', CheckboxType::class, [ "label"=>"J'accepte les conditions générales du site",
+            ->add('conditions', CheckboxType::class, [ "label"=>"I accept de legal conditions",
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => "Veuillez accepter les conditions afin de valider votre inscription",
+                        
+                        'message' => "You have to confirm the conditions legal to subscribe",
                     ]),
                 ],
             ])
