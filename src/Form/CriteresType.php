@@ -21,16 +21,15 @@ class CriteresType extends AbstractType
     {
         $builder
             ->add('titre_diagnostic', Type\TextType::class, ["attr"=> ["placeholder" => "Veuillez entrer le titre de votre diagnostic."], "label" => "Titre de votre diagnostic"])
-            ->add('nb_m_carre', Type\TextType::class, ["label" => "Combien de surface possédez-vous?"])
-            ->add('lieu', Type\ChoiceType::class, ["attr"=>['class' => 'choixLieu', "required" => false], 'choices' => ['Bureau' => 'bureau', 'Domicile' => 'domicile'], "label" => "Pour quel type de lieu voulez-vous faire votre diagnostic Feng Shui?",
+            ->add('nb_m_carre', Type\TextType::class, ["attr"=> ["placeholder" => "En m²."], "label" => "Combien de surface possédez-vous?"])
+            ->add('lieu', Type\ChoiceType::class, ["attr"=>['class' => 'choixLieu'], 'choices' => ['Bureau' => 'bureau', 'Domicile' => 'domicile'], "label" => false,
             'expanded' => true,
             'multiple' => false])
-            ->add('annee_constr', Type\TextType::class, [ "label" => "Quelle est l'année de construction de votre immeuble?"])
-            ->add('plan_lieu', Type\FileType::class, ["mapped" => false ], [ "label" => "Téléchargez le plan de votre immeuble."])
-            ->add('photo_lieu', Type\FileType::class, ["mapped" => false ], [ "label" => "Téléchargez les photos de votre appartement."])
+            ->add('annee_constr', Type\TextType::class, ["attr"=> ["placeholder" => "_ _ _ _"], "label" => "Quelle est l'année de construction de votre immeuble?"])
+            ->add('plan_lieu', Type\FileType::class, ["mapped" => false ], ["attr"=> ["label" => "Chargez le plan de votre lieu."]])
+            ->add('photo_lieu', Type\FileType::class, ["mapped" => false ], ["attr"=> ["label" => "Chargez les photos de vos pièces."]])
             ->add('orientation', Type\ChoiceType::class, ['choices' => [ "Nord" => "nord", "Nord-Ouest" => "nord_ouest", "Nord-Est" => "nord_est", "Est" => "est", "Sud" => "sud", "Sud-Ouest" => "sud_ouest", "Sud-Est" => "sud_est", "Ouest" => "ouest"]] , ["label" => "Veuillez sélectionner l'orientation de votre immeuble."])
-
-            ->add('paiement', Type\SubmitType::class)
+            ->add('suivant', Type\SubmitType::class)
 
         ;
     }

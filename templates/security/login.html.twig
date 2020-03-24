@@ -29,10 +29,14 @@
                 </label>
             </div>
         #}
-
+       <div>
+            <a  href="{{ path('app_forgotten_password') }}">Mot de passe oublié</a>
+        </div>
         <button id="btnConnect" class="btn btn-lg btn-secondary" type="submit">
             {% trans %}Sign in{% endtrans %}
         </button>
+   
+
     </form>
 </div>
 {% endblock %}

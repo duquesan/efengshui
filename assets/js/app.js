@@ -4,9 +4,7 @@ require('bootstrap');
 require('jquery-validation');
 
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
-//Je gère les validations via jquery mais je n'ai pas enlevé les contraintes de symfony pour la sécurité. A voir pour mieux faire.
-//Tous les inputs doivent être filtrés. Il faut maintenir une liste des inputs utilisés et leurs contrôles de sécurité correspondants. Concernant la base de données, utiliser les mécaniques proposées par Symfony est une bonne pratique.
-//Doctrine protège à minima pour les requêtes classiques sur les objets.
+
 
 // $(document).ready(function () {
 //    $("#next-1").click(function () {
@@ -171,7 +169,6 @@ $(document).on('change', '.custom-file-input', function (event) {
    });
    */
 
-
   $.extend($.validator.messages, {
    required: "Ce champ est requis.",
    remote: "Veuillez corriger ce champ.",
@@ -233,7 +230,18 @@ $("#co").submit(function(e) {
 
 
 
+
+
+
 //------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
    /* GESTION: liste des clients - liste des diagnostics - liste des critères */
 
@@ -313,3 +321,9 @@ $("#co").submit(function(e) {
 
       }, 'json' );
    }
+
+
+
+
+
+
