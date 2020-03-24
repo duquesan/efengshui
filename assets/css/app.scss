@@ -80,20 +80,25 @@ font-family: 'Dancing Script', cursive;
 color:#4d4d4d;
 }
 
-#boussole{
-    width:30%;
-}
-#imglogo{
-    width: 20%;
-}
-.icone-entete i {
-    color: red;
-    padding: 5px;
+.imglogo{
+    widows:200px;
+    height:150px;
+    margin:10px 10px 10px 10px;
 }
 
-.icone-entete {
-    margin-top: 25px;
-    margin-left: 40px;
+.icones{
+    display: flex;
+    float: right;
+}
+
+.fa-globe{
+    color:#4d4d4d;
+    margin:10px 20px 10px 20px;
+}
+
+.fa-user-circle{
+    color:#4d4d4d;
+    margin:10px -10px 5px 20px;
 }
 
 .col-lg-1 {
@@ -103,8 +108,11 @@ color:#4d4d4d;
 
 .nav-list {
     list-style: none;
-    line-height: 40px;
-    margin-left: 30em;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .nav-list li {
@@ -179,9 +187,6 @@ a {
 //}
 
 
-
-
-
 .fondText { 
     background-size: contain;
     background-repeat: no-repeat;
@@ -206,8 +211,6 @@ a {
 #titleHome{
     text-align: left;
     font-size: 40px;
-    margin-left: 2em;
-    padding: 10px;
     color:#4d4d4d;
     font-family: 'Noticia Text', serif; 
 
@@ -222,25 +225,26 @@ a {
     font-size: 16px;
 }
 
-.para-concept {
+.textAccueil {
     width: 60%;
     padding: 10px 150px 50px 50px;
     text-align: justify;
     font-size: 18px;
     padding: 10px;
+    padding-bottom:10px;
     text-indent: 1.5em;
     line-height: 1.5;
     color:#4d4d4d;
     font-family: 'Noticia Text', serif;
 }
 
-.image {
-    width: 40%;
-    padding: 0px 150px 0px 50px;
+#boussole{
+    width:400px;
+    height:400px;
+    margin-left:100px;
+    margin-bottom: 100px;
 }
-
-
-  
+ 
 .buddha {
     position: fixed;
     right: 10px;
@@ -337,7 +341,7 @@ background-color: rgba(237,241,241,0.8);
 }
 
 .border{
-border: 8px solid #666;
+border: 2px solid rgb(172, 215, 189);
 }
 
 .round {
@@ -394,6 +398,7 @@ border: 8px solid #666;
 
 .inputMcarre {
     width: 40px;
+    ;
 }
 
 /* Button */
@@ -433,32 +438,52 @@ border: 8px solid #666;
 
 .mention{
 text-align: center;
-color:#4d4d4d;
+color:grey;
 margin-top: 3em;
 }
 
 .register-newsletter {
     float: left;
+    padding-left: 55px;
+}
+
+.newsletter{
+    padding-left:57px;
+    padding-bottom:5px;
+    color:grey;
+}
+
+.inp{
+    padding-right: 60px;
+    padding-left: 60px;
+    border:white;
+    border-radius: 2px;
+    background-color: rgba(237,241,241,0.8);
+
 }
 
 .btn-search{
     border: none;
-    padding: 10px;
+    padding: 5px 20px 5px 20px;    
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
     margin: 4px 8px;
-    background: #4d4d4d;
+    background: grey;
     color: white;
+    border-radius: 2px;
+
 }
-
-
 
 .reseaux-sociaux i{
     padding: 15px 10px;
 }
 
+.reseaux-sociaux{
+    display:inline-block;
+    padding-left: 105px;
+}
 
 .border{
 border: 8px solid #666;
@@ -522,6 +547,27 @@ border: 8px solid #666;
     margin: 100px 100px;
 }
 
+/********************************************MENTIONS LEGALES KATIA */
+
+
+.card-body {
+    background-color: white;
+    margin: 40px; 
+}
+.jumbotron{
+    background-color: white;
+}
+.container-mentions h2{
+    font-weight: bold;
+    font-size: 22px;
+    color: rgba(0, 128, 0, 0.507);
+    font-family: 'Noticia Text', serif;
+}
+.card-body {
+    background-color: white;
+    border: solid 2px  rgba(0, 128, 0, 0.507);   
+}
+
 /************** FAQ */
 
 .card {
@@ -576,6 +622,11 @@ border: 8px solid #666;
 
 #first, #second, #third, #valid {
     display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 /*form styles*/
@@ -733,6 +784,8 @@ border: 8px solid #666;
     color: white;
     font-weight: bold;
     font-size: 18px;
+    
+
 }
 
 // *, *:after, *:before {
@@ -851,13 +904,13 @@ border: 8px solid #666;
   
 /************** FAQ */
 
-// .form-check-label {
-//     display: none;
-// }
+.form-check-label {
+    display: none;
+}
 
-// .form-check input {
-//     display: none;
-// }
+.form-check input {
+    display: none;
+}
 
 input:checked+label>img {
     background-color: blue;
@@ -879,7 +932,6 @@ label>img {
     transition: all 0.4s ease-out;
 }
 
-//Préciser l'image
 label>img:hover {
     background-color: blue;
     color: white;
@@ -936,8 +988,8 @@ label>img:hover {
     width: 400px;
     margin: 50px auto;
     text-align: center;
-
 }
+
 //Fin de formulaire diagnostic
 
 /********************************************* INFO COMPTE USER */
@@ -959,12 +1011,12 @@ label>img:hover {
 
 }
 
-// label{
-//     padding: 10px;
-//     font-size: 20px;
-//     color: rgba(0, 128, 0, 0.507);
+label{
+    padding: 10px;
+    font-size: 20px;
+    color: rgba(0, 128, 0, 0.507);
 
-// }
+}
 
 .table-bordered{
     text-decoration: solid;
@@ -972,15 +1024,10 @@ label>img:hover {
 
 }
 
-// th{
-//     height: 18px;
-//     font-size: 18px;
-//     color: rgba(0, 128, 0, 0.507);
-//     padding: 8px;
-//     text-align: center;
-
-// }
-
-
-
-
+th{
+    height: 18px;
+    font-size: 18px;
+    color: rgba(0, 128, 0, 0.507);
+    padding: 8px;
+    text-align: center;
+}
