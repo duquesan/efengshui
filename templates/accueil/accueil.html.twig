@@ -35,7 +35,7 @@
       <!-- Si USER-->
       {% if is_granted("IS_AUTHENTICATED_FULLY") %}
        
-        <button class="buttonDiag"><a href="{{ path ("critere") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
+        <button class="buttonDiag"><a href="{{ path ("criteres_ajouter") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
         
       {% endif %}
 
@@ -43,24 +43,24 @@
     </div>
 <!-- Fin de Caroussel Bootstarp -->  
 
-  <h2 id="titleHome">{% trans %}Feng Shui expertise{% endtrans %}<br>{% trans %}using artificial intelligence{% endtrans %}</h2>
+<div class="concept">
 
-  <div class="concept">
-    <div class="para-concept">
-      <p>
-        {% trans %}Feng Shui is an ancestral Chinese art meaning wind for Feng and water for Shui, based on the harmonization of the space and the individual who lives there. The intervention of a specialist, in our case Monica, expert for more than 5 years, called ''Master'', is necessary to practice the energetic regulation of the place. In order to make a diagnosis, she starts by taking measurements of each of the house or office. Analysis by mathematical calculations, gives a report and then accompaniment. In order to finish it ends with the installation, that is to say the change of the elements of the room by her care or by the client himself. 
+  <div class="textAccueil">
+
+    <h2 id="titleHome">{% trans %}Feng Shui expertise{% endtrans %}<br>{% trans %}using artificial intelligence{% endtrans %}</h2>
+    
+      <p>{% trans %}Feng Shui is an ancestral Chinese art meaning wind for Feng and water for Shui, based on the harmonization of the space and the individual who lives there. The intervention of a specialist, in our case Monica, expert for more than 5 years, called ''Master'', is necessary to practice the energetic regulation of the place. In order to make a diagnosis, she starts by taking measurements of each of the house or office. Analysis by mathematical calculations, gives a report and then accompaniment. In order to finish it ends with the installation, that is to say the change of the elements of the room by her care or by the client himself. 
         We are in an era where the
         new technology is and will be increasingly used. The implementation of an artificial intelligence (chatbot) will on the one hand allow us to have a quick access to information necessary for the expertise. But also to give more precise and faster advice.{% endtrans %}        
       </p>
-    </div>
+  </div>
 
     <div class="imgAccueil">
-      <img src="/img/boussole.jpg" alt="boussole">
+      <img src="/img/boussole.jpg" id="boussole" alt="boussole">
     </div>
-  </div>  
 
-
-
+</div>
+    
   </div><!-- ESTIMATION -->
     <div class="estimation">
         <div class="talk-bubble tri-right border round btm-right-in">
@@ -86,7 +86,7 @@
     </div><!-- BUDDAH -->
 
   <div class="buddha">
-    <img src="/img/img591.png" alt="" class="">
+    <img src="/img/img591.png" alt="buddha" class="">
   </div>
      <!-- Footer -->
          

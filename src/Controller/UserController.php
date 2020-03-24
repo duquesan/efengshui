@@ -130,17 +130,6 @@ public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id
 
 
 }
-
-/**
-* @Route("/admin/gestion", name="gestion")   
-* @IsGranted("ROLE_ADMIN") 
-*/
-public function compte_admin()
-{
-  
-    return $this->render('user/compte_admin.html.twig');
-}
-
 /**
 * @Route("/admin/gestion/listeUser", name="liste_user")   
 * @IsGranted("ROLE_ADMIN") 

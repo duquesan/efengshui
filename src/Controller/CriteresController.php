@@ -18,7 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -47,8 +46,8 @@ class CriteresController extends AbstractController
                 //Je teste s'il est valide
                 //S'il est valide je crée $nouvelleDemande
                 $nouvelleDemande = $formDemande->getData();
-                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
-                // pour définir dans quel dossier va être enregistré l'image téléchargée
+                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
+                // pour définir dans quel dossier va être enregistré l'image téléchargée
 
                 $destination = $this->getParameter("dossier_images");
                 //Je mets les informations de la photo téléchargée dans la variable phototelecharger et s'il y a bien une photo téléchargée
@@ -75,7 +74,7 @@ class CriteresController extends AbstractController
                 //On récupère
                 $em->flush();
                 //On lance
-
+                $translator = "";
                 $msg = $translator->trans('Your request has been registered.');
                 $this->addFlash("success", $msg);
 
