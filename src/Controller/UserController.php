@@ -239,8 +239,6 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
     $bouton = "delete";
     $userAsupprimer = $ur->find($id);
 
-    
-
     if ($request->isMethod("POST")){
         $em->remove($userAsupprimer);
         $em->flush();

@@ -17,25 +17,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DiagnosticController extends AbstractController
 {
-    // /**
-    //  * @Route("/diagnostic", name="diagnostic")
-    //  */
-    // public function index()
-    // {
-    //     return $this->render('diagnostic/index.html.twig', [
-    //         'controller_name' => 'DiagnosticController',
-    //     ]);
-    // }
+
+    /**
+     * @Route("/diagnostic", name="diagnostic")
+     */
+    public function index(){
+        return $this->render('diagnostic/index.html.twig', [
+            'controller_name' => 'DiagnosticController',
+        ]);
+    }
 
      /**
      * @Route("admin/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
      */
-
-    public function add(DiagnosticRepository $diagRepo, Request $rq, EntityManagerInterface $em,CritereRepository $critereRepo, int $id){
+    public function add(Request $rq, EntityManagerInterface $em,CritereRepository $critereRepo, int $id){
 
         $cr=$critereRepo->find($id);
         $surface=$cr->getNbMCarre();
 
+        //Ici on determine le prix du diagnostic en fonction de la surface
         if( $surface <= 25){
             $prix=50;
         }
@@ -49,22 +49,30 @@ class DiagnosticController extends AbstractController
             $prix=200;
         }
         
-      
+        //ici on gère le chargement du pdf contenant le diagnostic
+        if( $rq->isMethod("POST") ){
+            $pdf = $rq->files->get("pdfExpertise")->getData();
+            dd($pdf);
+            $destination = $this->getParameter("dossier_images");
+        }
+        else{
+            $pdf="diagnostic.pdf";
+        }
+
+        //Creation de l'objet diagnostic
         $diagnostic = new Diagnostic; 
         $diagnostic->setDate(new \DateTime('now'));
         $diagnostic->setPrix($prix);
         $diagnostic->setStatutPaiement(true);
         $diagnostic->setStatutExpertise(true);
-        $diagnostic->setExpertise("PDF");
+        $diagnostic->setExpertise($pdf);
         $diagnostic->setCritere($cr);
 
+        //Insertion dans la table Diagnostic
         $em->persist($diagnostic);
         $em->flush();
 
         return $this->redirectToRoute("gestion");
-
-    
-        //return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
         
     }
 
@@ -74,14 +82,20 @@ class DiagnosticController extends AbstractController
     */
     public function afficheListeDiagnostic(DiagnosticRepository $dg, SerializerInterface $serializer)
     {
-        
+        //Je récupère les diagnostics
         $diagnostics=$dg->findAll();
+
+        //Je serialize les donnee (objets) au format json pour être envoyé en methode ajax
+        //J'ai fait cela pour éviter les soucis liées aux relations entre les entités
         $data = $serializer->serialize($diagnostics, 'json');
 
+        //Je crée une "Reponse" pour pouvoir envoyer les données  
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
         
     }
+
+  
 }

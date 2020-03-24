@@ -189,6 +189,25 @@ $(document).on('change', '.custom-file-input', function (event) {
    min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}."),
 })
 
+  $.extend($.validator.messages, {
+   required: "Ce champ est requis.",
+   remote: "Veuillez corriger ce champ.",
+   email: "Veuillez entrer une adresse e-mail valide.",
+   url: "Veuillez entrer une URL valide.",
+   date: "Veuillez entrer une date valide.",
+   dateISO: "Veuillez entrer une date valide (ISO).",
+   number: "Veuillez entrer un numéro valide.",
+   digits: "Ce champ ne peut contenir que des chifres",
+   creditcard: "Veuillez entrer une carte de crédit valide.",
+   equalTo: "Les valeurs ne correspondent pas.",
+   accept: "Veuillez entre une extension autorisée.",
+   maxlength: $.validator.format("N'entrez pas plus de {0} caractères."),
+   minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+   rangelength: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+   range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+   max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+   min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}."),
+})
 
  
 $(document).ready(function() {
@@ -229,9 +248,7 @@ $("#co").submit(function(e) {
 });
 });
 
-
-
-  $.extend($.validator.messages, {
+$.extend($.validator.messages, {
    required: "Ce champ est requis.",
    remote: "Veuillez corriger ce champ.",
    email: "Veuillez entrer une adresse e-mail valide.",
@@ -292,26 +309,27 @@ $("#co").submit(function(e) {
 
 
 
+
 //------------------------------------------------------------------------------------------------------------------------------
 
    /* GESTION: liste des clients - liste des diagnostics - liste des critères */
 
-   $("#clientsList").click( function(e){ 
+   $("#clientsList").click( function(){ 
    //je récupère le bouton 'Liste des clients', lorsque je clique dessus j'exécute une fonction de callback
-
-      e.preventDefault(); //annule rechargement de la page (par défaut)
+      Display_Load()
+      //e.preventDefault(); //annule rechargement de la page (par défaut)
       ajax(); //j'exécute la fonction ajax()
    });
 
-   $("#diagList").click( function(e){ 
-   
-      e.preventDefault(); 
+   $("#diagList").click( function(){ 
+      Display_Load()
+      //e.preventDefault(); 
       ajax2(); 
    });
 
-   $("#demandesList").click( function(e){ 
-   
-      e.preventDefault(); 
+   $("#demandesList").click( function(){ 
+      Display_Load()
+      //e.preventDefault(); 
       ajax3(); 
    });
 
@@ -324,6 +342,7 @@ $("#co").submit(function(e) {
       //$.getJSON : permet d'accéder au contenu du getJSON renvoyé par le controleur
       $.getJSON("/admin/gestion/listeUser",function( donnees ){
 
+         Hide_Load();
          /* j'efface le contenu de ".entete" et ".corps" pour le vider avant d'ajouter mes donnees*/
          $(".entete").empty();
          $(".corps").empty();
@@ -344,13 +363,14 @@ $("#co").submit(function(e) {
       
       $.getJSON("/admin/gestion/listeDiagnostic",function( donnees ){
 
+         Hide_Load();
          $(".entete").empty();
          $(".corps").empty();
 
-         $(".entete").append("<th>N°diagnostic</th><th>N°dossier</th><th>Date</th><th>Expertise</th></tr>");
+         $(".entete").append("<th>N°diagnostic</th><th>N°dossier</th><th>Date</th><th>Prix</th><th>Expertise</th><th>Envoyer</th></tr>");
 
          donnees.forEach((i) => {
-            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.critere_id+"</td><td>"+ i.date +"</td><td>"+i.expertise+"</td><td>"+i.statut_expertise+"</td></tr>");
+            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.critere_id+"</td><td>"+ i.date +"</td><td>"+ i.prix +"</td><td><form enctype='multipart/form-data'><a href='../img/diagnostic.pdf' download='diactostic.pdf'><i class='fas fa-file-download'> Télécharger votre diagnostic</i></a></td><td><a href='#'><button><i class='fas fa-envelope'></i></button></a></td></tr>");
          });
 
       }, 'json' );
@@ -361,15 +381,32 @@ $("#co").submit(function(e) {
    function ajax3(){
       
       $.getJSON("/admin/gestion/listeCritere",function( donnees ){
-
+         
+         Hide_Load();
          $(".entete").empty();
          $(".corps").empty();
+         
          $(".entete").append("<th>N°dossier</th><th>N°clients</th><th>Titre</th><th>Surface</th><th>Lieu</th><th>Annee construction</th><th>Plan lieu</th><th>Photo</th><th>Orientation</th><th colspan=2>Actions</th></tr>");
 
          donnees.forEach((i) => {
-            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.user_id+"</td><td>"+i.titre_diagnostic+"</td><td>"+ i.nb_m_carre +"</td><td>"+ i.lieu +"</td><td>"+i.annee_constr+"</td><td><img src='../img/"+i.plan_lieu+"' alt='plan'></td><td><img src='../img/"+ i.photo_lieu +"' alt='photo'></td><td>"+i.orientation+"</td><td><button><a href='/diagnostic/ajouter/"+i.id+"'>Valider</a></button></td><td><a href='/user/supprimer/"+i.id+"'><i class='fa fa-trash'></i></a></td></tr>");
+            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.user_id+"</td><td>"+i.titre_diagnostic+"</td><td>"+ i.nb_m_carre +"</td><td>"+ i.lieu +"</td><td>"+i.annee_constr+"</td><td><img src='../img/"+i.plan_lieu+"' alt='plan'></td><td><img src='../img/"+ i.photo_lieu +"' alt='photo'></td><td>"+i.orientation+"</td><td><form method='POST' action='/diagnostic/ajouter/"+i.id+"' enctype='multipart/form-data'><input type='file' name='pdfExpertise' accept='image/.pdf'/></form></td><td><div class='alert alert-primary' role='alert'><a href='/diagnostic/ajouter/"+i.id+"'>Valider</a></div></td></tr>");
          });
 
       }, 'json' );
    }
+
+   // CHARGEMENT
+
+   	//Display Loading Image
+	function Display_Load(){
+		$("#load").html("<div id='load' class='spinner-border text-secondary' role='status'><span class='sr-only'>Loading...</span></div>");
+		$('#resultat').hide();
+	}
+
+	//Hide Loading Image
+	function Hide_Load(){
+		$("#load").html('');
+		$('#resultat').show();
+
+	};
 

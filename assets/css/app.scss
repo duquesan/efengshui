@@ -89,7 +89,11 @@ font-family: 'Dancing Script', cursive;
 color:#4d4d4d;
 }
 
-
+#imglogo{
+    widows:200px;
+    height:150px;
+    margin:10px 10px 10px 10px;
+}
 .sloggan{
     padding-left:30px;
 }
@@ -195,7 +199,6 @@ a {
 }
 
 /********************************************* accueil */
-
 .fondText { 
     background-size: contain;
     background-repeat: no-repeat;
@@ -266,15 +269,15 @@ a {
 }
 
 
+
 /*------------------------------------page feng shui-------------------------------------------------- */
-
-
 .carte{
     display: flex;
     justify-content: space-around;
     margin: 50px 30px 30px 30px;
     vertical-align: baseline;
  
+
 }
 
 
@@ -294,6 +297,21 @@ a {
     text-align: justify;
 }
 
+.bloc{
+    width: 400px;
+    margin: 10px;
+    background-color: white;
+    
+}
+.card-img{
+    width: 400px;
+    height: 280px;
+}
+.card-text{
+    font-family: "Noticia Text";
+    line-height: 1.5;
+    text-align: justify;
+}
 /********************************************* ESTIMATION */
 
 .estimation {
@@ -616,7 +634,6 @@ border: 8px solid #666;
     font-weight:normal;
     margin-left:35%;
 }
-
 .subsTitle{
     font-size:50px;
     color: #4d4d4d;
@@ -624,10 +641,6 @@ border: 8px solid #666;
     padding-top: -5px;
     padding-bottom: 40px;
 }
-
-
-
-
 /********************************************* FORMULAIRE DIAGNOSTIQUE */
 .startDiag{
     font-size: 30px;
@@ -826,8 +839,6 @@ border: 8px solid #666;
 
   
 /************** FAQ */
-
-
 #msform .form-check-label {
     display: none;
 }
@@ -835,8 +846,6 @@ border: 8px solid #666;
 #msform .form-check input {
     display: none;
 }
-
-
 #msform input:checked+label>img {
     background-color: blue;
     color: white;
@@ -946,15 +955,15 @@ border: 8px solid #666;
     width: 21px;
 }
 
-.fa-eye{
-    background-color: grey;
-    width: 21px;
-}
-
 label{
     padding: 10px;
     font-size: 20px;
     color: rgba(0, 128, 0, 0.507);
+}
+
+.btn-dark{
+    margin: 15px;
+    padding: 15px;
 }
 
 .btn-dark{
@@ -984,9 +993,6 @@ th{
     padding: 8px;
     text-align: center;
 }
-
-
 .error-template{
     margin: auto;
 }
-
