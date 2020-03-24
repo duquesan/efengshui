@@ -35,7 +35,7 @@
       <!-- Si USER-->
       {% if is_granted("IS_AUTHENTICATED_FULLY") %}
        
-        <button class="buttonDiag"><a href="{{ path ("critere") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
+        <button class="buttonDiag"><a href="{{ path ("criteres_ajouter") }}">{% trans %}Start your Diagnostic{% endtrans %}</a></button>
         
       {% endif %}
 
@@ -55,7 +55,7 @@
     </div>
 
     <div class="imgAccueil">
-      <img src="/img/boussole.jpg" alt="boussole">
+      <img src="/img/boussole.jpg" id="boussole" alt="boussole">
     </div>
   </div>  
 

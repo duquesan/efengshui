@@ -169,6 +169,66 @@ $(document).on('change', '.custom-file-input', function (event) {
    });
    */
 
+  $.extend($.validator.messages, {
+   required: "Ce champ est requis.",
+   remote: "Veuillez corriger ce champ.",
+   email: "Veuillez entrer une adresse e-mail valide.",
+   url: "Veuillez entrer une URL valide.",
+   date: "Veuillez entrer une date valide.",
+   dateISO: "Veuillez entrer une date valide (ISO).",
+   number: "Veuillez entrer un numéro valide.",
+   digits: "Ce champ ne peut contenir que des chifres",
+   creditcard: "Veuillez entrer une carte de crédit valide.",
+   equalTo: "Les valeurs ne correspondent pas.",
+   accept: "Veuillez entre une extension autorisée.",
+   maxlength: $.validator.format("N'entrez pas plus de {0} caractères."),
+   minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+   rangelength: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+   range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+   max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+   min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}."),
+})
+
+ 
+$(document).ready(function() {
+$("#msform").submit(function(e) {
+   $("#valid").show();
+   $("#third").hide();
+   $("#progressbar li").eq(3).removeClass("active").addClass("done");
+   $("#progressbar li").eq(4).addClass("done");
+  e.preventDefault();
+   var url = e.currentTarget.action;
+   var formData = new FormData(this);
+   $.ajax({
+          url: url,
+          type: 'post',
+          data: formData,
+          contentType: false,
+          processData: false
+      });
+});
+});
+
+$(document).ready(function() {
+$("#co").submit(function(e) {
+  $("#first").show();
+  $("#co").hide();
+  $("#progressbar li").eq(0).removeClass("active").addClass("done");
+  $("#progressbar li").eq(1).addClass("active");
+  e.preventDefault();
+  var url = e.currentTarget.action;
+  $.ajax({
+         url: url,
+         type: 'post',
+         data: $("#co").serialize(),
+     });
+     $(".dropdownicone").click(function(){
+      $("#dropdowncritere").replaceWith($("#dropdownconnecte"));
+});
+});
+});
+
+
 
 
 
@@ -265,65 +325,5 @@ $(document).on('change', '.custom-file-input', function (event) {
 
 
 
-});
 
 
-
-      $.extend($.validator.messages, {
-         required: "Ce champ est requis.",
-         remote: "Veuillez corriger ce champ.",
-         email: "Veuillez entrer une adresse e-mail valide.",
-         url: "Veuillez entrer une URL valide.",
-         date: "Veuillez entrer une date valide.",
-         dateISO: "Veuillez entrer une date valide (ISO).",
-         number: "Veuillez entrer un numéro valide.",
-         digits: "Ce champ ne peut contenir que des chifres",
-         creditcard: "Veuillez entrer une carte de crédit valide.",
-         equalTo: "Les valeurs ne correspondent pas.",
-         accept: "Veuillez entre une extension autorisée.",
-         maxlength: $.validator.format("N'entrez pas plus de {0} caractères."),
-         minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
-         rangelength: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
-         range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
-         max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
-         min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}."),
-      })
-
-       
-$(document).ready(function() {
-    $("#msform").submit(function(e) {
-         $("#valid").show();
-         $("#third").hide();
-         $("#progressbar li").eq(3).removeClass("active").addClass("done");
-         $("#progressbar li").eq(4).addClass("done");
-        e.preventDefault();
-         var url = e.currentTarget.action;
-         var formData = new FormData(this);
-         $.ajax({
-                url: url,
-                type: 'post',
-                data: formData,
-                contentType: false,
-                processData: false
-            });
-    });
-});
-
-$(document).ready(function() {
-   $("#co").submit(function(e) {
-        $("#first").show();
-        $("#co").hide();
-        $("#progressbar li").eq(0).removeClass("active").addClass("done");
-        $("#progressbar li").eq(1).addClass("active");
-        e.preventDefault();
-        var url = e.currentTarget.action;
-        $.ajax({
-               url: url,
-               type: 'post',
-               data: $("#co").serialize(),
-           });
-           $(".dropdownicone").click(function(){
-            $("#dropdowncritere").replaceWith($("#dropdownconnecte"));
-   });
-});
-});

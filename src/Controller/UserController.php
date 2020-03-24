@@ -22,6 +22,13 @@ use Symfony\Component\Form\FormView;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\DependencyInjection\ExpressionLanguageProvider;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Swift_Mailer;
+
 
 
 class UserController extends AbstractController
@@ -29,6 +36,7 @@ class UserController extends AbstractController
   
   /**
      * @Route("/inscription", name="user_subs")
+      * @Security("not is_granted('ROLE_USER')")
      */
 public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
@@ -65,7 +73,8 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
     }
 
     /**
-     * @Route("/user", name="compte_user")    
+     * @Route("/user", name="compte_user")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function infos_user(UserRepository $ur, DiagnosticRepository $dr, CritereRepository $cr)
     {
@@ -78,7 +87,7 @@ public function register(Request $request, UserPasswordEncoderInterface $passwor
 
    /**
  * @Route("/user/modifier/{id}", name="user_modifier")
-
+    * @Security("is_granted('ROLE_USER')")
  */
 public function modifier(UserRepository $ur, Request $request, EMI $em, int $id )
 {
@@ -107,7 +116,7 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 
 /**
  * @Route("/user/supprimer/{id}", name="user_supprimer")
-
+ * @Security("is_granted('ROLE_USER')")
  */
 
 public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
@@ -130,17 +139,6 @@ public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id
 
 
 }
-
-/**
-* @Route("/admin/gestion", name="gestion")   
-* @IsGranted("ROLE_ADMIN") 
-*/
-public function compte_admin()
-{
-  
-    return $this->render('user/compte_admin.html.twig');
-}
-
 /**
 * @Route("/admin/gestion/listeUser", name="liste_user")   
 * @IsGranted("ROLE_ADMIN") 
@@ -247,5 +245,74 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
     }
     return $this->render('user/formulaire.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
 } 
+/**
+     * @Route("/forgotten_password", name="app_forgotten_password")
+     */
+    public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator, EMI $em): Response
+    {
 
+        if ($request->isMethod('POST')) {
+
+            $email = $request->request->get('email');
+
+            $em = $this->getDoctrine()->getManager();
+            $user = $em->getRepository(User::class)->findOneBy(['email' => $email]);
+            /* @var $user User */
+            $token = $tokenGenerator->generateToken();
+
+            if ($user === null) {
+                $this->addFlash('danger', 'Email Inconnu');
+            }
+            else{
+                $user->setResetToken($token);
+                $em->flush();
+           
+
+            $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+
+            $message = (new \Swift_Message('Mot de passe oublié'))
+                ->setFrom('kathleen.stassart@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    " Voici le lien pour générer votre nouveau mot de passe : " . $url,
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            $this->addFlash('success', 'Mail envoyé');
+            return $this->redirectToRoute('accueil');
+        }
+        }
+
+        return $this->render('security/forgotten_password.html.twig');
+    }
+     /**
+     * @Route("/reset_password/{token}", name="app_reset_password")
+     */
+    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, EMI $em)
+    {
+
+        if ($request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $em->getRepository(User::class)->findOneBy(['resetToken' => $token]);;
+            /* @var $user User */
+
+            if ($user === null) {
+                $this->addFlash('danger', 'Le chemin est inconnu');
+            }
+
+            $user->setResetToken(null);
+            $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+            $em->flush();
+
+            $this->addFlash('success', 'Votre mot de passe a été mis à jour');
+            return $this->redirectToRoute('accueil');
+        }else {
+
+            return $this->render('security/reset_password.html.twig', ['token' => $token]);
+        }
+
+    }
 }

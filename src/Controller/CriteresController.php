@@ -18,20 +18,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 class CriteresController extends AbstractController
 {
+    private $session;
+    
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
 
    /**
      * @Route("/criteres/ajouter", name="criteres_ajouter")
      */
 
-    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils): Response
+    public function add(CritereRepository $critereRepo, Request $rq, EntityManagerInterface $em, UserRepository $ur, AuthenticationUtils $authenticationUtils)
    {
+        $this->session->set('diagnostic_demande', 'diagnostic_demande');
+        //Name et Value
+        $diagnosticDemande = $this->session->get('diagnostic_demande');
+
         $user = new User();
         $formConnexion = $this->createForm(ConnexionType::class);
         //$demande = new Criteres();
@@ -47,8 +57,8 @@ class CriteresController extends AbstractController
                 //Je teste s'il est valide
                 //S'il est valide je crée $nouvelleDemande
                 $nouvelleDemande = $formDemande->getData();
-                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
-                // pour définir dans quel dossier va être enregistré l'image téléchargée
+                //getData va permettre de créer l'objet en récupérant les données je récupère la valeur du paramètre global "dossier_images" 
+                // pour définir dans quel dossier va être enregistré l'image téléchargée
 
                 $destination = $this->getParameter("dossier_images");
                 //Je mets les informations de la photo téléchargée dans la variable phototelecharger et s'il y a bien une photo téléchargée
@@ -75,7 +85,7 @@ class CriteresController extends AbstractController
                 //On récupère
                 $em->flush();
                 //On lance
-
+                $translator = "";
                 $msg = $translator->trans('Your request has been registered.');
                 $this->addFlash("success", $msg);
 
@@ -94,10 +104,6 @@ class CriteresController extends AbstractController
         $formDemande = $formDemande->createView();      
         $formConnexion = $formConnexion->createView();
         return $this->render('critere/formulaire.html.twig', compact('formDemande', 'formConnexion'));
-
-
-
-
     }
 
 

@@ -117,12 +117,14 @@
             </tr>
         </thead>
         {% for critere in app.user.criteres %}
+            {% if critere.diagnostic.id is defined %}
             <tr>
                 <td>{{ critere.diagnostic.id }}</td>
                 <td>{{ critere.diagnostic.date|date("d/m/Y") }} </td>
                 <td>{{ critere.diagnostic.prix }}</td>
                 <td>{{ critere.diagnostic.expertise }}</td>
             </tr>
+            {% endif %}
         {% endfor %}
         <tfoot>
             <td><a href=""><i class="fas fa-edit"></i></a></td>

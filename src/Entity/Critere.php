@@ -10,14 +10,16 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="App\Repository\CritereRepository")
  */
 class Critere
+{
 
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     *  @Serializer\Groups({"demande"})
+     * @Serializer\Groups({"demande"})
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -50,7 +52,7 @@ class Critere
     private $photo_lieu;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string")
      * @Serializer\Groups({"demande"})
      */
     private $orientation;
@@ -63,16 +65,12 @@ class Critere
 
 
     /**
-
      * @ORM\OneToOne(targetEntity="App\Entity\Diagnostic", mappedBy="critere", cascade={"persist", "remove"})
-
      */
     private $diagnostic;
 
     /**
-
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="critere")
-
      */
     private $user;
 
@@ -142,12 +140,12 @@ class Critere
         return $this;
     }
 
-    public function getOrientation(): ?bool
+    public function getOrientation(): ?string
     {
         return $this->orientation;
     }
 
-    public function setOrientation(bool $orientation): self
+    public function setOrientation(?string $orientation): self
     {
         $this->orientation = $orientation;
 
