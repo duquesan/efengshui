@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AccueilController extends AbstractController
 {
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/", name="accueil")
      */
     public function index()
     {
@@ -18,15 +18,15 @@ class AccueilController extends AbstractController
         ]);
     }
 
-       /**
-     * @Route("/accueil", name="home")
-     */
-    public function home()
-    {
-        return $this->render('accueil/accueil.html.twig', [
-            'controller_name' => 'AccueilController',
-        ]);
-    }
+    //    /**
+    //  * @Route("/accueil", name="home")
+    //  */
+    // public function home()
+    // {
+    //     return $this->render('accueil/accueil.html.twig', [
+    //         'controller_name' => 'AccueilController',
+    //     ]);
+    // }
 
     /**
      * @Route("/accueil/estimation", name="estimation")

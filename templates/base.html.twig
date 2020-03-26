@@ -20,8 +20,8 @@
 		<div class="row">
 			<nav class="col-lg-9">
 				<div class="navbar-logo">
-					<a href="{{ path("accueil") }}"><img src="/img/logo.png" class="imglogo"  atl="logo efeng shui"></a>
-					<h1>{% trans %}Online Feng Shui Diagnostic Platform{% endtrans %}</h1>
+					<a href="{{ path("accueil") }}"><img src="/img/logo.png" id="imglogo"  atl="logo efeng shui"></a>
+					<h1 class="sloggan">{% trans %}Online Feng Shui Diagnostic Platform{% endtrans %}</h1>
 				</div>
 		</div>
           
@@ -52,7 +52,7 @@
 
 				<!-- Si PAS CONNECTé-->
 
-
+	
 				{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<a class="dropdown-item" href="{{ path("app_login") }}">{% trans %}Login{% endtrans %}</a>
@@ -123,13 +123,11 @@
 	{% endfor %}
 {% endblock %}
 
+</div>
 
 <footer class="page-footer">
 <!-- Footer Links -->
 
-</div>
-
-{% block body %}
 <div class="container-fluid">
 
 	<!-- Grid row -->

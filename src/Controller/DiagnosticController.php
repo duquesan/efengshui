@@ -28,13 +28,14 @@ class DiagnosticController extends AbstractController
     }
 
      /**
-     * @Route("admin/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
+     * @Route("/admin/diagnostic/ajouter/{id}", name="diagnostic_ajouter")
+     * @IsGranted("ROLE_ADMIN");
      */
     public function add(Request $rq, EntityManagerInterface $em,CritereRepository $critereRepo, int $id){
 
         $cr=$critereRepo->find($id);
         $surface=$cr->getNbMCarre();
-
+        $prix = 0;
         //Ici on determine le prix du diagnostic en fonction de la surface
         if( $surface <= 25){
             $prix=50;
