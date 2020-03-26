@@ -116,137 +116,123 @@ public function modifier(UserRepository $ur, Request $request, EMI $em, int $id 
 } 
 
 
-/**
- * @Route("/user/supprimer/{id}", name="user_supprimer")
- * @Security("is_granted('ROLE_USER')")
- */
+    /**
+     * @Route("/user/supprimer/{id}", name="user_supprimer")
+     * @Security("is_granted('ROLE_USER')")
+     */
 
-public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
-{
+    public function supprimer(UserRepository $ur, Request $request, EMI $em, int $id)
+    {
 
-    $userAsupprimer = $ur->find($id);
+        $userAsupprimer = $ur->find($id);
 
-        // Enregistrement en BDD
-        $em->remove($userAsupprimer);
-        $em->flush();
-
-
-        // Ajout de message Alert
-        $this->addFlash(
-            'info',
-            'Etes vous sur de bien vouloir supprimer votre compte?'
-        );
-        
-    
-    return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer, ]);
+            // Enregistrement en BDD
+            $em->remove($userAsupprimer);
+            $em->flush();
 
 
-}
-/**
-* @Route("/admin/gestion/listeUser", name="liste_user")   
-* @IsGranted("ROLE_ADMIN") 
-*/
-public function afficheListeUser(UserRepository $ur, SerializerInterface $serializer)
-{
-    
-    $clients=$ur->findAll();
-    
-    $data = $serializer->serialize($clients,'json');
-
-    $response = new Response($data);
-    $response->headers->set('Content-Type', 'application/json');
-    return $response;
-}
-
-
-        /**
-        * @Route("/admin/gestion", name="gestion")   
-        * @IsGranted("ROLE_ADMIN") 
-        */
-    public function compte_admin(UserRepository $ur)
-        {
-            return $this->render('user/compte_admin.html.twig', [ "user" => $ur->findAll() ]);
-        }
-/**
- * @Route("/admin/user/ajouter", name="user_add")
- * @IsGranted("ROLE_ADMIN")
- */
-public function add(UserRepository $ur, EMI $em, Request $request)
-{
-    $bouton = "add";
-
-    if($request->isMethod("POST")){ 
-        $nom = $request->request->get('nom');
-        $prenom = $request->request->get('prenom');
-        $email = $request->request->get('email');
-        $mdp = $request->request->get('password');
-        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
-        $user = new User; 
-        $user->setEmail($nom);
-        $user->setPassword($mdp);
-
-        $em->persist($user);
-        $em->flush();
-
-        return $this->redirectToRoute("gestion");
-
-    }else{
-        return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
+            // Ajout de message Alert
+            $this->addFlash(
+                'info',
+                'Etes vous sur de bien vouloir supprimer votre compte?'
+            );        
+        return $this->render('user/supprimer_user.html.twig', ["user" => $userAsupprimer,]);
     }
-}
 
-/**
- * @Route("/admin/user/modifier/{id}", name="user_update")
- * @IsGranted("ROLE_ADMIN")
- */
-public function update(UserRepository $ur, Request $request, EMI $em, int $id)
-{
-    $bouton = "update";
-    $userAmodifier = $ur->find($id);
 
-    if($request->isMethod("POST")){ 
-        $nom = $request->request->get('nom');
-        $prenom = $request->request->get('prenom');
-        $email = $request->request->get('email');
-        // trim supprime les espaces au début et à la fin d'une chaîne de caractères
-        $mdp = trim($request->request->get('password'));
-        if($mdp){
+    /**
+    * @Route("/admin/gestion", name="gestion")   
+    * @IsGranted("ROLE_ADMIN") 
+    */
+    public function compte_admin(UserRepository $ur, DiagnosticRepository $dg, CritereRepository $cr)
+    {
+        $clients=$ur->findAll();
+        $diagnostics=$dg->findAll();
+        $demandes=$cr->findAll();
+        
+        return $this->render("user/compte_admin.html.twig",["listeclient" => $clients, "listediag" => $diagnostics, "listedemande" => $demandes] );
+    }
+        
+    /**
+     * @Route("/admin/user/ajouter", name="user_add")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function add(UserRepository $ur, EMI $em, Request $request)
+    {
+        $bouton = "add";
+
+        if($request->isMethod("POST")){ 
+            $nom = $request->request->get('nom');
+            $prenom = $request->request->get('prenom');
+            $email = $request->request->get('email');
+            $mdp = $request->request->get('password');
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
-            $userAmodifier->setPassword($mdp);
+            $user = new User; 
+            $user->setEmail($nom);
+            $user->setPassword($mdp);
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute("gestion");
+
+        }else{
+            return $this->render('user/compte_admin.html.twig', ["bouton" => $bouton]); 
         }
-        
-        $userAmodifier->setNom($nom);
-        $userAmodifier->setPrenom($prenom);
-        $userAmodifier->setEmail($email);
+    }
 
-        $em->persist($userAmodifier);
-        $em->flush();
+    /**
+     * @Route("/admin/user/modifier/{id}", name="user_update")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function update(UserRepository $ur, Request $request, EMI $em, int $id)
+    {
+        $bouton = "update";
+        $userAmodifier = $ur->find($id);
 
-        return $this->redirectToRoute("gestion");
+        if($request->isMethod("POST")){ 
+            $nom = $request->request->get('nom');
+            $prenom = $request->request->get('prenom');
+            $email = $request->request->get('email');
+            // trim supprime les espaces au début et à la fin d'une chaîne de caractères
+            $mdp = trim($request->request->get('password'));
+            if($mdp){
+                $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+                $userAmodifier->setPassword($mdp);
+            }
+            
+            $userAmodifier->setNom($nom);
+            $userAmodifier->setPrenom($prenom);
+            $userAmodifier->setEmail($email);
+
+            $em->persist($userAmodifier);
+            $em->flush();
+
+            return $this->redirectToRoute("gestion");
+
+        }
+        return $this->render('user/formulaire.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]); 
 
     }
-    return $this->render('user/formulaire.html.twig', ["user" => $userAmodifier, "bouton" => $bouton]); 
-
-}
 
 
-/**
- * @Route("/admin/user/supprimer/{id}", name="user_delete")
- * @IsGranted("ROLE_ADMIN")
- */
-public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
-{
-    $bouton = "delete";
-    $userAsupprimer = $ur->find($id);
+    /**
+     * @Route("/admin/user/supprimer/{id}", name="user_delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
+    {
+        $bouton = "delete";
+        $userAsupprimer = $ur->find($id);
 
-    if ($request->isMethod("POST")){
-        $em->remove($userAsupprimer);
-        $em->flush();
-        return $this->redirectToRoute("gestion");
-    }
-    return $this->render('user/formulaire.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
-} 
-/**
+        if ($request->isMethod("POST")){
+            $em->remove($userAsupprimer);
+            $em->flush();
+            return $this->redirectToRoute("gestion");
+        }
+        return $this->render('user/formulaire.html.twig', ["user" => $userAsupprimer, "bouton" => $bouton]);
+    } 
+    /**
      * @Route("/forgotten_password", name="app_forgotten_password")
      */
     public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator, EMI $em): Response
@@ -267,7 +253,7 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
             else{
                 $user->setResetToken($token);
                 $em->flush();
-           
+        
 
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
@@ -284,10 +270,11 @@ public function delete(UserRepository $ur, Request $request,EMI $em, int $id)
             $this->addFlash('success', 'Mail envoyé');
             return $this->redirectToRoute('accueil');
         }
-        }
+    }
 
         return $this->render('security/forgotten_password.html.twig');
     }
+
      /**
      * @Route("/reset_password/{token}", name="app_reset_password")
      */

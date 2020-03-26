@@ -314,99 +314,42 @@ $("#co").submit(function(e) {
 
    /* GESTION: liste des clients - liste des diagnostics - liste des critères */
 
-   $("#clientsList").click( function(){ 
-   //je récupère le bouton 'Liste des clients', lorsque je clique dessus j'exécute une fonction de callback
-      Display_Load()
-      //e.preventDefault(); //annule rechargement de la page (par défaut)
-      ajax(); //j'exécute la fonction ajax()
+   $('#tabUser').show();
+   $('#tabDiagnostic').hide();
+   $('#tabCritere').hide();
+
+   $("#clientsList").click( function(){
+
+      $('#tabUser').show();
+      $('#tabDiagnostic').hide();
+      $('#tabCritere').hide();
+  
    });
 
-   $("#diagList").click( function(){ 
-      Display_Load()
-      //e.preventDefault(); 
-      ajax2(); 
+   $("#diagList").click( function(){
+      
+      $('#tabUser').hide();
+      $('#tabDiagnostic').show();
+      $('#tabCritere').hide(); 
+     
    });
 
-   $("#demandesList").click( function(){ 
-      Display_Load()
-      //e.preventDefault(); 
-      ajax3(); 
+   $("#demandesList").click( function(){
+      
+      $('#tabUser').hide();
+      $('#tabDiagnostic').hide();
+      $('#tabCritere').show(); 
+      
    });
 
-   /* TRAITEMENT AJAX */
+  
+   // CONFIRMATION AVANT VALIDATION
 
-   //Liste des clients
+   $(".valider").click( function(){ 
+     
+      confirm(" Etes vous sure de vouloir valider votre expertise? ");
+     
 
-   function ajax(){
-      
-      //$.getJSON : permet d'accéder au contenu du getJSON renvoyé par le controleur
-      $.getJSON("/admin/gestion/listeUser",function( donnees ){
+   });
 
-         Hide_Load();
-         /* j'efface le contenu de ".entete" et ".corps" pour le vider avant d'ajouter mes donnees*/
-         $(".entete").empty();
-         $(".corps").empty();
-
-         /* j'ajoute mes donnees à leur emplacement deja prévu dans le fichier de compte_admin.html.twig*/
-         $(".entete").append("<th>Nom</th><th>Prénom</th><th>E-mail</th><th>Rôles</th><th colspan=2>Actions</th></tr>");
-            /* "donnees" est un array qui contient les donnees envoyées par le controleur c'est à dire la liste des user (clients), je l'ajoute à son emplacement ".corps" et je lui ajoute les balises pour l'encrer dans un tableau "<table>" prévue à cet effet */
-         donnees.forEach((i) => {
-            $(".corps").append("<tr><td>"+i.nom+"</td><td>"+i.prenom+"</td><td>"+ i.email +"</td><td>"+ i.roles +"</td><td><a href='/admin/user/modifier/"+i.id+"'><i class='fa fa-pen'></i></a></td><td><a href='/user/supprimer/"+i.id+"'><i class='fa fa-trash'></i></a></td></tr>");
-         });
-
-      }, 'json' );
-   }
-
-   //Liste des diagnostics
-
-   function ajax2(){
-      
-      $.getJSON("/admin/gestion/listeDiagnostic",function( donnees ){
-
-         Hide_Load();
-         $(".entete").empty();
-         $(".corps").empty();
-
-         $(".entete").append("<th>N°diagnostic</th><th>N°dossier</th><th>Date</th><th>Prix</th><th>Expertise</th><th>Envoyer</th></tr>");
-
-         donnees.forEach((i) => {
-            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.critere_id+"</td><td>"+ i.date +"</td><td>"+ i.prix +"</td><td><form enctype='multipart/form-data'><a href='../img/diagnostic.pdf' download='diactostic.pdf'><i class='fas fa-file-download'> Télécharger votre diagnostic</i></a></td><td><a href='#'><button><i class='fas fa-envelope'></i></button></a></td></tr>");
-         });
-
-      }, 'json' );
-   }
-
-   //Liste des demandes
-
-   function ajax3(){
-      
-      $.getJSON("/admin/gestion/listeCritere",function( donnees ){
-         
-         Hide_Load();
-         $(".entete").empty();
-         $(".corps").empty();
-         
-         $(".entete").append("<th>N°dossier</th><th>N°clients</th><th>Titre</th><th>Surface</th><th>Lieu</th><th>Annee construction</th><th>Plan lieu</th><th>Photo</th><th>Orientation</th><th colspan=2>Actions</th></tr>");
-
-         donnees.forEach((i) => {
-            $(".corps").append("<tr><td>"+i.id+"</td><td>"+i.user_id+"</td><td>"+i.titre_diagnostic+"</td><td>"+ i.nb_m_carre +"</td><td>"+ i.lieu +"</td><td>"+i.annee_constr+"</td><td><img src='../img/"+i.plan_lieu+"' alt='plan'></td><td><img src='../img/"+ i.photo_lieu +"' alt='photo'></td><td>"+i.orientation+"</td><td><form method='POST' action='/diagnostic/ajouter/"+i.id+"' enctype='multipart/form-data'><input type='file' name='pdfExpertise' accept='image/.pdf'/></form></td><td><div class='alert alert-primary' role='alert'><a href='/diagnostic/ajouter/"+i.id+"'>Valider</a></div></td></tr>");
-         });
-
-      }, 'json' );
-   }
-
-   // CHARGEMENT
-
-   	//Display Loading Image
-	function Display_Load(){
-		$("#load").html("<div id='load' class='spinner-border text-secondary' role='status'><span class='sr-only'>Loading...</span></div>");
-		$('#resultat').hide();
-	}
-
-	//Hide Loading Image
-	function Hide_Load(){
-		$("#load").html('');
-		$('#resultat').show();
-
-	};
 
